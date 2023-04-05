@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     use HasFactory;
+// models ni sa bookings na nga ma belong ang customer
+    public function costumer()
+    {
+        return $this->belongsTo(Costumer::class);
+    }
 }
