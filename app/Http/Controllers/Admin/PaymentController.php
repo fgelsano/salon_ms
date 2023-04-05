@@ -4,16 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Payment;
 use App\Models\Booking;
-use App\Models\Customer;
 
-class BookingController extends Controller
+class PaymentController extends Controller
 {
+    //
     public function index() {
         
-        $bookings = Booking::all();
+        $payments = Payment::all();
         
 
-        return view('admin.bookings.index', compact('bookings'));
+        return view('admin.payments.index', compact('payments'));
     }
 }

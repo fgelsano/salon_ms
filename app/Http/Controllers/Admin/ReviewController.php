@@ -4,16 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Review;
 use App\Models\Booking;
-use App\Models\Customer;
-
-class BookingController extends Controller
+class ReviewController extends Controller
 {
+    //
     public function index() {
         
-        $bookings = Booking::all();
+        $reviews = Review::all();
         
 
-        return view('admin.bookings.index', compact('bookings'));
-    }
+        return view('admin.reviews.index', compact('reviews'));
+    } 
 }
