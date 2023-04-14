@@ -6,19 +6,27 @@
         <!-- Navigation menu -->
         <div class="col-md-8">
         <table class="table">
+        <!-- <th colspan="3">Bookings</th> -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Bookings</h3>
+            
+        </div>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Address</th>
-                    <th>Contact</th>
+                    <th>Booking id</th>
+                    <th>Reservation Date</th>
+                    <th>Reservation time</th>
+                    <th>Status</th>
+                    <th>Customer</th>
                     <th>Action</th>
                 </tr>
-                @foreach($customers as $customer)
+                @foreach($bookings as $booking)
                     <tr>
-                        <td>{{ $customer->firstname }}</td>
-                        <td>{{ $customer->lastname }}</td>
-                        <td>{{ $customer->address }}</td>
-                        <td>{{ $customer->contact }}</td>
+                        <td>{{ $booking->booking_id }}</td>
+                        <td>{{ $booking->customer_id }}</td>
+                        <td>{{ $booking->reservation_date}}</td>
+                        <td>{{ $booking->reservation_time }}</td>
+                        <td>{{ $booking->status}}</td>
+                      
                         <td>
                             <a href='#'>View</a> |
                             <a href='#'>Edit</a> |
@@ -27,7 +35,8 @@
                     </tr>
                  @endforeach
                 </table>
-
+                <!-- button ni sa booking details -->
+                    <button class="btn btn-primary">Booking Details</button>
         </div>
     </div>
 </div>
