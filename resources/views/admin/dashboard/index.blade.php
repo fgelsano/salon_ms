@@ -6,7 +6,6 @@
         <!-- Navigation menu -->
         <div class="col-md-8">
             <a href="{{ url('/bookings') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Bookings</a>
-<<<<<<< HEAD
         </div>
         <!-- End of Navigation menu -->
              
@@ -55,17 +54,6 @@
                 </div>
               @include('layouts.tables.dashboardtable')
             </div>
-=======
-            <!-- mao ni ang sa customerna makita sa dashboard -->
-            <a href="{{ url('/customers') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Customers</a>
-            <a href="{{ url('/services') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Services</a>
-            <a href="{{ url('/settings') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Settings</a>
-            <a href="{{ url('/reviews') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Reviews</a>
-            <a href="{{ url('/payments') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Payments</a>
-            
-        
-            <!-- End of Navigation menu -->
->>>>>>> master
 
         <div class="col-md-8">
             <div class="card">
