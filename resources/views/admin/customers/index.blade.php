@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
 <div class="container">
@@ -23,9 +23,9 @@
                         <td>{{ $customer->lastname }}</td>
                         <td>{{ $customer->address }}</td>
                         <td>{{ $customer->contact }}</td>
+            
                         <td>
-                            <a href='#'>View</a> |
-                            <a href='#'>Edit</a> |
+                            <a href="{{ route('customers.edit', $customer) }}">Edit</a> |
                             <a href='#'>Delete</a>
                         </td>
                     </tr>

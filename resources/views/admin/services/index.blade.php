@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
 <div class="container">
@@ -24,8 +24,7 @@
                         <td>{{ $service->category }}</td>
                         
                         <td>
-                            <a href='#'>View</a> |
-                            <a href='#'>Edit</a> |
+                            <a href="{{ route('services.edit', $service) }}">Edit</a> |
                             <a href='#'>Delete</a>
                         </td>
                     </tr>

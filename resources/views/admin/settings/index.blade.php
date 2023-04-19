@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
 <div class="container">
@@ -20,8 +20,7 @@
                         <td>{{ $setting->value }}</td>
                         
                         <td>
-                            <a href='#'>View</a> |
-                            <a href='#'>Edit</a> |
+                        <a href="{{ route('settings.edit', $settings) }}">Edit</a> |
                             <a href='#'>Delete</a>
                         </td>
                     </tr>
