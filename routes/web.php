@@ -30,4 +30,4 @@ Route::get('/home', [App\Http\Controllers\Frontend\FrontendController::class, 'h
 Route::get('/about', [App\Http\Controllers\Frontend\FrontendController::class, 'about'])->name('frontend.about');
 Route::get('/services', [App\Http\Controllers\Frontend\FrontendController::class, 'services'])->name('frontend.services');
 Route::get('/contact', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('frontend.contact');
-Route::get('/q.status', [App\Http\Controllers\Frontend\FrontendController::class, 'q.status'])->name('frontend.q.status');
+Route::get('/q.status', [App\Http\Controllers\Frontend\FrontendController::class, 'queuestatus'])->name('frontend.queuestatus');
