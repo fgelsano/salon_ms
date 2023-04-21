@@ -15,4 +15,13 @@ class SettingController extends Controller
 
         return view('admin.settings.index', compact('settings'));
     } 
+
+    /**
+     * Display existing record from database
+     */
+    public function edit(Request $request)
+    {
+        $settings = Setting::find($request->id);
+        return view('admin.settings.edit', compact('setting'));
+    }
 }
