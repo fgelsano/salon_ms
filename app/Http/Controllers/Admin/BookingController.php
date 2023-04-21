@@ -25,35 +25,57 @@ class BookingController extends Controller
     public function edit(Request $request)
     {
         $booking = Booking::find($request->id);
-        return view('admin.bookings.edit', compact('booking'));
+        $customers = Customer::all();
+        return view('admin.bookings.edit', compact(['booking','customers']));
     }
 
     /**
      * Update existing record to database
      */
-    public function update(Request $request, $id)
-    {
+    // public function update(Request $request, $id)
+    // {
         
-        $request->validate([
-            'customer_id' => 'required|exists:customers,id',
-            'reservation_date' => 'required|date',
-            'reservation_time' => 'required|date_format:H:i:s',
-            'status' => 'required'
-        ]);
+    //     $request->validate([
+    //         'customer_id' => 'required|exists:customers,id',
+    //         'reservation_date' => 'required|date',
+    //         'reservation_time' => 'required|date_format:H:i:s',
+    //         'status' => 'required'
+    //     ]);
     
-        $booking = Booking::findOrFail($id);
-        $customer = Customer::findOrFail($request->customer_id);
+    //     $booking = Booking::findOrFail($id);
+    //     $customer = Customer::findOrFail($request->customer_id);
     
-        $booking->customer_id = $customer->id;
-        $booking->reservation_date = $request->reservation_date;
-        $booking->reservation_time = $request->reservation_time;
-        $booking->status = $request->status;
+    //     $booking->customer_id = $customer->id;
+    //     $booking->reservation_date = $request->reservation_date;
+    //     $booking->reservation_time = $request->reservation_time;
+    //     $booking->status = $request->status;
     
-        $booking->save();
+    //     $booking->save();
     
-        return redirect()->route('bookings.index')->with('success', 'Booking updated successfully');
-    }
+    //     return redirect()->route('bookings.index')->with('success', 'Booking updated successfully');
+    // }
+
+public function update(Request $request, $id)
+{
+    // $request->validate([
+    //     'customer_id' => 'required|exists:customers,id',
+    //     'reservation_date' => 'required|date',
+    //     'reservation_time' => 'required',
+    //     'status' => 'required|in:pending,confirmed,canceled',
+    // ]);
+
+    $booking = Booking::find($id);
+
     
+
+    $booking->customer_id = $request->customer_id;
+    $booking->reservation_date = $request->reservation_date;
+    $booking->reservation_time = $request->reservation_time;
+    $booking->status = $request->status;
+    $booking->save();
+
+    return redirect()->route('bookings.index')->with('success', 'Booking updated successfully!');
+}
 
 
     /**
@@ -93,9 +115,11 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-        $booking = Booking::findOrFail($id);
+        $booking = Booking::find($id);
         $booking->delete();
         return redirect()->route('bookings.index')->with('success', 'Booking has been deleted successfully');
+        
+}
     }
 
     
@@ -103,4 +127,3 @@ class BookingController extends Controller
 
 
     
-}
