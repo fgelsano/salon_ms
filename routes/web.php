@@ -27,19 +27,16 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 Route::get('/payments', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('payments.index');
 Route::get('/reviews', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('reviews.index');
 
-Route::get('/bookings', [App\Http\Controllers\Admin\BookingController::class, 'index'])->name('bookings.index');
-Route::get('/bookings/edit/{id}', [App\Http\Controllers\Admin\BookingController::class, 'edit'])->name('bookings.edit');
-Route::get('/bookings/add', [App\Http\Controllers\Admin\BookingController::class, 'create'])->name('bookings.create');
-Route::delete('/bookings/{booking}', [App\Http\Controllers\Admin\BookingController::class, 'destroy'])->name('bookings.destroy');
-Route::put('/bookings/update/{id}', [App\Http\Controllers\Admin\BookingController::class, 'update'])->name('bookings.update');
-// Route::put('/bookings/{id}', 'BookingController@update')->name('bookings.update');
-Route::post('/bookings/store', [App\Http\Controllers\Admin\BookingController::class, 'store'])->name('bookings.store');
 
-// Route::get('students', [StudentController::class, 'index']);
-// Route::get('edit.booking/{id}', [App\Http\Controllers\Admin\BookingController::class, 'edit']);
-// Route::get('edit-student/{id}', [StudentController::class, 'edit']);
-
-
+Route::prefix('bookings')->middleware(['auth'])->group(function () {
+    Route::get('/', [App\Http\Controllers\Admin\BookingController::class, 'index'])->name('bookings.index');
+    Route::get('/edit/{id}', [App\Http\Controllers\Admin\BookingController::class, 'edit'])->name('bookings.edit');
+    Route::get('/add', [App\Http\Controllers\Admin\BookingController::class, 'create'])->name('bookings.create');
+    Route::delete('/{booking}', [App\Http\Controllers\Admin\BookingController::class, 'destroy'])->name('bookings.destroy');
+    Route::put('/update/{id}', [App\Http\Controllers\Admin\BookingController::class, 'update'])->name('bookings.update');
+    Route::post('/store', [App\Http\Controllers\Admin\BookingController::class, 'store'])->name('bookings.store');
+    
+});
 
 Route::get('/services', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('services.index');
 Route::get('/services/edit/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'edit'])->name('services.edit');

@@ -41,9 +41,10 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-                  <i class="fas fa-th-large"></i>
-                </a>
-              </li>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+        <a href="#" class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" role="button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i></a>
+      </li>
             </ul>
         </nav>
