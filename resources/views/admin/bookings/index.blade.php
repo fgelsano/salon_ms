@@ -7,10 +7,10 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0">Bookings</h5>
-
                     <div class="float-right">
                         <a href="{{ route('bookings.create') }}" type="button" class="btn btn-primary">New Booking</a>
                     </div>
+                    
                 </div>
 
                 <div class="card-body">
@@ -39,12 +39,15 @@
                                                 <a href="{{ route('bookings.edit', $booking) }}" class="btn btn-primary">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
+                                               
+                                                
                                                 <form action="{{ route('bookings.destroy', $booking) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this booking?')">
                                                         <i class="fas fa-trash-alt"></i> Delete
                                                     </button>
+                                                   
                                                 </form>
                                             </div>
                                         </td>
