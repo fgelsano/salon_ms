@@ -32,28 +32,7 @@ class BookingController extends Controller
     /**
      * Update existing record to database
      */
-    // public function update(Request $request, $id)
-    // {
-        
-    //     $request->validate([
-    //         'customer_id' => 'required|exists:customers,id',
-    //         'reservation_date' => 'required|date',
-    //         'reservation_time' => 'required|date_format:H:i:s',
-    //         'status' => 'required'
-    //     ]);
     
-    //     $booking = Booking::findOrFail($id);
-    //     $customer = Customer::findOrFail($request->customer_id);
-    
-    //     $booking->customer_id = $customer->id;
-    //     $booking->reservation_date = $request->reservation_date;
-    //     $booking->reservation_time = $request->reservation_time;
-    //     $booking->status = $request->status;
-    
-    //     $booking->save();
-    
-    //     return redirect()->route('bookings.index')->with('success', 'Booking updated successfully');
-    // }
 
 public function update(Request $request, $id)
 {
@@ -66,8 +45,6 @@ public function update(Request $request, $id)
 
     $booking = Booking::find($id);
 
-    
-
     $booking->customer_id = $request->customer_id;
     $booking->reservation_date = $request->reservation_date;
     $booking->reservation_time = $request->reservation_time;
@@ -76,7 +53,6 @@ public function update(Request $request, $id)
 
     return redirect()->route('bookings.index')->with('success', 'Booking updated successfully!');
 }
-
 
     /**
      * Display empty form to add new record
@@ -108,7 +84,6 @@ public function update(Request $request, $id)
         }
     }
 
-    
 
     /**
      * Delete existing records from database

@@ -28,11 +28,17 @@ class ServiceController extends Controller
     /**
      * Update existing record to database
      */
-    public function update(Request $request) 
-    {
-        // get id of the requested to update
-        // save request
-    }
+    public function update(Request $request, $id)
+{
+    $service = Service::find($id);
+
+    $service->name = $request->name;
+    $service->description = $request->description;
+    $service->category = $request->category;
+    $service->save();
+
+    return redirect()->route('services.index')->with('success', 'Service updated successfully!');
+}
 
     /**
      * Display empty form to add new record
@@ -48,14 +54,30 @@ class ServiceController extends Controller
     {
         // create new instance of the model
         // save record
+        $service = Service::create([
+            
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'category' => $request->input('category')
+        ]);
+    
+        if ($service) {
+            return redirect()->route('services.index')->with('success', 'Booking created successfully!');
+        } else {
+            return back()->withInput()->with('error', 'Error creating booking.');
+        }
     }
 
     /**
      * Delete existing records from database
      */
-    public function delete(Request $request) {
-        
+    
 
-    }
+    public function destroy(Service $service)
+{
+    $service->delete();
+    return redirect()->route('services.index')->with('success', 'Service deleted successfully.');
+}
+
 
 }

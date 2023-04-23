@@ -1,10 +1,10 @@
-@extends('layouts.admin.app')
+ @extends('layouts.admin.app')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <!-- Navigation menu -->
-        <div class="col-md-8">
+    <div class="row justify-content-center"> 
+        <!-- Navigation menu ni -->
+         <div class="col-md-8">
 
         <div class="card">
           <h5 class="card-header">New Costumers</h5>
@@ -43,4 +43,5 @@
     </div>
 </div>
 @endsection
+ 
 
