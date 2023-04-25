@@ -62,9 +62,9 @@ class ServiceController extends Controller
         ]);
     
         if ($service) {
-            return redirect()->route('services.index')->with('success', 'Booking created successfully!');
+            return redirect()->route('services.index')->with('success', 'Service created successfully!');
         } else {
-            return back()->withInput()->with('error', 'Error creating booking.');
+            return back()->withInput()->with('error', 'Error creating service.');
         }
     }
 
