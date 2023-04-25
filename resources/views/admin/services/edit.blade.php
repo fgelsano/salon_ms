@@ -7,29 +7,44 @@
         <div class="col-md-8">
 
         <div class="card">
-          <h5 class="card-header">Edit Booking</h5>
+          <h5 class="card-header">Edit Services</h5>
           <div class="card-body">
-            <form action="{{ route('services.update', $service) }}" method="POST">
+            <!-- <form action="{{ route('services.update', $service) }}" method="POST"> -->
+            <form class="form-horizontal" method="POST" action="{{ route('services.update', $service->id) }}">
+                            
               @csrf
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Service Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" value="{{ $service->name }}" >
-              </div>
-
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" value="{{ $service->description }}" >
-              </div>
-
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Category</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" value="{{ $service->category }}" >
-              </div>
+              @method('PUT')
 
               
               <div class="mb-3">
-                <button type="button" class="btn btn-primary">Submit</button>
-              </div>
+                  <label for="exampleFormControlInput1" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name" name="name" value="{{ $service->name }}">
+                  @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+                </div> 
+
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="description" name="description" value="{{ $service->description }}">
+                  @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Category</label>
+                  <input type="text" class="form-control" id="category" name="category" value="{{ $service->category }}">
+                  @error('name')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+                </div>
+              
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Update Service</button>
+                    </div>
+
             </form>
             
             <p>---- Display Services Details here --- for this services record </p>
@@ -39,4 +54,6 @@
     </div>
 </div>
 @endsection
+
+
 

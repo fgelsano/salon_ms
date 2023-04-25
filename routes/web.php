@@ -27,7 +27,7 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 Route::get('/payments', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('payments.index');
 Route::get('/reviews', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('reviews.index');
 
-
+// route for bookings table
 Route::prefix('bookings')->middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\BookingController::class, 'index'])->name('bookings.index');
     Route::get('/edit/{id}', [App\Http\Controllers\Admin\BookingController::class, 'edit'])->name('bookings.edit');
@@ -38,12 +38,16 @@ Route::prefix('bookings')->middleware(['auth'])->group(function () {
     
 });
 
-Route::get('/services', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('services.index');
-Route::get('/services/edit/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'edit'])->name('services.edit');
-Route::get('/services/add', [App\Http\Controllers\Admin\ServiceController::class, 'create'])->name('services.create');
-Route::get('/services/delete', [App\Http\Controllers\Admin\ServiceController::class, 'delete'])->name('services.delete');
-Route::post('/services/update/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'update'])->name('services.update');
-Route::post('/services/store', [App\Http\Controllers\Admin\ServiceController::class, 'store'])->name('services.store');
+// route for services table
+Route::get('services/', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('services.index');
+Route::get('services/edit/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'edit'])->name('services.edit');
+Route::get('services/add', [App\Http\Controllers\Admin\ServiceController::class, 'create'])->name('services.create');
+Route::delete('service/{service}', [App\Http\Controllers\Admin\ServiceController::class, 'destroy'])->name('services.destroy');
+Route::put('services/update/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'update'])->name('services.update');
+Route::post('services/store', [App\Http\Controllers\Admin\ServiceController::class, 'store'])->name('services.store');
+
+
+
 
 Route::get('/customers', [App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('customers.index');
 Route::get('/customers/edit/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('customers.edit');

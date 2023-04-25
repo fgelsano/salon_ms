@@ -62,12 +62,13 @@
     <!-- Main content -->
     <section class="content">
                     @if (session('success'))
-                    <div class="alert alert-success">
+                    <div class="btn alert-success">
                         {{ session('success') }}
                     </div>
                 @endif
       @yield('content')
     </section>
+    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
