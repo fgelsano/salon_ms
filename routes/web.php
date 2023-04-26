@@ -45,10 +45,11 @@ Route::get('/services/delete', [App\Http\Controllers\Admin\ServiceController::cl
 Route::post('/services/update/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'update'])->name('services.update');
 Route::post('/services/store', [App\Http\Controllers\Admin\ServiceController::class, 'store'])->name('services.store');
 
+//  for customerroutesp
 Route::get('/customers', [App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('customers.index');
 Route::get('/customers/edit/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('customers.edit');
 Route::get('/customers/add', [App\Http\Controllers\Admin\CustomerController::class, 'create'])->name('customers.create');
-Route::get('/customers/delete', [App\Http\Controllers\Admin\CustomerController::class, 'delete'])->name('customers.delete');
+Route::get('/customers/delete', [App\Http\Controllers\Admin\CustomerController::class, 'delete'])->name('customers.delete   ');
 Route::post('/customers/update/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'update'])->name('customers.update');
 Route::post('/customers/store', [App\Http\Controllers\Admin\CustomerController::class, 'store'])->name('customers.store');
 

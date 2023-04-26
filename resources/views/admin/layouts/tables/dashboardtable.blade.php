@@ -1,4 +1,4 @@
-@extends('dashboard')
+<!-- @extends('dashboard')
 @section('layouts.tables.dashboardtable')
 <div class="col-lg-9 col-md-8">
                     <div class="table-responsive">
@@ -81,4 +81,4 @@
                         </table>
                     </div>
                 </div>
-                @endsection
+                @endsection -->

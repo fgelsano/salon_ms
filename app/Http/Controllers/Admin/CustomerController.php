@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Booking;
 
 
 // dire nako gi copy ang gkn sa cu$customer kdto naay duha ka use sa ubos sa request
