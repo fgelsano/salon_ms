@@ -83,11 +83,7 @@ class CustomerController extends Controller
     /**
      * Delete existing records from database
      */
-//     public function destroy(Customer $customer)
-// {
-//     $customer->delete();
-//     return redirect()->route('customers.index')->with('success', 'Customer deleted successfully.');
-// }
+   
 public function destroy(Customer $customer)
 {
     $customer->delete();

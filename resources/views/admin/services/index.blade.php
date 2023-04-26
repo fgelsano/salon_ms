@@ -32,13 +32,15 @@
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
                                                
+                                            
                                                 
-                                                <form action="{{ route('services.destroy', $service) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this booking?')">
-                                                        <i class="fas fa-trash-alt"></i> Delete
-                                                    </button>
+
+                                                    <form action="{{ route('services.destroy', $service) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        
+                                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+                                                    </form>
                         </td>
                     </tr>
                  @endforeach

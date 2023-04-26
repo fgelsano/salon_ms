@@ -36,12 +36,19 @@
                                                 </a>
                                                
                                                 
-                                                <form action="{{ route('customers.destroy', $customer) }}" method="POST">
+                                                <!-- <form action="{{ route('customers.destroy', $customer) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this customer?')">
                                                         <i class="fas fa-trash-alt"></i> Delete
-                                                    </button>
+                                                    </button> -->
+
+                                                    <form action="{{ route('customers.destroy', $customer) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        
+                                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+                                                    </form>
                         </td>
                     </tr>
                  @endforeach
