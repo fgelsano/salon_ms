@@ -24,10 +24,10 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 
 // route for pages
 
-Route::get('/payments', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('payments.index');
+
 Route::get('/reviews', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('reviews.index');
 
-
+// route for bookings table
 Route::prefix('bookings')->middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\BookingController::class, 'index'])->name('bookings.index');
     Route::get('/edit/{id}', [App\Http\Controllers\Admin\BookingController::class, 'edit'])->name('bookings.edit');
@@ -38,21 +38,35 @@ Route::prefix('bookings')->middleware(['auth'])->group(function () {
     
 });
 
-Route::get('/services', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('services.index');
-Route::get('/services/edit/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'edit'])->name('services.edit');
-Route::get('/services/add', [App\Http\Controllers\Admin\ServiceController::class, 'create'])->name('services.create');
-Route::get('/services/delete', [App\Http\Controllers\Admin\ServiceController::class, 'delete'])->name('services.delete');
-Route::post('/services/update/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'update'])->name('services.update');
-Route::post('/services/store', [App\Http\Controllers\Admin\ServiceController::class, 'store'])->name('services.store');
+// route for services table
+Route::get('services/', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('services.index');
+Route::get('services/edit/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'edit'])->name('services.edit');
+Route::get('services/add', [App\Http\Controllers\Admin\ServiceController::class, 'create'])->name('services.create');
+Route::delete('service/{service}', [App\Http\Controllers\Admin\ServiceController::class, 'destroy'])->name('services.destroy');
+Route::put('services/update/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'update'])->name('services.update');
+Route::post('services/store', [App\Http\Controllers\Admin\ServiceController::class, 'store'])->name('services.store');
 
-//  for         
+
+
+// route for customers table
 Route::get('/customers', [App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('customers.index');
 Route::get('/customers/edit/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('customers.edit');
 Route::get('/customers/add', [App\Http\Controllers\Admin\CustomerController::class, 'create'])->name('customers.create');
-Route::get('/customers/delete', [App\Http\Controllers\Admin\CustomerController::class, 'delete'])->name('customers.delete   ');
+Route::delete('/customer/{customer}', [App\Http\Controllers\Admin\CustomerController::class, 'destroy'])->name('customers.destroy');
 Route::post('/customers/update/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'update'])->name('customers.update');
 Route::post('/customers/store', [App\Http\Controllers\Admin\CustomerController::class, 'store'])->name('customers.store');
 
+// Routes for payments
+Route::get('/payments', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('payments.index');
+Route::get('/payments', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('payments.index');
+Route::get('/payments/edit/{id}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('payments.edit');
+Route::get('/payments/add', [App\Http\Controllers\Admin\PaymentController::class, 'create'])->name('payments.create');
+Route::delete('/payment/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'destroy'])->name('payments.destroy');
+Route::post('/payments/update/{id}', [App\Http\Controllers\Admin\PaymentController::class, 'update'])->name('payments.update');
+Route::post('/payments/store', [App\Http\Controllers\Admin\PaymentController::class, 'store'])->name('payments.store');
+
+
+// route for settings table
 Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
 
 
