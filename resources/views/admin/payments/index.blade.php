@@ -8,6 +8,9 @@
         <table class="table">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3>Payments</h3>
+                    <div class="float-right">
+                        <a href="{{ route('payments.create') }}" type="button" class="btn btn-primary">New Booking</a>
+                    </div>
 
                 <tr>
                     <th>Booking id</th>
@@ -36,7 +39,9 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         
-                                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this booking?')">
+                                                        <i class="fas fa-trash-alt"></i> Delete
+                                                    </button>
                                                     </form>
                         </td>
                         </td>

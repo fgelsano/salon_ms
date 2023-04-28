@@ -56,6 +56,11 @@ class ServiceController extends Controller
      */
     public function store(Request $request) 
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+        ]);
         // create new instance of the model
         // save record
         $service = Service::create([

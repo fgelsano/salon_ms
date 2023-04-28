@@ -68,6 +68,12 @@ public function update(Request $request, $id)
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'booking_id' => 'required',
+            'amount' => 'required',
+            'status' => 'required',
+        ]);
+    
         // create new instance of the model
         // save record
             $booking = Booking::create([
