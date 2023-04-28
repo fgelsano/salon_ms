@@ -7,7 +7,6 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0">Bookings</h5>
-
                     <div class="float-right">
                         <a href="{{ route('bookings.create') }}" type="button" class="btn btn-primary">New Booking</a>
                     </div>
