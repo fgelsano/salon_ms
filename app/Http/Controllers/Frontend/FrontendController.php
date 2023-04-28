@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function home() {
+<<<<<<< Updated upstream
         return view ('frontend.welcome');
+=======
+        return view ('frontend.home');
+>>>>>>> Stashed changes
     }
     public function about() {
         return view ('frontend.about');
