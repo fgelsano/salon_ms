@@ -36,7 +36,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ url('/bookings') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <i class="fa fa-bars" aria-hidden="true"></i>
               <p>
                 Bookings
               </p>
@@ -44,7 +44,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ url('/customers') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <i class="fa fa-users" aria-hidden="true"></i>
               <p>
                 Customers
               </p>
@@ -52,39 +52,40 @@
           </li>
           <li class="nav-item">
             <a href="{{ url('/services') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <i class="fas fa-cog"></i>
+
               <p>
                 Services
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/reviews') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{ url('/payments') }}" class="nav-link">
+            <i class="nav-icon fas fa-dollar-sign"></i>
               <p>
-                Reviews
+                Payments
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ url('/reports') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <i class="nav-icon fas fa-chart-bar"></i>
               <p>
                 Reports
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/payments') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{ url('/reviews') }}" class="nav-link">
+            <i class="nav-icon fas fa-star"></i>
               <p>
-                Payments
+                Reviews
                 </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="{{ url('/settings') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <i class="fa fa-cog" aria-hidden="true"></i>
               <p>
                 Settings
                 

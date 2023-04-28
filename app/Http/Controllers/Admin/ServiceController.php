@@ -24,6 +24,7 @@ class ServiceController extends Controller
         $service = Service::find($request->id);
         return view('admin.services.edit', compact('service'));
     }
+    
 
     /**
      * Update existing record to database
@@ -40,12 +41,15 @@ class ServiceController extends Controller
     return redirect()->route('services.index')->with('success', 'Service updated successfully!');
 }
 
+
+
     /**
      * Display empty form to add new record
      */
     public function create() {
         return view('admin.services.add');
     }
+     
 
     /**
      * Save new record to database
@@ -62,12 +66,13 @@ class ServiceController extends Controller
         ]);
     
         if ($service) {
-            return redirect()->route('services.index')->with('success', 'Booking created successfully!');
+            return redirect()->route('services.index')->with('success', 'Service created successfully!');
         } else {
-            return back()->withInput()->with('error', 'Error creating booking.');
+            return back()->withInput()->with('error', 'Error creating service.');
         }
     }
 
+    
     /**
      * Delete existing records from database
      */
@@ -81,3 +86,4 @@ class ServiceController extends Controller
 
 
 }
+

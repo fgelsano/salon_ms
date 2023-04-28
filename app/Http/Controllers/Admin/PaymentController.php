@@ -17,4 +17,6 @@ class PaymentController extends Controller
 
         return view('admin.payments.index', compact('payments'));
     }
+
+    
 }
