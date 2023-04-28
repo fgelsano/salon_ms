@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,3 +72,10 @@ Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'i
 
 
 
+
+// routes for Frontend pages
+Route::get('/home', [App\Http\Controllers\Frontend\FrontendController::class, 'home'])->name('frontend.home');
+Route::get('/about', [App\Http\Controllers\Frontend\FrontendController::class, 'about'])->name('frontend.about');
+Route::get('/services', [App\Http\Controllers\Frontend\FrontendController::class, 'services'])->name('frontend.services');
+Route::get('/contact', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('frontend.contact');
+Route::get('/q.status', [App\Http\Controllers\Frontend\FrontendController::class, 'queuestatus'])->name('frontend.queuestatus');

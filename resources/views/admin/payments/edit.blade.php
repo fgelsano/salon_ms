@@ -15,7 +15,7 @@
             <form class="form-horizontal" method="POST" action="{{ route('payments.update', $payment->id) }}">
                             
               @csrf
-              @method('POST')
+              @method('PUT')
 
               
               <div class="mb-3">
@@ -32,6 +32,20 @@
                   @error('name')
                       <div class="alert alert-danger">{{ $message }}</div>
                   @enderror
+                </div>
+
+                <div class="mb-3">
+                  <label for="booking_id">Select Booking:</label>
+                    <select name="booking_id"id="booking_id">
+                      
+                      @foreach ($bookings as $booking)
+                        <option value="{{$booking->id}}" {{ ($booking->id ) ? 'selected' : ''}}>
+                          {{ $booking->id }}
+                        </option>
+                      @endforeach
+
+                    </select>
+                
                 </div>
 
                 

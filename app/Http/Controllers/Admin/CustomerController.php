@@ -24,7 +24,7 @@ class CustomerController extends Controller
      */
     public function edit(Request $request)
     {
-        $customer = customer::find($request->id);
+        $customer = Customer::find($request->id);
         $bookings = Booking::all();
         return view('admin.customers.edit', compact(['customer','bookings']));
     }
@@ -46,19 +46,19 @@ class CustomerController extends Controller
 
     
 
-    $customer->customer_id = $request->booking_id;
-    $customer->reservation_date = $request->reservation_date;
-    $customer->reservation_time = $request->reservation_time;
-    $customer->status = $request->status;
+    $customer->firstname = $request->firstname;
+    $customer->lastname = $request->lastname;
+    $customer->address = $request->address;
+    $customer->contact = $request->contact;
     $customer->save();
 
-    return redirect()->route('customer.index')->with('success', 'Customer updated successfully!');
+    return redirect()->route('customers.index')->with('success', 'Customer updated successfully!');
     }
 
     public function create()
     {
-        $bookings = Bookings::all();
-        return view('admin.customer.create', compact('bookings'));
+        $customers = Customer::all();
+        return view('admin.customers.add', compact('customers'));
     }
 
     /**
@@ -66,17 +66,29 @@ class CustomerController extends Controller
      */
     public function store(Request $request) 
     {
+        $validatedData = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'address' => 'required',
+            'contact' => 'required',
+        ]);
+    
         // create new instance of the model
         // save record
         $customer = Customer::create([
-            'booking_id' => $request->input('booking_id'),
-            'reservation_date' => $request->input('reservation_date'),
-            'reservation_time' => $request->input('reservation_time'),
-            'status' => $request->input('status')
+            'firstname' =>  $request->input('firstname'),
+            'lastname' =>  $request->input('lastname'),
+            'address' =>  $request->input('address'),
+            'contact' =>  $request->input('contact'),
+
+            // 'booking_id' => $request->input('booking_id'),
+            // 'reservation_date' => $request->input('reservation_date'),
+            // 'reservation_time' => $request->input('reservation_time'),
+            // 'status' => $request->input('status')
         ]);
 
         if ($customer) {
-            return redirect()->route('customer.index')->with('success', 'Customer created successfully!');
+            return redirect()->route('customers.index')->with('success', 'Customer created successfully!');
         } else {
             return back()->withInput()->with('error', 'Error creating booking.');
         }
@@ -86,13 +98,16 @@ class CustomerController extends Controller
     /**
      * Delete existing records from database
      */
-    public function delate($id)
-     {
-        $customer = Customer::find($id);
-        $customer->delete();
-        return redirect()->route('customers.index')->with('success', 'Customer has been deleted successfully');
-        
-    }
+    
+    public function destroy($id)
+    {
+       $customers = Customer::find($id);
+       $customers->delete();
+       return redirect()->route('customers.index')->with('success', 'Customer has been deleted successfully');
+       
+   }
+
+
 
 
 }

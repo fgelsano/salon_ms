@@ -51,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/services') }}" class="nav-link">
+            <a href="{{ url('services/') }}" class="nav-link">
             <i class="fas fa-cog"></i>
 
               <p>

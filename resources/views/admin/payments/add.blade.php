@@ -14,7 +14,14 @@
             <form action="{{ route('payments.store') }}" method="POST">
               @csrf
 
-
+              <div class="form-group">
+                            <label for="booking_id">Booking ID</label>
+                            <select name="booking_id" id="booking_id" class="form-control">
+                                @foreach ($bookings as $booking)
+                                    <option value="{{ $booking->id }}">{{ $booking->id }}</option>
+                                @endforeach
+                            </select>
+                        </div>
               
 
               <div class="mb-3">
