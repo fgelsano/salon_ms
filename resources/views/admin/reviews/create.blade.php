@@ -8,10 +8,20 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header bg-primary text-white">
-                    <h5 class="m-0">New Booking</h5>
+                    <h5 class="m-0">New Reviews</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('bookings.store') }}" method="POST">
+                                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                    <form action="{{ route('reviews.store') }}" method="POST">
                         @csrf
 
                         <div class="form-group">
@@ -26,22 +36,19 @@
                         
 
                         <div class="form-group">
-                            <label for="reservation_date">Reservation Date</label>
-                            <input type="date" class="form-control" id="reservation_date" name="reservation_date">
+                            <label for="content">content</label>
+                            <input type="text" class="form-control" id="content" name="content">
                         </div>
 
                         <div class="form-group">
-                            <label for="reservation_time">Reservation Time</label>
-                            <input type="time" class="form-control" id="reservation_time" name="reservation_time">
+                            <label for="rating">Rating</label>
+                            <input type="number" class="form-control" id="rating" name="rating">
                         </div>
 
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <input type="text" class="form-control" id="status" name="status" placeholder="Pending">
-                        </div>
+                        
 
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary">Create Booking</button>
+                            <button type="submit" class="btn btn-primary">Create Reviews</button>
                         </div>
                     </form>
                 </div>
@@ -50,15 +57,6 @@
     </div>
 </div>
 
-<script>
-  $(document).ready(function() {
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        todayHighlight: true
-    });
-});
 
-</script>
 @endsection
 

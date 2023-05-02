@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +25,16 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 // route for pages
 
 
-Route::get('/reviews', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('reviews.index');
+// Route::get('/reviews', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('reviews.index');
+// routes for reviews
+Route::prefix('reviews')->middleware(['auth'])->group(function () {
+    Route::get('/', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('reviews.index');
+    Route::get('/edit/{id}', [App\Http\Controllers\Admin\ReviewController::class, 'edit'])->name('reviews.edit');
+    Route::get('/add', [App\Http\Controllers\Admin\ReviewController::class, 'create'])->name('reviews.create');
+    Route::delete('/{review}', [App\Http\Controllers\Admin\ReviewController::class, 'destroy'])->name('reviews.destroy');
+    Route::put('/update/{id}', [App\Http\Controllers\Admin\ReviewController::class, 'update'])->name('reviews.update');
+    Route::post('/store', [App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('reviews.store');
+});
 
 // route for bookings table
 Route::prefix('bookings')->middleware(['auth'])->group(function () {
@@ -68,6 +76,16 @@ Route::post('/payments/store', [App\Http\Controllers\Admin\PaymentController::cl
 
 // route for settings table
 Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
+
+// Route for Employees Table
+Route::get('/employees', [App\Http\Controllers\Admin\EmployeeController::class, 'index'])->name('employees.index');
+Route::get('/employees/create', [App\Http\Controllers\Admin\EmployeeController::class, 'create'])->name('employees.create');
+Route::post('/employees', [App\Http\Controllers\Admin\EmployeeController::class, 'store'])->name('employees.store');
+Route::get('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeController::class, 'show'])->name('employees.show');
+Route::get('/employees/{employee}/edit', [App\Http\Controllers\Admin\EmployeeController::class, 'edit'])->name('employees.edit');
+Route::put('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeController::class, 'update'])->name('employees.update');
+Route::delete('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeController::class, 'destroy'])->name('employees.destroy');
+
 
 
 
