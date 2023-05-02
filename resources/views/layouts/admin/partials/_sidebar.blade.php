@@ -13,10 +13,12 @@
         <div class="image">
           <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
         </div>
-        <div class="info">
-          <a href="#" class="d-block">MJ Arcilla</a>
+            <div class="info">
+            @if (auth()->check())
+                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+            @endif 
+            </div>
         </div>
-      </div>
 
       
 
@@ -26,14 +28,15 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           
-          <li class="nav-item menu-open">
-            <a href="{{ url('/dashboard') }}" class="nav-link active">
+          <li class="nav-item">
+            <a href="{{ url('/dashboard') }}" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="{{ url('/bookings') }}" class="nav-link">
             <i class="fa fa-bars" aria-hidden="true"></i>
@@ -60,6 +63,15 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ url('/employees') }}" class="nav-link">
+            <i class=""></i>
+
+              <p>
+                Employees
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ url('/payments') }}" class="nav-link">
             <i class="nav-icon fas fa-dollar-sign"></i>
               <p>
@@ -67,13 +79,6 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ url('/reports') }}" class="nav-link">
-            <i class="nav-icon fas fa-chart-bar"></i>
-              <p>
-                Reports
-              </p>
-            </a>
           </li>
           <li class="nav-item">
             <a href="{{ url('/reviews') }}" class="nav-link">
@@ -83,6 +88,14 @@
                 </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ url('/reports') }}" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+              <p>
+                Reports
+              </p>
+            </a>
+         
           <li class="nav-item">
             <a href="{{ url('/settings') }}" class="nav-link">
             <i class="fa fa-cog" aria-hidden="true"></i>

@@ -8,19 +8,30 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     use HasFactory;
-    protected $table= "bookings";
-    protected $fillable =[
+    protected $table = "bookings";
+    protected $fillable = [
         'customer_id',
+        'employee_id',
+        'service_id',
         'reservation_date',
         'reservation_time',
         'status'
 
     ];
 
-    
+
     // models ni sa bookings na nga ma belong ang customer
     public function customer()
     {
         return $this->belongsTo(Customer::class);
     }
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
 }

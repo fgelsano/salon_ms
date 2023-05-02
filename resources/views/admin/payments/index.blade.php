@@ -1,16 +1,22 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <!-- Navigation menu -->
-        <div class="col-md-8">
-        <table class="table">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3>Payments</h3>
+<div class="container-fluid pt-3">
+<div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Payments</h5>
+
                     <div class="float-right">
-                        <a href="{{ route('payments.create') }}" type="button" class="btn btn-primary">New Booking</a>
+                        <a href="{{ route('payments.create') }}" type="button" class="btn btn-primary">New payments</a>
                     </div>
+                    
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
 
                 <tr>
                     <th>Booking id</th>
