@@ -45,12 +45,44 @@ class EmployeeController extends Controller
         return view('admin.employees.edit', compact('employee'));
     }
 
+    // public function update(Request $request, $id)
+    // {
+    //     $validatedData = $request->validate([
+    //         'employee_name' => 'required',
+    //         'rule' => 'required',
+    //         'picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
+    //     ]);
+
+    //     $employee = Employee::find($id);
+
+    //     $employee->employee_name = $request->input('employee_name');
+    //     $employee->rule = $request->input('rule');
+
+    //     if ($request->hasFile('picture')) {
+    //         $picture = $request->file('picture');
+    //         $filename = $picture->getClientOriginalName();
+    //         $picture->move(public_path('uploads'), $filename);
+    //         $validatedData['picture'] = $filename;
+    //         // delete old picture file
+    //         if ($employee->picture) {
+    //             $oldPicturePath = public_path('uploads/' . $employee->picture);
+    //             if (file_exists($oldPicturePath)) {
+    //                 unlink($oldPicturePath);
+    //             }
+    //         }
+    //     }
+
+    //     $employee->update($validatedData);
+
+    //     return redirect()->route('employees.index')
+    //         ->with('success', 'Employee updated successfully');
+    // }
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'employee_name' => 'required',
             'rule' => 'required',
-            'picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
         $employee = Employee::find($id);
@@ -70,13 +102,17 @@ class EmployeeController extends Controller
                     unlink($oldPicturePath);
                 }
             }
+        } else {
+            // no new picture uploaded, keep existing picture
+            $validatedData['picture'] = $employee->picture;
         }
 
         $employee->update($validatedData);
 
         return redirect()->route('employees.index')
-            ->with('success', 'Employee updated successfully');
+            ->with('success', 'Employee updated successfully.');
     }
+
 
 
 
