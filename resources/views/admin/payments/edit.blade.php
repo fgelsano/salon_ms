@@ -54,8 +54,6 @@
                     </div>
 
             </form>
-            
-            <p>---- Display Customers Details here --- for this customers record </p>
           </div>
         </div>
       </div>

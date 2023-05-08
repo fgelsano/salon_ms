@@ -69,8 +69,9 @@ public function update(Request $request, $id)
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'booking_id' => 'required',
-            'amount' => 'required',
+            'customer_id' => 'required',
+            'reservation_date' => 'required',
+            'reservation_time' => 'required',
             'status' => 'required',
         ]);
     

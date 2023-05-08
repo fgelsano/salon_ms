@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.welcome');
 });
 
 Auth::routes();
@@ -48,7 +48,7 @@ Route::prefix('bookings')->middleware(['auth'])->group(function () {
 });
 
 // route for services table
-Route::get('services/', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('services.index');
+Route::get('admin/services', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('services.index');
 Route::get('services/edit/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'edit'])->name('services.edit');
 Route::get('services/add', [App\Http\Controllers\Admin\ServiceController::class, 'create'])->name('services.create');
 Route::delete('service/{service}', [App\Http\Controllers\Admin\ServiceController::class, 'destroy'])->name('services.destroy');
@@ -61,7 +61,7 @@ Route::post('services/store', [App\Http\Controllers\Admin\ServiceController::cla
 Route::get('/customers', [App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('customers.index');
 Route::get('/customers/edit/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('customers.edit');
 Route::get('/customers/add', [App\Http\Controllers\Admin\CustomerController::class, 'create'])->name('customers.create');
-Route::delete('/customer/{customer}', [App\Http\Controllers\Admin\CustomerController::class, 'destroy'])->name('customers.destroy');
+Route::delete('/customers/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'destroy'])->name('customers.destroy');
 Route::post('/customers/update/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'update'])->name('customers.update');
 Route::post('/customers/store', [App\Http\Controllers\Admin\CustomerController::class, 'store'])->name('customers.store');
 

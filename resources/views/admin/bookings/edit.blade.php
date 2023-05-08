@@ -59,8 +59,7 @@
                 
                 </div>
               </form>
-              
-              <p>---- Display Booking Details here --- for this booking record </p>
+
             </div>
           </div>
         </div>

@@ -6,19 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Booking;
-
+use Yoeunes\Toastr\Facades\Toastr;
 
 // dire nako gi copy ang gkn sa cu$customer kdto naay duha ka use sa ubos sa request
 
 
 class CustomerController extends Controller
 {
-    public function index() {
-        
-        
+    public function index()
+    {
+
         $customers = Customer::all();
         return view('admin.customers.index', compact('customers'));
-    } 
+    }
     /**
      * Display existing record from database
      */
@@ -26,33 +26,33 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($request->id);
         $bookings = Booking::all();
-        return view('admin.customers.edit', compact(['customer','bookings']));
+        return view('admin.customers.edit', compact(['customer', 'bookings']));
     }
 
     /**
      * Update existing record to database
      */
-    public function update(Request $request,$id) 
+    public function update(Request $request, $id)
     {
         // get id of the requested to update
         // save request
-    
 
-    /**
-     * Display empty form to add new record
-     */
-    
-     $customer = Customer::find($id);
 
-    
+        /**
+         * Display empty form to add new record
+         */
 
-    $customer->firstname = $request->firstname;
-    $customer->lastname = $request->lastname;
-    $customer->address = $request->address;
-    $customer->contact = $request->contact;
-    $customer->save();
+        $customer = Customer::find($id);
 
-    return redirect()->route('customers.index')->with('success', 'Customer updated successfully!');
+
+
+        $customer->firstname = $request->firstname;
+        $customer->lastname = $request->lastname;
+        $customer->address = $request->address;
+        $customer->contact = $request->contact;
+        $customer->save();
+
+        return redirect()->route('customers.index')->with('success', 'Customer updated successfully!');
     }
 
     public function create()
@@ -64,7 +64,7 @@ class CustomerController extends Controller
     /**
      * Save new record to database
      */
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'firstname' => 'required',
@@ -72,7 +72,7 @@ class CustomerController extends Controller
             'address' => 'required',
             'contact' => 'required',
         ]);
-    
+
         // create new instance of the model
         // save record
         $customer = Customer::create([
@@ -92,22 +92,16 @@ class CustomerController extends Controller
         } else {
             return back()->withInput()->with('error', 'Error creating booking.');
         }
-
     }
 
     /**
      * Delete existing records from database
      */
-    
+
     public function destroy($id)
     {
-       $customers = Customer::find($id);
-       $customers->delete();
-       return redirect()->route('customers.index')->with('success', 'Customer has been deleted successfully');
-       
-   }
-
-
-
-
+        $customers = Customer::find($id);
+        $customers->delete();
+        return redirect()->route('customers.index')->with('success', 'Customer deleted successfully!');;
+    }
 }
