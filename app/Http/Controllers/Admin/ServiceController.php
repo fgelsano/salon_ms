@@ -21,7 +21,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::findOrfail($id);
-    
+
         return view('admin.services.edit', compact('service'));
     }
 
@@ -35,34 +35,37 @@ class ServiceController extends Controller
             'name' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category' => 'required',
-            '' => 'required',
+
         ]);
         $service = Service::find($id);
 
         $service->name = $request->input('name');
-        
+
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = $image->getClientOriginalName();
             $image->move(public_path('uploads'), $filename);
             $validatedData['image'] = $filename;
 
-            if ($service->picture) {
-                $oldPicturePath = public_path('uploads/' . $service->picture);
+            if ($service->image) {
+                $oldPicturePath = public_path('uploads/' . $service->image);
                 if (file_exists($oldPicturePath)) {
                     unlink($oldPicturePath);
                 }
             }
+        }else {
+            // no new picture uploaded, keep existing picture
+            $validatedData['picture'] = $service->image;
         }
-        $service->image = $request->input('category');
 
-        $updated = $service->update($validatedData);
+        
+        $service->category = $request->input('category');
 
-        if ($updated) {
-            return redirect()->route('services.index')->with('success', 'Service updated successfully!');
-        } else {
-            return back()->withInput()->with('error', 'Error updating service.');
-        }
+
+        $service->update($validatedData);
+        return redirect()->route('services.index')
+            ->with('success', 'Service updated successfully!');
     }
 
 
