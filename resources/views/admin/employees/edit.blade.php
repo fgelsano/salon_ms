@@ -44,8 +44,8 @@
                             <label for="picture" class="col-md-4 col-form-label text-md-right">{{ __('Picture') }}</label>
                             <div class="col-md-6">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input @error('picture') is-invalid @enderror" id="picture" name="picture" value="{{ old('picture', $employee->picture) }}" onchange="updateFileNameLabel(this)">
-                                    <label class="custom-file-label" for="picture" id="picture-label" id="filename">Choose file</label>
+                                    <input type="file" class="custom-file-input @error('picture') is-invalid @enderror" id="picture" name="picture">
+                                    <label class="custom-file-label" for="picture" id="picture-label">Choose file</label>
                                     @error('picture')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

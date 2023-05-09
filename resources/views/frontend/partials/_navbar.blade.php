@@ -7,7 +7,7 @@
     <div class="navbar-nav">
     <a class="nav-link" href="{{ route('home') }}">Home</a>
       <a class="nav-link" href="{{ route('frontend.about') }}">About</a>
-      <a class="nav-link" href="{{ route('frontend.services') }}">Services</a>
+      <a class="nav-link" href="{{ route('frontend.fservices') }}">Services</a>
       <a class="nav-link" href="{{ route('frontend.contact') }}">Contact</a>
       <a class="nav-link" href="{{ route('frontend.q.status') }}">Q.Status</a>
     </div>

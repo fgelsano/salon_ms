@@ -5,35 +5,50 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Service;
+
 
 class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::select('employees.*', 'services.name')
+        ->join('services', 'employees.services_id', '=', 'services.id')
+        ->get();
+
         return view('admin.employees.index', compact('employees'));
     }
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.employees.add');
+        $employees = Employee::find($request->id);
+        $services = Service::all();
+
+        return view('admin.employees.add', compact(['employees', 'services',]));
     }
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'employee_name' => 'required',
-            'rule' => 'required',
-            'picture' => 'required',
-        ]);
         if ($request->hasFile('picture')) {
             $picture = $request->file('picture');
             $filename = $picture->getClientOriginalName();
             $picture->move(public_path('uploads'), $filename);
             $validatedData['picture'] = $filename;
         }
-
-        $employee = Employee::create($validatedData);
-
-        return redirect()->route('employees.index')->with('success', 'Employee created successfully.');
+        
+        $employees = new Employee;
+        $employees->employee_name = $request->input('employee_name');
+        $employees->services_id = $request->input('service_id');
+        $employees->rule = $request->input('rule');
+        
+        if ($request->hasFile('picture')) {
+            $employees->picture = $filename;
+        }
+        
+        if ($employees->save()) {
+            return redirect()->route('employees.index')->with('success', 'Employee created successfully!');
+        } else {
+            return back()->withInput()->with('error', 'Error creating employee.');
+        }
+        
     }
     public function show(Employee $employee)
     {
@@ -95,7 +110,7 @@ class EmployeeController extends Controller
             $filename = $picture->getClientOriginalName();
             $picture->move(public_path('uploads'), $filename);
             $validatedData['picture'] = $filename;
-            // delete old picture file
+          
             if ($employee->picture) {
                 $oldPicturePath = public_path('uploads/' . $employee->picture);
                 if (file_exists($oldPicturePath)) {

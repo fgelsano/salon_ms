@@ -13,12 +13,27 @@
                 <div class="card-body">
                     <form action="{{ route('bookings.store') }}" method="POST">
                         @csrf
-
                         <div class="form-group">
                             <label for="customer_id">Customer Name</label>
                             <select name="customer_id" id="customer_id" class="form-control">
                                 @foreach ($customers as $customer)
                                     <option value="{{ $customer->id }}">{{ $customer->firstname }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="employee_id">Employee Name</label>
+                            <select name="employee_id" id="employee_id" class="form-control">
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->id }}">{{ $employee->employee_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="service_id">Services Name</label>
+                            <select name="service_id" id="service_id" class="form-control">
+                                @foreach ($services as $service)
+                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
                                 @endforeach
                             </select>
                         </div>

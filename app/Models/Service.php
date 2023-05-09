@@ -10,12 +10,10 @@ class Service extends Model
     use HasFactory;
     protected $table= "services";
     protected $fillable =[
-        'id',
         'name',
-        'description',
-        'category'
-       
+        'image',
+        'category',
+        'price'
 
     ];
-    
 }
