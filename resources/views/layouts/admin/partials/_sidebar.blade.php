@@ -53,7 +53,8 @@
           </li>
           <li class="nav-item">
             <a href="{{ url('/employees') }}" class="nav-link">
-              <i class="fa fa-user"></i>
+            <i class="fa fa-users"></i>
+
               <p>
                 Employees
               </p>

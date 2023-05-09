@@ -19,8 +19,8 @@ class CreateReviewsTable extends Migration
             $table->longText('content');
             $table->integer('rating');
             $table->string('title', 100);
-            $table->foreign('booking_id')
-                  ->references('id')->on('bookings')->onDelete('cascade');
+            // $table->foreign('booking_id')
+            //       ->references('id')->on('bookings')->onDelete('cascade');
                   
         
                      

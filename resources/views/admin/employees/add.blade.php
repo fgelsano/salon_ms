@@ -25,6 +25,17 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="service_id" class="col-md-4 col-form-label text-md-right">Employees Service</label>
+
+                            <select name="service_id" id="service_id" class="form-control">
+                                @foreach ($services as $service)
+                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                @endforeach
+                            </select>
+                            </div>
+                        </div>
+
 
                         <div class="form-group row">
                             <label for="rule" class="col-md-4 col-form-label text-md-right">{{ __('Rule') }}</label>

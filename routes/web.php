@@ -44,6 +44,8 @@ Route::prefix('bookings')->middleware(['auth'])->group(function () {
     Route::delete('/{booking}', [App\Http\Controllers\Admin\BookingController::class, 'destroy'])->name('bookings.destroy');
     Route::put('/update/{id}', [App\Http\Controllers\Admin\BookingController::class, 'update'])->name('bookings.update');
     Route::post('/store', [App\Http\Controllers\Admin\BookingController::class, 'store'])->name('bookings.store');
+    Route::get('/booking_details/{id}', [App\Http\Controllers\Admin\BookingController::class, 'booking_details'])->name('bookings.booking_details');
+
     
 });
 
@@ -94,6 +96,7 @@ Route::delete('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeContr
 // routes for Frontend pages
 Route::get('/home', [App\Http\Controllers\Frontend\FrontendController::class, 'home'])->name('frontend.home');
 Route::get('/about', [App\Http\Controllers\Frontend\FrontendController::class, 'about'])->name('frontend.about');
-Route::get('/services', [App\Http\Controllers\Frontend\FrontendController::class, 'services'])->name('frontend.services');
+Route::get('/fservices', [App\Http\Controllers\Frontend\FrontendController::class, 'services'])->name('frontend.fservices');
 Route::get('/contact', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('frontend.contact');
 Route::get('/q.status', [App\Http\Controllers\Frontend\FrontendController::class, 'queuestatus'])->name('frontend.queuestatus');
+// Route::get('/services', 'ServicesController@index')->name('frontend.services');

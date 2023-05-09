@@ -19,8 +19,8 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Employees ID</th>
-                                    <th>Name</th>
+                                    <th>Employees Name</th>
+                                    <th>Employees Services</th>
                                     <th>Rule</th>
                                     <th>Profile Picture</th>
                                     <th>Action</th>
@@ -29,8 +29,9 @@
                             <tbody>
                                 @foreach($employees as $employee)
                                     <tr>
-                                        <td>{{ $employee->id }}</td>
+                                        
                                         <td>{{ $employee->employee_name}}</td>
+                                        <td>{{ $employee->name }}</td>
                                         <td>{{ $employee->rule }}</td>
                                         <td><img src="{{ asset('uploads/'.$employee->picture) }}" width="100"></td>
                                         <td>

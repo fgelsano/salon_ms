@@ -18,8 +18,8 @@ class CreateReviewResponsesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('review_id');
             $table->longText('response');
-            $table->foreign('review_id')
-                  ->references('id')->on('reviews')->onDelete('cascade');
+            // $table->foreign('review_id')
+            //       ->references('id')->on('reviews')->onDelete('cascade');
                   
             $table->timestamps();
         });
