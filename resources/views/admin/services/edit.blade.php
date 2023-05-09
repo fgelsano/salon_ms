@@ -27,7 +27,7 @@
               <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
               <div class="col-md-6">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image" name="image" value="{{ old('image', $service->image) }}" required onchange="updateFileNameLabel(this)">
+                  <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image" name="image" value="{{ old('image', $service->image) }}" onchange="updateFileNameLabel(this)">
                   <label class="custom-file-label" for="image" id="image-label">Choose file</label>
                   @error('image')
                   <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
             <div class="form-group row">
               <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
               <div class="col-md-6">
-                <input id="category" type="text" class="form-control @error('category') is-invalid @enderror" name="category"value="{{ old('category', $service->category) }}" required autocomplete="category" autofocus>
+                <input id="category" type="text" class="form-control @error('category') is-invalid @enderror" name="category" value="{{ old('category', $service->category) }}">
                 @error('name')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
