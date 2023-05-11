@@ -12,4 +12,4 @@
       <a href="#" class="nav-link text-gray-600" data-widget="control-sidebar" data-controlsidebar-slide="true" role="button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </li>
   </ul>
-</nav>
+</nav> 

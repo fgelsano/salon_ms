@@ -29,5 +29,13 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    // config/services.php
+    
+    'clickatell' => [
+        'api_key' => 'd1sN4qyUSbuvAl5G__HPNw==',
+        'from' => '0fca47b8ef404fb2b8f38ef107a1f9a8',
+    ],
+
+    
 
 ];

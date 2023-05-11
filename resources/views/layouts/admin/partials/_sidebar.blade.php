@@ -28,10 +28,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/bookings') }}" class="nav-link">
-              <i class="fa fa-bars" aria-hidden="true"></i>
+            <a href="{{ url('admin/services/') }}" class="nav-link">
+              <i class="fas fa-cog"></i>
               <p>
-                Bookings
+                Services
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('/employees') }}" class="nav-link">
+              <i class="fa fa-users"></i>
+              <p>
+                Employees
               </p>
             </a>
           </li>
@@ -44,19 +52,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('admin/services/') }}" class="nav-link">
-              <i class="fas fa-cog"></i>
+            <a href="{{ url('/bookings') }}" class="nav-link">
+              <i class="fa fa-bars" aria-hidden="true"></i>
               <p>
-                Services
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url('/employees') }}" class="nav-link">
-            <i class="fa fa-users"></i>
-
-              <p>
-                Employees
+                Bookings
               </p>
             </a>
           </li>
@@ -68,15 +67,6 @@
               </p>
             </a>
           </li>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url('/reviews') }}" class="nav-link">
-              <i class="nav-icon fas fa-star"></i>
-              <p>
-                Reviews
-              </p>
-            </a>
-          </li>
           <li class="nav-item">
             <a href="{{ url('/reports') }}" class="nav-link">
               <i class="nav-icon fas fa-chart-bar"></i>
@@ -84,12 +74,47 @@
                 Reports
               </p>
             </a>
-
-          <li class="nav-item">
+          </li>
+          <!-- <li class="nav-item">
             <a href="{{ url('/settings') }}" class="nav-link">
               <i class="fa fa-cog" aria-hidden="true"></i>
               <p>
                 Settings
+              </p>
+            </a>
+          </li> -->
+          <li class="nav-item {{ (request()->is('settings/*')) ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ (request()->is('settings/*')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Settings
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item {{ Route::currentRouteName() === 'send-sms.index' ? 'active' : '' }}">
+                    <a href="{{ route('send-sms.index') }}" class="nav-link {{ Route::currentRouteName() === 'send-sms.index' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Twillio SMS</p>
+                    </a>
+                </li>
+
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item {{ Route::currentRouteName() === 'clickatell-sms.index' ? 'active' : '' }}">
+                    <a href="{{ route('clickatell-sms.index') }}" class="nav-link {{ Route::currentRouteName() === 'clickatell-sms.index' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Clickatell SMS</p>
+                    </a>
+                </li>
+
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('/reviews') }}" class="nav-link">
+              <i class="nav-icon fas fa-star"></i>
+              <p>
+                Reviews
               </p>
             </a>
           </li>

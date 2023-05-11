@@ -76,19 +76,12 @@
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
             </div>
-
-
-
-
-
             <div class="mb-3">
               <button type="submit" class="btn btn-primary">Submit</button>
 
 
             </div>
           </form>
-
-          <p>---- Display Booking Details here --- for this booking record </p>
         </div>
       </div>
     </div>

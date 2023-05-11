@@ -78,6 +78,10 @@ Route::post('/payments/store', [App\Http\Controllers\Admin\PaymentController::cl
 
 // route for settings table
 Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
+Route::any('/settimgs/send-sms', [App\Http\Controllers\Admin\SMSController::class, 'index'])->name('send-sms.index');
+Route::any('/settimgs/clickatell-sms', [App\Http\Controllers\Admin\ClickController::class, 'index'])->name('clickatell-sms.index');
+// route for reports table
+Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
 
 // Route for Employees Table
 Route::get('/employees', [App\Http\Controllers\Admin\EmployeeController::class, 'index'])->name('employees.index');

@@ -45,13 +45,11 @@
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>
 
-                                            <a href="{{ route('bookings.booking_details', $booking) }}" class="btn btn-secondary">
+                                            <a href="{{ route('bookings.booking_details', $booking) }}" class="btn btn-success">
                                                 <i class="fas fa-eye"></i> View
                                             </a>
-
+                                            
                                         </div>
-
-
                                     </td>
                                 </tr>
                                 @endforeach
