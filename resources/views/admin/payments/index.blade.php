@@ -16,6 +16,9 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
+                        <div class="form-group" style="width:fit-content;">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search" />
+                        </div>
                         <table class="table table-hover">
 
                             <tr>
@@ -45,5 +48,21 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#searchInput').keyup(function() {
+            var searchText = $(this).val().toLowerCase();
+            $('table tr').each(function() {
+                var rowText = $(this).text().toLowerCase();
+                if (rowText.indexOf(searchText) === -1) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
 
 @endsection

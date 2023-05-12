@@ -13,6 +13,7 @@ class Booking extends Model
         'customer_id',
         'employee_id',
         'service_id',
+        'category_id',
         'reservation_date',
         'reservation_time',
         'status'

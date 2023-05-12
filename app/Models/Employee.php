@@ -14,7 +14,8 @@ class Employee extends Model
         'employee_name',
         'services_id',
         'rule',
-        'picture'
+        'picture',
+        'available'
        
     ];  
     public function booking()

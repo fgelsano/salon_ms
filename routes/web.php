@@ -75,6 +75,8 @@ Route::delete('/payment/{payment}', [App\Http\Controllers\Admin\PaymentControlle
 Route::put('/payments/update/{id}', [App\Http\Controllers\Admin\PaymentController::class, 'update'])->name('payments.update');
 Route::post('/payments/store', [App\Http\Controllers\Admin\PaymentController::class, 'store'])->name('payments.store');
 
+// Routes for reports
+Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
 
 // route for settings table
 Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');

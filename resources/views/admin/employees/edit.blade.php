@@ -29,11 +29,20 @@
 
                         <div class="form-group row">
                             <label for="rule" class="col-md-4 col-form-label text-md-right">{{ __('Rule') }}</label>
-
                             <div class="col-md-6">
                                 <input id="rule" type="text" class="form-control @error('rule') is-invalid @enderror" name="rule" value="{{ old('rule', $employee->rule) }}" required autocomplete="rule">
-
                                 @error('rule')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="availability" class="col-md-4 col-form-label text-md-right">{{ __('Availability') }}</label>
+                            <div class="col-md-6">
+                                <input id="availability" type="text" class="form-control @error('availability') is-invalid @enderror" name="availability" value="{{ old('availability', $employee->available) }}" required autocomplete="availability">
+                                @error('availability')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

@@ -18,6 +18,7 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('service_id');
+            $table->unsignedBigInteger('category_id');
             $table->date('reservation_date');
             $table->time('reservation_time');
             $table->string('status');

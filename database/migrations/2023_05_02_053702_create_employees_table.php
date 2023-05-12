@@ -19,6 +19,7 @@ class CreateEmployeesTable extends Migration
             $table->unsignedBigInteger('services_id');
             $table->string('rule');
             $table->string('picture')->nullable();
+            $table->string('availability');
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ class BookingController extends Controller
     
     public function index()
     {
-        $bookings = Booking::select('bookings.*', 'employees.employee_name', 'customers.firstname', 'services.name')
+        $bookings = Booking::select('bookings.*', 'employees.employee_name', 'customers.firstname', 'services.name', 'services.category')
         ->join('employees', 'bookings.employee_id', '=', 'employees.id')
         ->join('customers', 'bookings.customer_id', '=', 'customers.id')
         ->join('services', 'bookings.service_id', '=', 'services.id')
@@ -90,6 +90,7 @@ class BookingController extends Controller
         $booking = Booking::create([
             'customer_id' => $request->input('customer_id'),
             'employee_id' => $request->input('employee_id'),
+            'category_id' => $request->input('category_id'),
             'service_id' => $request->input('service_id'),
             'reservation_date' => $request->input('reservation_date'),
             'reservation_time' => $request->input('reservation_time'),

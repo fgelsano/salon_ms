@@ -8,7 +8,7 @@ use App\Models\Customer;
 use App\Models\Booking;
 use Yoeunes\Toastr\Facades\Toastr;
 
-// dire nako gi copy ang gkn sa cu$customer kdto naay duha ka use sa ubos sa request
+
 
 
 class CustomerController extends Controller

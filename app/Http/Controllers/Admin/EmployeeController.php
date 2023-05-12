@@ -38,6 +38,7 @@ class EmployeeController extends Controller
         $employees->employee_name = $request->input('employee_name');
         $employees->services_id = $request->input('service_id');
         $employees->rule = $request->input('rule');
+        $employees->available = $request->input('availability');
         
         if ($request->hasFile('picture')) {
             $employees->picture = $filename;
@@ -97,13 +98,16 @@ class EmployeeController extends Controller
         $validatedData = $request->validate([
             'employee_name' => 'required',
             'rule' => 'required',
+            'availability' => 'required',
             'picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
+
         ]);
 
         $employee = Employee::find($id);
 
         $employee->employee_name = $request->input('employee_name');
         $employee->rule = $request->input('rule');
+        $employee->available = $request->input('availability');
 
         if ($request->hasFile('picture')) {
             $picture = $request->file('picture');
