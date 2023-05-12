@@ -33,7 +33,11 @@ class SMSController extends Controller
             curl_close($ch);
             //Sending message ends here
 
-            return [$result];
+            if ([$result]) {
+                return redirect()->route('send-sms.index')->with('success', 'Message Send  successfully!');
+            } else {
+                return back()->withInput()->with('error', 'Error sending message.');
+            }
         }
          return view('admin.settings.send-sms.index'); 
     }

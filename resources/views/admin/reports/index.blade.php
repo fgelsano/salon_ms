@@ -6,54 +6,44 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">Bookings</h5>
+                    <h5 class="mb-0">Reports Sales</h5>
                     <div class="float-right">
-                        <a href="{{ route('bookings.create') }}" type="button" class="btn btn-primary">New Booking</a>
+
+
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-
                         <div class="form-group" style="width:fit-content;">
                             <input type="text" id="searchInput" class="form-control" placeholder="Search" />
                         </div>
-
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Booking ID</th>
-                                    <th>Employee Name</th>
-                                    <th>Customer Name</th>
-                                    <th>Service Name</th>
-                                    <th>Service Category </th>
-                                    <th>Reservation Date</th>
-                                    <th>Reservation Time</th>
-                                    <th>Status</th>
+                                    <th>Customer's Firtsname </th>
+                                    <th>Customer's Lastname </th>
+                                    <th>Contac Number </th>
+                                    <th>Payment Status </th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($bookings as $booking)
+                                @forelse($customers as $customer)
                                 <tr>
                                 <tr>
-                                    <td>{{ $booking->id }}</td>
-                                    <td>{{ $booking->employee_name }}</td>
-                                    <td>{{ $booking->firstname }}</td>
-                                    <td>{{ $booking->name }}</td>
-                                    <td>{{ $booking->category }}</td>
-                                    <td>{{ $booking->reservation_date }}</td>
-                                    <td>{{ $booking->reservation_time }}</td>
-                                    <td>{{ $booking->status }}</td>
-
+                                    <td>{{ $customer->firstname }}</td>
+                                    <td>{{ $customer->lastname }}</td>
+                                    <td>{{ $customer->contact }}</td>
+                                    <td>{{ $customer->status }}</td>
                                     <td>
 
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('bookings.edit', $booking) }}" class="btn btn-primary">
-                                                <i class="fas fa-edit"></i> Edit
+                                            <a href="" class="btn btn-primary">
+                                                <i class="fas fa-edit"></i> View
                                             </a>
 
-                                            <a href="{{ route('bookings.booking_details', $booking) }}" class="btn btn-success">
-                                                <i class="fas fa-eye"></i> View
+                                            <a href="javascript:void(0)" onclick="window.print()" class="btn btn-secondary">
+                                                <i class="fas fa-print"></i> Print
                                             </a>
 
                                         </div>
@@ -65,9 +55,11 @@
 
                                 </tr>
                                 @endforelse
+
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -53,7 +53,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ url('/bookings') }}" class="nav-link">
-              <i class="fa fa-bars" aria-hidden="true"></i>
+              <i class="fa fa-book" aria-hidden="true"></i>
               <p>
                 Bookings
               </p>
@@ -93,20 +93,11 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item {{ Route::currentRouteName() === 'send-sms.index' ? 'active' : '' }}">
-                    <a href="{{ route('send-sms.index') }}" class="nav-link {{ Route::currentRouteName() === 'send-sms.index' ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Twillio SMS</p>
-                    </a>
-                </li>
-
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item {{ Route::currentRouteName() === 'clickatell-sms.index' ? 'active' : '' }}">
-                    <a href="{{ route('clickatell-sms.index') }}" class="nav-link {{ Route::currentRouteName() === 'clickatell-sms.index' ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Clickatell SMS</p>
-                    </a>
-                </li>
+                <a href="{{ route('send-sms.index') }}" class="nav-link {{ Route::currentRouteName() === 'send-sms.index' ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Twillio SMS</p>
+                </a>
+              </li>
 
             </ul>
           </li>

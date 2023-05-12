@@ -36,6 +36,6 @@ class ClickController extends Controller
 
             return [$result];
         }
-        return view('admin.clickatell.send-sms.index'); 
+        return view('admin.clickatell-sms.index'); 
     }
 }

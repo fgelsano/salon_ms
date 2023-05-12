@@ -17,8 +17,13 @@
 
                 </div>
 
+
                 <div class="card-body">
                     <div class="table-responsive">
+                        <div class="form-group" style="width:fit-content;">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search" />
+                        </div>
+
                         <table class="table table-hover">
                             <tr>
                                 <th>Service Name</th>
@@ -26,14 +31,12 @@
                                 <th>Category</th>
                                 <th>Price</th>
                                 <th>Action</th>
-                            
                             </tr>
+
                             @foreach($services as $service)
                             <tr>
                                 <td>{{ $service->name ?? 'Default Name' }}</td>
-                                <!-- <td>{{ $service->name }}</td> -->
                                 <td><img src="{{ asset('uploads/'.$service->image) }}" width="100"></td>
-                                <!-- <td>{{ $service->category }}</td> -->
                                 <td>{{ $service->category ?? 'Default Category' }}</td>
                                 <td>{{ $service->price ?? 'Default Category' }}</td>
                                 <td>
@@ -44,7 +47,6 @@
                                         <form action="{{ route('services.destroy', $service) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-
                                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
                                         </form>
                                     </div>
@@ -55,5 +57,25 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#searchInput').keyup(function() {
+            var searchText = $(this).val().toLowerCase();
+            $('table tr').each(function() {
+                var rowText = $(this).text().toLowerCase();
+                if (rowText.indexOf(searchText) === -1) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
+
+@endsection

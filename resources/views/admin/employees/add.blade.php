@@ -27,16 +27,15 @@
                         </div>
                         <div class="form-group row">
                             <label for="service_id" class="col-md-4 col-form-label text-md-right">Employees Service</label>
-
-                            <select name="service_id" id="service_id" class="form-control">
-                                @foreach ($services as $service)
+                            <div class="col-md-6">
+                                <select name="service_id" id="service_id" class="form-control">
+                                    <option value="">--Select Service--</option>
+                                    @foreach ($services as $service)
                                     <option value="{{ $service->id }}">{{ $service->name }}</option>
-                                @endforeach
-                            </select>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
-
-
                         <div class="form-group row">
                             <label for="rule" class="col-md-4 col-form-label text-md-right">{{ __('Rule') }}</label>
 
@@ -47,7 +46,20 @@
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror
+                                @enderror   
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="availability" class="col-md-4 col-form-label text-md-right">{{ __('Availability') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="availability" type="text" class="form-control @error('availability') is-invalid @enderror" name="availability" value="{{ old('availability') }}" required autocomplete="availability">
+
+                                @error('availability')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror   
                             </div>
                         </div>
                         <div class="form-group row">
@@ -81,7 +93,7 @@
     function updateFileNameLabel(input) {
         var fileName = input.files[0].name;
         document.getElementById("picture-label").innerHTML = fileName;
-    }   
+    }
 </script>
 
 @endsection
