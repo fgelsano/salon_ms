@@ -2,29 +2,39 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Booking;
+use App\Models\Service;
+use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class FrontendController extends Controller
 {
     public function home() {
-        return view ('frontend.welcome');
+
+        return view('frontend.welcome');
+
     }
-    public function about() {
-        return view ('frontend.about');
+    public function create() {
+
     }
-    
-    public function services() { 
-    
-        return view('frontend.services');
+
+    public function store() {
+
+
     }
-    public function contact() { 
-   
-        return view('frontend.contact');
+    public function edit() {
+
+
     }
-   public function queuestatus() {
-   
-        return view('frontend.queuestatus');
+   public function update() {
+
+
    }
-   
-} 
+   public function destroy() {
+
+
+   }
+
+}
