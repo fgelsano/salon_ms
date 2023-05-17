@@ -10,6 +10,7 @@ class Booking extends Model
     use HasFactory;
     protected $table = "bookings";
     protected $fillable = [
+        'user_id',
         'customer_id',
         'employee_id',
         'service_id',
@@ -25,6 +26,10 @@ class Booking extends Model
     public function customers()
     {
         return $this->belongsTo(Customer::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
     public function employees()
     {

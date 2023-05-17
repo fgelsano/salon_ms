@@ -2,24 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Booking;
+use App\Models\Service;
 use App\Models\Customer;
 use App\Models\Employee;
-use App\Models\Service;
+use App\Models\Usersbooking;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BookingController extends Controller
 {
     /**
      * Display listings of all records from database
      */
-    
+
     public function index()
     {
         $bookings = Booking::select('bookings.*', 'employees.employee_name', 'customers.firstname', 'services.name', 'services.category')
         ->join('employees', 'bookings.employee_id', '=', 'employees.id')
         ->join('customers', 'bookings.customer_id', '=', 'customers.id')
+        // ->join('users', 'bookings.user_id', '=', 'users.id')
         ->join('services', 'bookings.service_id', '=', 'services.id')
         ->get();
 
@@ -76,9 +79,6 @@ class BookingController extends Controller
         $customers = Customer::all();
         $employees = Employee::all();
         $services = Service::all();
-
-        
-
         return view('admin.bookings.create', compact(['booking', 'customers', 'employees', 'services']));
     }
 
@@ -110,7 +110,7 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-        
+
     }
 
     public function booking_details(Request $request, $id)
@@ -124,10 +124,41 @@ class BookingController extends Controller
 
         $bookings = Booking::find($id);
 
-   
+
 
         return view('admin.bookings.booking_details', compact('bookings'));
     }
+    public function addbooking(Request $request)
+    {
+        $booking = Booking::find($request->id);
+        $user = User::all();
+        $employees = Employee::all();
+        $services = Service::all();
+        return view('frontend.booking', compact(['booking', 'user', 'employees', 'services']));
+    }
 
-    
+    /**
+     * Save new record to database
+     */
+    public function storebooking(Request $request)
+    {
+        $booking = Booking::create([
+            'user_id' => $request->input('user_id'),
+            'employee_id' => $request->input('employee_id'),
+            'category_id' => $request->input('category_id'),
+            'service_id' => $request->input('service_id'),
+            'reservation_date' => $request->input('reservation_date'),
+            'reservation_time' => $request->input('reservation_time'),
+            'status' => $request->input('status')
+        ]);
+
+        if ($booking) {
+            return redirect()->route('frontend.addbooking')->with('success', 'Customer created successfully!');
+        } else {
+            return back()->withInput()->with('error', 'Error creating booking.');
+        }
+    }
+
+
+
 }

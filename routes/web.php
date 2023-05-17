@@ -20,6 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::get('/addbooking', [App\Http\Controllers\Admin\BookingController::class, 'addbooking'])->name('bookings.createbooking');
+Route::post('/storebooking', [App\Http\Controllers\Admin\BookingController::class, 'storebooking'])->name('bookings.storebooking');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // route for pages
@@ -46,7 +48,7 @@ Route::prefix('bookings')->middleware(['auth'])->group(function () {
     Route::post('/store', [App\Http\Controllers\Admin\BookingController::class, 'store'])->name('bookings.store');
     Route::get('/booking_details/{id}', [App\Http\Controllers\Admin\BookingController::class, 'booking_details'])->name('bookings.booking_details');
 
-    
+
 });
 
 // route for services table
@@ -82,7 +84,7 @@ Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'ind
 Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
 Route::any('/settimgs/send-sms', [App\Http\Controllers\Admin\SMSController::class, 'index'])->name('send-sms.index');
 Route::any('/settimgs/clickatell-sms', [App\Http\Controllers\Admin\ClickController::class, 'index'])->name('clickatell-sms.index');
-// route for reports table
+// route for reports tableb
 Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
 
 // Route for Employees Table
