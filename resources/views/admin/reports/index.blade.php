@@ -1,6 +1,15 @@
 @extends('layouts.admin.app')
 
 @section('content')
+<<<<<<< HEAD
+<div class="container-fluid pt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Reports Sales</h5>
+                    <div class="float-right">
+=======
     <div class="container-fluid pt-3">
         <div class="row justify-content-center">
             <div class="col-md-20">
@@ -8,9 +17,50 @@
                     <div class="card-header">
                         <h5 class="mb-0">Reports Sales</h5>
                         <div class="float-right">
+>>>>>>> ed001b03044fecc23812137748d1901b18522e21
 
 
                         </div>
+<<<<<<< HEAD
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Customer's Firtsname </th>
+                                    <th>Customer's Lastname </th>
+                                    <th>Contac Number </th>
+                                    <th>Payment Status </th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($customers as $customer)
+                                <tr>
+                                <tr>
+                                    <td>{{ $customer->firstname }}</td>
+                                    <td>{{ $customer->lastname }}</td>
+                                    <td>{{ $customer->contact }}</td>
+                                    <td>{{ $customer->status }}</td>
+                                    <td>
+
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ route('reports.view', $customer)}}" class="btn btn-primary">
+                                                <i class="fas fa-view"></i> View
+                                            </a>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="6" style="text-align: center;">No records found.</td>
+
+                                </tr>
+                                @endforelse
+
+                            </tbody>
+                        </table>
+=======
+>>>>>>> ed001b03044fecc23812137748d1901b18522e21
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

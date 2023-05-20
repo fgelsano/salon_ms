@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid pt-3">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <div class="card">
         <div class="card-header bg-primary text-white">
           <h5 class="m-0">Update Services</h5>

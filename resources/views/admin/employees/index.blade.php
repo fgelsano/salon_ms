@@ -93,5 +93,13 @@
                 });
             });
         });
+<<<<<<< HEAD
+    });
+</script>
+
+
+@endsection 
+=======
     </script>
 @endsection
+>>>>>>> ed001b03044fecc23812137748d1901b18522e21

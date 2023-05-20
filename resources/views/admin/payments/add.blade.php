@@ -1,11 +1,11 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<div class="container">
-  <div class="row justify-content-center">
-    <!-- Navigation menu ni -->
-    <div class="col-md-8">
-
+<div class="container-fluid pt-3">
+    <div class="row justify-content-center"> 
+        <!-- Navigation menu ni -->
+         <div class="col-md-12">
+          
 
       <div class="card">
         <h5 class="card-header">Add Payments</h5>
