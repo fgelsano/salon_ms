@@ -46,7 +46,7 @@
                 </span>
                 @enderror
               </div>
-              
+
             </div>
             <div class="form-group row">
               <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
@@ -92,6 +92,6 @@
     function updateFileNameLabel(input) {
         var fileName = input.files[0].name;
         document.getElementById("image-label").innerHTML = fileName;
-    }   
+    }
 </script>
 @endsection

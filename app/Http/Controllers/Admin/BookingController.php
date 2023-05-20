@@ -20,13 +20,13 @@ class BookingController extends Controller
     public function index()
     {
         $bookings = Booking::select('bookings.*', 'employees.employee_name', 'customers.firstname', 'services.name', 'services.category')
-        ->join('employees', 'bookings.employee_id', '=', 'employees.id')
-        ->join('customers', 'bookings.customer_id', '=', 'customers.id')
-        // ->join('users', 'bookings.user_id', '=', 'users.id')
-        ->join('services', 'bookings.service_id', '=', 'services.id')
-        ->get();
+            ->join('employees', 'bookings.employee_id', '=', 'employees.id')
+            ->join('customers', 'bookings.customer_id', '=', 'customers.id')
+            // ->join('users', 'bookings.user_id', '=', 'users.id')
+            ->join('services', 'bookings.service_id', '=', 'services.id')
+            ->get();
 
-    return view('admin.bookings.index', compact('bookings'));
+        return view('admin.bookings.index', compact('bookings'));
     }
 
 
@@ -110,7 +110,6 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-
     }
 
     public function booking_details(Request $request, $id)
@@ -142,23 +141,45 @@ class BookingController extends Controller
      */
     public function storebooking(Request $request)
     {
-        $booking = Booking::create([
-            'user_id' => $request->input('user_id'),
-            'employee_id' => $request->input('employee_id'),
-            'category_id' => $request->input('category_id'),
-            'service_id' => $request->input('service_id'),
-            'reservation_date' => $request->input('reservation_date'),
-            'reservation_time' => $request->input('reservation_time'),
-            'status' => $request->input('status')
+        // Validate the form data
+        $validatedData = $request->validate([
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'address' => 'required|string',
+            'contact' => 'required|string',
+            'employee_id' => 'required|exists:employees,id',
+            'category_id' => 'required|exists:services,id',
+            'service_id' => 'required|exists:services,id',
+            'reservation_date' => 'required|date',
+            'reservation_time' => 'required',
+            'status' => 'required|string',
         ]);
 
-        if ($booking) {
-            return redirect()->route('frontend.addbooking')->with('success', 'Customer created successfully!');
-        } else {
-            return back()->withInput()->with('error', 'Error creating booking.');
-        }
+        // Create a new customer record
+        $customer = Customer::create([
+            'firstname' => $validatedData['firstname'],
+            'lastname' => $validatedData['lastname'],
+            'address' => $validatedData['address'],
+            'contact' => $validatedData['contact'],
+        ]);
+
+        // Generate a customer ID
+        $customerID = $customer->id;
+
+
+        // Create a new booking record with the customer ID
+        $booking = Booking::create([
+            'customer_id' => $customerID,
+            'employee_id' => $validatedData['employee_id'],
+            'category_id' => $validatedData['category_id'],
+            'service_id' => $validatedData['service_id'],
+            'reservation_date' => $validatedData['reservation_date'],
+            'reservation_time' => $validatedData['reservation_time'],
+            'status' => $validatedData['status'],
+        ]);
+
+
+            return redirect()->route('bookings.createbooking')->with('success', 'Customer created successfully!');
+        // Redirect or perform other actions after successful booking creation
     }
-
-
-
 }

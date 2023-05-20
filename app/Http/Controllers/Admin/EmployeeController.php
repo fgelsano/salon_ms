@@ -33,23 +33,23 @@ class EmployeeController extends Controller
             $picture->move(public_path('uploads'), $filename);
             $validatedData['picture'] = $filename;
         }
-        
+
         $employees = new Employee;
         $employees->employee_name = $request->input('employee_name');
         $employees->services_id = $request->input('service_id');
         $employees->rule = $request->input('rule');
-        $employees->available = $request->input('availability');
-        
+        $employees->availability = $request->input('availability');
+
         if ($request->hasFile('picture')) {
             $employees->picture = $filename;
         }
-        
+
         if ($employees->save()) {
             return redirect()->route('employees.index')->with('success', 'Employee created successfully!');
         } else {
             return back()->withInput()->with('error', 'Error creating employee.');
         }
-        
+
     }
     public function show(Employee $employee)
     {
@@ -107,14 +107,14 @@ class EmployeeController extends Controller
 
         $employee->employee_name = $request->input('employee_name');
         $employee->rule = $request->input('rule');
-        $employee->available = $request->input('availability');
+        $employee->availability = $request->input('availability');
 
         if ($request->hasFile('picture')) {
             $picture = $request->file('picture');
             $filename = $picture->getClientOriginalName();
             $picture->move(public_path('uploads'), $filename);
             $validatedData['picture'] = $filename;
-          
+
             if ($employee->picture) {
                 $oldPicturePath = public_path('uploads/' . $employee->picture);
                 if (file_exists($oldPicturePath)) {

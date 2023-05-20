@@ -11,12 +11,32 @@
                         <form action="{{ route('bookings.storebooking') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="user_name">Customer Name</label>
-                                <input type="text" class="form-control" name="user_id"
-                                    value="{{ old('user_id', auth()->user()->name) }}">
-                                @if ($errors->has('user_id'))
-                                    <div class="alert alert-danger">{{ $errors->first('user_id') }}</div>
-                                @endif
+                                <label for="firstname">Customer First Name</label>
+                                <input type="text" class="form-control" name="firstname">
+                                @error('firstname')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">Customer Last Name</label>
+                                <input type="text" class="form-control" name="lastname">
+                                @error('lastname')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Customer Address</label>
+                                <input type="text" class="form-control" name="address">
+                                @error('address')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="contact">Customer Contact Number</label>
+                                <input type="text" class="form-control" name="contact">
+                                @error('contact')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="employee_id">Employee Name</label>
@@ -58,14 +78,16 @@
                             <div class="form-group">
                                 <label for="status">Status</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option>Pending</option>
-                                    <option>Confirmed</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Confirmed">Confirmed</option>
                                 </select>
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary">Create Booking</button>
                             </div>
                         </form>
+
+
                     </div>
                 </div>
             </div>

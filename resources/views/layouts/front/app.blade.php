@@ -10,6 +10,7 @@
 
     <title>{{ config('app.name', 'Salon Management System') }}</title>
 
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -63,11 +64,11 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Salon Management System') }}</a>
 
-                
+
 
                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation"> -->
                     <span class="navbar-toggler-icon"></span>
-                </button> 
+                </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupport">
                     <ul class="navbar-nav ml-auto">
