@@ -43,6 +43,7 @@
   <!-- SweetAlert -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
 
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
