@@ -29,7 +29,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ url('admin/services/') }}" class="nav-link">
-              <i class="fas fa-cog"></i>
+              <i class= "fa-servicestack"></i>
               <p>
                 Services
               </p>

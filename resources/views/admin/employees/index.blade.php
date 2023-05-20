@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid pt-3">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0">Employees</h5>
@@ -17,9 +17,9 @@
                 <div class="card-body">
                     <div class="table-responsive">
 
-                        <div class="form-group" style="width:fit-content;">
-                            <input type="text" id="searchInput" class="form-control" placeholder="Search" />
-                        </div>
+                            <div class="form-group" style="width:fit-content;">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Search" />
+                            </div>
 
                         <table class="table table-hover">
                             <thead>
@@ -39,7 +39,7 @@
                                     <td>{{ $employee->employee_name}}</td>
                                     <td>{{ $employee->name }}</td>
                                     <td>{{ $employee->rule }}</td>
-                                    <td style="color: {{$employee->available === 'on duty' ? 'red' : 'green'}}">{{ $employee->available }}</< /td>
+                                    <td style="color:{{$employee->available === 'on duty' ? 'red' : 'green'}}">{{ $employee->available }}</< /td>
                                     <td><img src="{{ asset('uploads/'.$employee->picture) }}" width="100"></td>
                                     <td>
                                         <div class="btn-group" role="group">
@@ -91,4 +91,4 @@
 </script>
 
 
-@endsection
+@endsection 

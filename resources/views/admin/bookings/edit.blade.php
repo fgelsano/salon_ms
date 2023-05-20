@@ -1,12 +1,12 @@
 @extends('layouts.admin.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid pt-3">
   <div class="row justify-content-center">
 
-    <div class="col-md-8">
+    <div class="col-md-14">
 
-      <div class="card">
+      <div class="card" >
         <h5 class="card-header">Edit Booking </h5>
         <div class="card-body">
 

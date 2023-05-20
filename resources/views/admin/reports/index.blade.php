@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid pt-3">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0">Reports Sales</h5>
@@ -38,12 +38,8 @@
                                     <td>
 
                                         <div class="btn-group" role="group">
-                                            <a href="" class="btn btn-primary">
-                                                <i class="fas fa-edit"></i> View
-                                            </a>
-
-                                            <a href="javascript:void(0)" onclick="window.print()" class="btn btn-secondary">
-                                                <i class="fas fa-print"></i> Print
+                                            <a href="{{ route('reports.view', $customer)}}" class="btn btn-primary">
+                                                <i class="fas fa-view"></i> View
                                             </a>
 
                                         </div>
