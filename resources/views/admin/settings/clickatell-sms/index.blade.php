@@ -3,8 +3,8 @@
 @section('content')
 <div class="container-fluid pt-3">
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
+        <div class="col-md-20">
+            <div class="card" style="width: 1230px;">
                 <div class="card-header">
                     <h5 class="mb-0"> Send SMS</h5>
 

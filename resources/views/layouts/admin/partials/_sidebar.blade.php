@@ -5,6 +5,7 @@
     <span class="brand-text font-weight-light">JCJ Salon</span>
   </a>
 
+
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->

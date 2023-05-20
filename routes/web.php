@@ -79,8 +79,9 @@ Route::post('/payments/store', [App\Http\Controllers\Admin\PaymentController::cl
 
 // Routes for reports
 Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
+// Routes for reports
+Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
 Route::get('/view/{id}', [App\Http\Controllers\Admin\ReportController::class, 'view'])->name('reports.view');
-
 
 // route for settings table
 Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
