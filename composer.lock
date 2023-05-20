@@ -4,60 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd2e35337e194904e3ddd37628d8ba20",
+    "content-hash": "400829fc34912da6c15e7df4ad32a91f",
     "packages": [
-        {
-            "name": "arcturial/clickatell",
-            "version": "2.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/arcturial/clickatell.git",
-                "reference": "d348e41a4052547d60d17737bf1993dd794b5ca1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/arcturial/clickatell/zipball/d348e41a4052547d60d17737bf1993dd794b5ca1",
-                "reference": "d348e41a4052547d60d17737bf1993dd794b5ca1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.3.*"
-            },
-            "suggest": {
-                "symfony/config": "For usage with the Symfony Framework",
-                "symfony/dependency-injection": "For usage with the Symfony Framework",
-                "symfony/http-kernel": "For usage with the Symfony Framework"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Clickatell\\": [
-                        "src",
-                        "test"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GNU General Public License"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Brand",
-                    "email": "webmaster@cainsvault.com"
-                }
-            ],
-            "description": "Standalone PHP library to integrate with the Clickatell SMS gateway",
-            "homepage": "http://www.cainsvault.com",
-            "support": {
-                "issues": "https://github.com/arcturial/clickatell/issues",
-                "source": "https://github.com/arcturial/clickatell/tree/master"
-            },
-            "time": "2016-03-19T21:20:59+00:00"
-        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.1.1",
@@ -1016,69 +964,6 @@
                 }
             ],
             "time": "2022-10-26T14:07:24+00:00"
-        },
-        {
-            "name": "laravel-notification-channels/clickatell",
-            "version": "0.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-notification-channels/clickatell.git",
-                "reference": "b30c611e7108671d0a094656f41d82ff91041566"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-notification-channels/clickatell/zipball/b30c611e7108671d0a094656f41d82ff91041566",
-                "reference": "b30c611e7108671d0a094656f41d82ff91041566",
-                "shasum": ""
-            },
-            "require": {
-                "arcturial/clickatell": "~2.1",
-                "illuminate/notifications": "~5.5 || ~6.0 || ~7.0 || ~8.0 ",
-                "illuminate/support": "~5.5 || ~6.0 || ~7.0 || ~8.0",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "mockery/mockery": "~1.2",
-                "phpunit/phpunit": "~8.3"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "NotificationChannels\\Clickatell\\ClickatellServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "NotificationChannels\\Clickatell\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Etienne Marais",
-                    "email": "hello@etiennemarais.co.za",
-                    "homepage": "https://etiennemarais.github.io/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Clickatell notifications driver",
-            "homepage": "https://github.com/laravel-notification-channels/clickatell",
-            "keywords": [
-                "clickatell",
-                "laravel",
-                "notifications",
-                "sms"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel-notification-channels/clickatell/issues",
-                "source": "https://github.com/laravel-notification-channels/clickatell/tree/0.1.5"
-            },
-            "time": "2021-09-20T12:27:58+00:00"
         },
         {
             "name": "laravel/framework",
