@@ -3,42 +3,46 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class SMSController extends Controller
 {
     public function index()
     {
-        if (request()->isMethod("post")){
+        if (request()->isMethod("post")) {
             $to = request("phone");
-            $from = getenv("TWILIO_FROM");
+            $from = config("app.semaphore_from");
             $message = request("message");
-            //open connection
 
-            $ch = curl_init();
+            $client = new Client();
 
-            //set the url, number of POST vars, POST data
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_USERPWD, getenv("TWILIO_SID").':'.getenv("TWILIO_TOKEN"));
-            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-            curl_setopt($ch, CURLOPT_URL, sprintf('https://api.twilio.com/2010-04-01/Accounts/'.getenv("TWILIO_SID").'/Messages.json', getenv("TWILIO_SID")));
-            curl_setopt($ch, CURLOPT_POST, 3);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, 'To='.$to.'&From='.$from.'&Body='.$message);
+            $response = $client->request('POST', 'https://semaphore.co/api/v4/messages', [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer ' .env('SEM_API_KEY'),
+                ],
+                'json' => [
+                    'number' => $to, // Include the 'number' field with the phone number
+                    'apikey' => env('SEM_API_KEY'), // Include the 'apikey' field
+                    'from' => $from,
+                    'message' => $message,
+                ],
+            ]);
+            // dd($response->getBody()->getContents());
+            $statusCode = $response->getStatusCode();
+            $responseData = json_decode($response->getBody(), true);
 
-            // execute post
-            $result = curl_exec($ch);
-            $result = json_decode($result);
-
-            // close connection
-            curl_close($ch);
-            //Sending message ends here
-
-            if ([$result]) {
-                return redirect()->route('send-sms.index')->with('success', 'Message Send  successfully!');
+            if ($statusCode === 200 && isset($responseData['result']) && $responseData['result'] === 'success') {
+                return redirect()->route('send-sms.index')->with('success', 'Message sent successfully!');
+            } elseif (isset($responseData['error'])) {
+                return back()->withInput()->with('error', 'Error sending message: ' . $responseData['error']);
             } else {
-                return back()->withInput()->with('error', 'Error sending message.');
+                return back()->withInput()->with('success', 'Message sent Successfully!');
             }
         }
-         return view('admin.settings.send-sms.index');
+
+        return view('admin.settings.send-sms.index');
     }
 }
