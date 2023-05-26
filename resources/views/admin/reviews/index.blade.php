@@ -7,46 +7,94 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mb-0">Customer's Review</h5>
-                        <div class="float-right">
-                            <button class="btn btn-primary">Reviews Responses</button>
-                        </div>
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Booking id</th>
-                                    <th>Content</th>
-                                    <th>Rating</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($reviews as $review)
-                                    <tr>
-                                        <td>{{ $review->booking_id }}</td>
-                                        <td>{{ $review->content }}</td>
-                                        <td>{{ $review->rating }}</td>
-                                        <td>
-                                            <a href="#">View</a> |
-                                            <a href="{{ route('reviews.edit', $review) }}">Edit</a> |
-                                            <div class="btn-group" role="group">
-                                                <form action="{{ route('reviews.destroy', $review) }}" method="POST">
-                                                    {!! csrf_field() !!}
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger"><i
-                                                            class="fas fa-trash-alt"></i>
-                                                        Delete</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <!-- button ni sa review responses -->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="form-group" style="width:fit-content;">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Search" />
+                                </div>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Comment</th>
+                                            <th>Star Rating</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($reviews as $review)
+                                            <tr>
+                                                <td>{{ $review->name }}</td>
+                                                <td>{{ $review->comment }}</td>
+                                                <td>{{ $review->star_rating }}</td>
+                                                <td>
+                                                    <div class="btn-group" role="group">
+                                                        <form action="{{ route('reviews.destroy', $review) }}"
+                                                            method="POST" id="delete-form">
+                                                            {!! csrf_field() !!}
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger"
+                                                                onclick="confirmDelete(event)"><i
+                                                                    class="fas fa-trash-alt"></i>
+                                                                Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="6" style="text-align: center;">No records found.</td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
 
+                            <!-- button ni sa review responses -->
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+        <script>
+            $(document).ready(function() {
+                $('#searchInput').keyup(function() {
+                    var searchText = $(this).val().toLowerCase();
+                    $('table tr').each(function() {
+                        var rowText = $(this).text().toLowerCase();
+                        if (rowText.indexOf(searchText) === -1) {
+                            $(this).hide();
+                        } else {
+                            $(this).show();
+                        }
+                    });
+                });
+            });
+
+            function confirmDelete(event) {
+                event.preventDefault(); // Prevents the form from submitting immediately
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "This action cannot be undone!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel',
+                    reverseButtons: true,
+                    customClass: {
+                        confirmButton: 'btn btn-danger',
+                        cancelButton: 'btn btn-secondary'
+                    }
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // If confirmed, submit the form
+                        document.getElementById('delete-form').submit();
+                    }
+                });
+            }
+        </script>
+    @endsection

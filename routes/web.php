@@ -36,6 +36,8 @@ Route::prefix('reviews')->middleware(['auth'])->group(function () {
     Route::delete('/{review}', [App\Http\Controllers\Admin\ReviewController::class, 'destroy'])->name('reviews.destroy');
     Route::put('/update/{id}', [App\Http\Controllers\Admin\ReviewController::class, 'update'])->name('reviews.update');
     Route::post('/store', [App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/addreviews', [App\Http\Controllers\Admin\ReviewController::class, 'addreviews'])->name('reviews.addreviews');
+
 });
 
 // route for bookings table

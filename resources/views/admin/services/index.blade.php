@@ -30,7 +30,7 @@
                                     <th>Action</th>
                                 </tr>
 
-                                @foreach ($services as $service)
+                                @forelse ($services as $service)
                                     <tr>
                                         <td>{{ $service->name ?? 'Default Name' }}</td>
                                         <td><img src="{{ asset('uploads/' . $service->image) }}" width="100"></td>
@@ -55,7 +55,11 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach
+                                    @empty
+                                    <tr>
+                                        <td colspan="6" style="text-align: center;">No records found.</td>
+                                    </tr>
+                                @endforelse
                             </table>
                         </div>
                     </div>

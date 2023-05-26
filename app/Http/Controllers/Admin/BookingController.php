@@ -185,7 +185,7 @@ class BookingController extends Controller
         ]);
 
 
-            return redirect()->route('bookings.createbooking')->with('success', 'Customer created successfully!');
+            return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully!');
         // Redirect or perform other actions after successful booking creation
     }
 }
