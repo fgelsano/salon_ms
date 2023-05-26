@@ -25,8 +25,8 @@
                                 <thead>
                                     <tr>
                                         <th>Employees Name</th>
-                                        <th>Employees Services</th>
-                                        <th>Rule</th>
+                                        <th>Address</th>
+                                        <th>Contact</th>
                                         <th>Availability</th>
                                         <th>Profile Picture</th>
                                         <th>Action</th>
@@ -37,11 +37,11 @@
                                         <tr>
 
                                             <td>{{ $employee->employee_name }}</td>
-                                            <td>{{ $employee->name }}</td>
-                                            <td>{{ $employee->rule }}</td>
+                                            <td>{{ $employee->address }}</td>
+                                            <td>{{ $employee->contact }}</td>
                                             <td
-                                                style="color: {{ $employee->availability === 'on duty' ? 'red' : 'green' }}">
-                                                {{ $employee->availability }}</< /td>
+                                                style="color: {{ $employee->availability === 'not available' ? 'red' : 'green' }}">
+                                                {{ $employee->availability }}</td>
                                             <td><img src="{{ asset('uploads/' . $employee->picture) }}" width="100"></td>
                                             <td>
                                                 <div class="btn-group" role="group">
@@ -93,13 +93,5 @@
                 });
             });
         });
-<<<<<<< HEAD
-    });
-</script>
-
-
-@endsection 
-=======
     </script>
 @endsection
->>>>>>> ed001b03044fecc23812137748d1901b18522e21

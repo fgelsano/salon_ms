@@ -106,8 +106,5 @@ Route::delete('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeContr
 
 // routes for Frontend pages
 Route::get('/home', [App\Http\Controllers\Frontend\FrontendController::class, 'home'])->name('frontend.home');
-Route::get('/about', [App\Http\Controllers\Frontend\FrontendController::class, 'about'])->name('frontend.about');
-Route::get('/fservices', [App\Http\Controllers\Frontend\FrontendController::class, 'services'])->name('frontend.fservices');
-Route::get('/contact', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('frontend.contact');
-Route::get('/q.status', [App\Http\Controllers\Frontend\FrontendController::class, 'queuestatus'])->name('frontend.queuestatus');
+
 // Route::get('/services', 'ServicesController@index')->name('frontend.services');

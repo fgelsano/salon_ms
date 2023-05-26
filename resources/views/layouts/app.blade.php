@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{{ asset('user/vendor/owl-carousel/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('user/vendor/animate/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('user/css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('user/css/main.css') }}">
+
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('user/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('user/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
@@ -63,17 +66,18 @@
                             <a class="nav-link" href="{{  route('frontend.home')  }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">About</a>
+                            <a class="nav-link" href="#about">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#services">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">Contact</a>
+                            <a class="nav-link" href="#contact">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Queuestatus</a>
+                            <a class="nav-link" href="#testimonials">Testimonials</a>
                         </li>
+
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">

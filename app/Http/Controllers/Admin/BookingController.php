@@ -98,7 +98,7 @@ class BookingController extends Controller
         ]);
 
         if ($booking) {
-            return redirect()->route('bookings.index')->with('success', 'Customer created successfully!');
+            return redirect()->route('bookings.index')->with('success', 'Booked successfully!');
         } else {
             return back()->withInput()->with('error', 'Error creating booking.');
         }
@@ -120,6 +120,12 @@ class BookingController extends Controller
         //     'reservation_time' => 'required',
         //     'status' => 'required|in:pending,confirmed,canceled',
         // ]);
+        $bookings = Booking::select('bookings.*', 'employees.employee_name', 'customers.firstname', 'services.name', 'services.category')
+            ->join('employees', 'bookings.employee_id', '=', 'employees.id')
+            ->join('customers', 'bookings.customer_id', '=', 'customers.id')
+            // ->join('users', 'bookings.user_id', '=', 'users.id')
+            ->join('services', 'bookings.service_id', '=', 'services.id')
+            ->get();
 
         $bookings = Booking::find($id);
 
