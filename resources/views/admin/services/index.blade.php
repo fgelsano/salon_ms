@@ -2,9 +2,7 @@
 
 @section('content')
     <div class="container-fluid pt-3">
-
         <!-- Navigation menu -->
-
         <div class="row justify-content-center">
             <div class="col-md-20">
                 <div class="card" style="width: 1230px;">
@@ -40,13 +38,15 @@
                                         <td>{{ $service->price ?? 'Default Category' }}</td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <a href="{{ route('services.edit', $service) }}" class="btn btn-primary">
+                                                <a href="{{ route('services.edit', $service) }}" style="margin-right: 10px;"
+                                                    class="btn btn-primary">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
-                                                <form action="{{ route('services.destroy', $service) }}" method="POST">
+                                                <form action="{{ route('services.destroy', $service) }}" method="POST" id="delete-form">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger"
+                                                    <button type="submit" onclick="confirmDelete(event)"
+                                                        class="btn btn-danger"
                                                         onclick="return confirm('Are you sure you want to delete this Employee?')">
                                                         <i class="fas fa-trash-alt"></i> Delete
                                                     </button>
@@ -79,5 +79,29 @@
                 });
             });
         });
+
+        function confirmDelete(event) {
+            event.preventDefault(); // Prevents the form from submitting immediately
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This action cannot be undone!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel',
+                reverseButtons: true,
+                customClass: {
+                    confirmButton: 'btn btn-danger',
+                    cancelButton: 'btn btn-secondary'
+                }
+
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, submit the form
+                    document.getElementById('delete-form').submit();
+                }
+            });
+        }
     </script>
 @endsection

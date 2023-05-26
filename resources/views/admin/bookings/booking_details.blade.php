@@ -19,17 +19,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="customer_name">Customer Name:</label>
-                                <p class="form-control-static">{{ $bookings->customer_id}}</p>
+                                <p class="form-control-static">{{ $bookings->firstname}}</p>
                             </div>
                             <div class="form-group">
                                 <label for="employee_name">Employee Name:</label>
-                                <p class="form-control-static">{{ $bookings->employee_id }}</p>
+                                <p class="form-control-static">{{ $bookings->employee_name }}</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="service_name">Service Name:</label>
-                                <p class="form-control-static">{{ $bookings->service_id }}</p>
+                                <p class="form-control-static">{{ $bookings->name }}</p>
                             </div>
                             <div class="form-group">
                                 <label for="reservation_date">Reservation Date:</label>

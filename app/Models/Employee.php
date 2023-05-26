@@ -8,16 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
-   
+
     protected $table= "employees";
     protected $fillable =[
         'employee_name',
-        'services_id',
-        'rule',
         'picture',
-        'available'
-       
-    ];  
+        'availability'
+
+    ];
     public function booking()
     {
         return $this->belongsTo(Booking::class);

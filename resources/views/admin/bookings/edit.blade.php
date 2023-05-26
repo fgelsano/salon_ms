@@ -6,7 +6,7 @@
 
     <div class="col-md-14">
 
-      <div class="card" >
+      <div class="card">
         <h5 class="card-header">Edit Booking </h5>
         <div class="card-body">
 
@@ -34,7 +34,6 @@
                 @endforeach
               </select>
             </div>
-            
             <div class="form-group">
               <label for="employee_id">Employees Name</label>
               <select name="employee_id" id="employee_id" class="form-control">
@@ -51,8 +50,6 @@
                 @endforeach
               </select>
             </div>
-
-
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Reservation Date</label>
               <input type="date" class="form-control" id="reservation_date" name="reservation_date" value="{{ $booking->reservation_date }}">
@@ -60,7 +57,6 @@
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
             </div>
-
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Reservation Time</label>
               <input type="time" class="form-control" id="reservation_time" name="reservation_time" value="{{ $booking->reservation_time }}">
@@ -68,18 +64,19 @@
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
             </div>
-
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Status</label>
-              <input type="text" class="form-control" id="status" name="status" value="{{ $booking->status }}">
+              <select name="status" id="status" class="form-control" value="{{ $booking->status }}">
+                <option value="Pending">Pending</option>
+                <option value="Confirmed">Confirmed</option>
+              </select>
+              <!-- <input type="text" class="form-control" id="status" name="status" value="{{ $booking->status }}"> -->
               @error('status')
               <div class="alert alert-danger">{{ $message }}</div>
               @enderror
             </div>
             <div class="mb-3">
               <button type="submit" class="btn btn-primary">Submit</button>
-
-
             </div>
           </form>
         </div>

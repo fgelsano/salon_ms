@@ -25,7 +25,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="service_id" class="col-md-4 col-form-label text-md-right">Employees Service</label>
                             <div class="col-md-6">
                                 <select name="service_id" id="service_id" class="form-control">
@@ -35,18 +35,31 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
-                            <label for="rule" class="col-md-4 col-form-label text-md-right">{{ __('Rule') }}</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="rule" type="text" class="form-control @error('rule') is-invalid @enderror" name="rule" value="{{ old('rule') }}" required autocomplete="rule">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
 
-                                @error('rule')
+                                @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror   
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="contact" class="col-md-4 col-form-label text-md-right">{{ __('Contact') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="contact" type="text" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" required autocomplete="contact">
+
+                                @error('contact')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
@@ -59,7 +72,7 @@
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror   
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
