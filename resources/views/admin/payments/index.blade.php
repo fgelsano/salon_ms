@@ -28,7 +28,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($payments as $payment)
+                                    @forelse ($payments as $payment)
                                         <tr>
                                             <td>{{ $payment->booking_id }}</td>
                                             <td>{{ $payment->firstname }}</td>
@@ -45,31 +45,35 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            {{-- {{ $payments->links() }} --}}
+                                        @empty
+                                            <tr>
+                                                <td colspan="6" style="text-align: center;">No records found.</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                {{-- {{ $payments->links() }} --}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#searchInput').keyup(function() {
-                var searchText = $(this).val().toLowerCase();
-                $('table tr').each(function() {
-                    var rowText = $(this).text().toLowerCase();
-                    if (rowText.indexOf(searchText) === -1) {
-                        $(this).hide();
-                    } else {
-                        $(this).show();
-                    }
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#searchInput').keyup(function() {
+                    var searchText = $(this).val().toLowerCase();
+                    $('table tr').each(function() {
+                        var rowText = $(this).text().toLowerCase();
+                        if (rowText.indexOf(searchText) === -1) {
+                            $(this).hide();
+                        } else {
+                            $(this).show();
+                        }
+                    });
                 });
             });
-        });
-    </script>
-@endsection
+        </script>
+    @endsection

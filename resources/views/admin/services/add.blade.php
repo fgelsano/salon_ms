@@ -6,7 +6,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header bg-primary text-white">
-          <h5 class="m-0">New Services ni</h5>
+          <h5 class="m-0">New Services</h5>
         </div>
         <div class="card-body">
           <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">

@@ -74,7 +74,7 @@
                             <a href="{{ route('send-sms.index') }}"
                                 class="nav-link {{ Route::currentRouteName() === 'send-sms.index' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Twillio SMS</p>
+                                <p>Send Messenger</p>
                             </a>
                         </li>
                     </ul>
