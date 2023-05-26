@@ -85,8 +85,8 @@ Route::get('/view/{id}', [App\Http\Controllers\Admin\ReportController::class, 'v
 
 // route for settings table
 Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
-Route::any('/settimgs/send-sms', [App\Http\Controllers\Admin\SMSController::class, 'index'])->name('send-sms.index');
-Route::any('/settimgs/clickatell-sms', [App\Http\Controllers\Admin\ClickController::class, 'index'])->name('clickatell-sms.index');
+Route::any('/settings/send-sms', [App\Http\Controllers\Admin\SMSController::class, 'index'])->name('send-sms.index');
+
 // route for reports tableb
 Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
 
@@ -101,6 +101,7 @@ Route::delete('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeContr
 
 
 
+// Route::post('/send-sms', [App\Http\Controllers\Admin\SMSController::class, 'index'])->name('send-sms.index');
 
 
 
