@@ -51,16 +51,27 @@
                                                     </a>
 
 
-                                                    <form action="{{ route('employees.destroy', $employee) }}"
+                                                    {{-- <form action="{{ route('employees.destroy', $employee) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger"
-                                                            onclick="return confirm('Are you sure you want to delete this Employee?')">
+                                                        <button type="button"
+                                                            onclick="confirmDelete('delete-form-{{ $employee->id }}')"
+                                                            class="btn btn-danger">
                                                             <i class="fas fa-trash-alt"></i> Delete
                                                         </button>
-
-                                                    </form>
+                                                    </form> --}}
+                                                    <form action="{{ route('employees.destroy', $employee) }}" method="POST"
+                                                    id="delete-form-{{ $employee->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        onclick="confirmDelete(event, 'delete-form-{{ $employee->id }}')"
+                                                        class="btn btn-danger"
+                                                        onclick="return confirm('Are you sure you want to delete this Employee?')">
+                                                        <i class="fas fa-trash-alt"></i> Delete
+                                                    </button>
+                                                </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -93,5 +104,29 @@
                 });
             });
         });
+
+        function confirmDelete(event, formId) {
+            event.preventDefault(); // Prevents the form from submitting immediately
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This action cannot be undone!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel',
+                reverseButtons: true,
+                customClass: {
+                    confirmButton: 'btn btn-danger',
+                    cancelButton: 'btn btn-secondary'
+                }
+
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, submit the form
+                    document.getElementById(formId).submit();
+                }
+            });
+        }
     </script>
 @endsection
