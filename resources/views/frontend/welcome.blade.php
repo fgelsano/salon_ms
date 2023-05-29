@@ -8,7 +8,8 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
                             <h1 class="display-3 text-white mb-4 animated slideInDown">JCJ SALON</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Services</a>
+                            <a href="#services"
+                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Services</a>
                             <a href="{{ route('bookings.createbooking') }}"
                                 class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book now</a>
                         </div>
@@ -19,9 +20,11 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
                             <h1 class="display-3 text-white mb-4 animated slideInDown">BEAUTY SALON | SPA</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Services</a>
-                            <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight"
-                                data-toggle="modal" data-target="#bookmodal">Book now</a>
+                            <a href="#services"
+                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Services</a>
+                            <a href="{{ route('bookings.createbooking') }}"
+                                class="btn btn-light py-md-3 px-md-5 animated slideInRight" data-toggle="modal"
+                                data-target="#bookmodal">Book now</a>
                         </div>
                     </div>
                 </div>
@@ -36,76 +39,6 @@
             </button>
         </div>
     </div>
-    {{-- <div class="modal fade" id="bookmodal" tabindex="-1" role="dialog" aria-labelledby="newBookingsLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content border-0 rounded-4">
-            <div class="modal-header bg-primary text-white border-0 rounded-top">
-                <h5 class="modal-title" id="exampleModalLabel">Adding New Bookings</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="container">
-                <form action="{{ route('bookings.store') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <label for="customer_name">Customer Name</label>
-                        <input type="text" name="name" value="{{ old('name', auth()->user()->name) }}">
-                        @if ($errors->has('name'))
-                        <div class="alert alert-danger">{{ $errors->first('name') }}</div>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <label for="employee_id">Employee Name</label>
-                        <select name="employee_id" id="employee_id" class="form-control">
-                            <option value="">--Select a Employee--</option>
-                            @foreach ($employees as $employee)
-                            <option value="{{ $employee->id }}">{{ $employee->employee_name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="category_id">Services Category</label>
-                        <select name="category_id" id="category_id" class="form-control">
-                            <option value="">--Select a Services Category--</option>
-                            @foreach ($services as $service)
-                            <option value="{{ $service->id }}">{{ $service->category }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="service_id">Services Name</label>
-                        <select name="service_id" id="service_id" class="form-control">
-                            <option value="">--Select a Services--</option>
-                            @foreach ($services as $service)
-                            <option value="{{ $service->id }}">{{ $service->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="reservation_date">Reservation Date</label>
-                        <input type="date" class="form-control" id="reservation_date" name="reservation_date" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="reservation_time">Reservation Time</label>
-                        <input type="time" class="form-control" id="reservation_time" name="reservation_time" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <input type="text" class="form-control" id="status" name="status" placeholder="Pending" required>
-                    </div>
-
-                    <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary">Create Booking</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> --}}
     <div class="container-xxl py-5" id="about">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -118,10 +51,11 @@
                         <div class="position-relative">
                             <img class="img-fluid mx-auto" src="user/img/annemarie.jpg" alt="">
                             <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
+                                <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/"><i
                                         class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
+                                <a class="btn btn-square btn-primary mx-1" href="https://www.twitter.com"><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href="https://www.youtube.com/"><i
                                         class="fab fa-instagram"></i></a>
                             </div>
                         </div>
@@ -221,6 +155,8 @@
     </div>
 
     <!-- Add these links in the head section of your HTML -->
+
+
     <section class="gradient-custom" id="testimonials">
         <div class="container my-5 py-5">
             <div class="row d-flex justify-content-center">

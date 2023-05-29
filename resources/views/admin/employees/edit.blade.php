@@ -62,7 +62,7 @@
                                     @enderror
                                 </div>
                                 <br><br>
-                                <div id="filename" style="margin-top: 5px;"></div>
+                                <div id="filename" style="margin-top: 5px; max-height: 600px;"></div>
                                 @if ($employee->picture)
                                 <img src="{{ asset('uploads/' . $employee->picture) }}" alt="{{ $employee->employee_name }}" class="img-fluid" style="max-height: 600px;">
                                 @endif
