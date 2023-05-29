@@ -7,7 +7,7 @@
             <div class="wrap-login100">
                 <div class="login100-form-title" style="background-image: url(user/img/salon.jpg);">
                     <span class="login100-form-title-1">
-                        Sign In
+                        <b>Sign In</b>
                     </span>
                 </div>
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">

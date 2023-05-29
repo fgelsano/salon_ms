@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\service; 
+use App\Models\service;
 
 class ServiceController extends Controller
 {
@@ -35,6 +35,7 @@ class ServiceController extends Controller
             'name' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category' => 'required',
+            'price' => 'required',
 
         ]);
         $service = Service::find($id);
@@ -54,14 +55,14 @@ class ServiceController extends Controller
                     unlink($oldPicturePath);
                 }
             }
-        }else {
+        } else {
             // no new picture uploaded, keep existing picture
             $validatedData['picture'] = $service->image;
         }
 
-        
-        $service->category = $request->input('category');
 
+        $service->category = $request->input('category');
+        $service->price = $request->input('price');
 
         $service->update($validatedData);
         return redirect()->route('services.index')
@@ -115,9 +116,17 @@ class ServiceController extends Controller
      */
 
 
-    public function destroy(Service $service)
+    // public function destroy(Service $service)
+    // {
+    //     $service->delete();
+    //     return redirect()->route('services.index')->with('success', 'Service deleted successfully.');
+    // }
+
+    public function destroy($id)
     {
+        $service = Service::findOrFail($id);
         $service->delete();
+
         return redirect()->route('services.index')->with('success', 'Service deleted successfully.');
     }
 }

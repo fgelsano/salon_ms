@@ -25,6 +25,7 @@
                                     <th>Lastname</th>
                                     <th>Address</th>
                                     <th>Contact</th>
+                                    <th>Send APi</th>
                                     <th>Action</th>
                                 </tr>
                                 @forelse ($customers as $customer)
@@ -35,16 +36,30 @@
                                         <td>{{ $customer->contact }}</td>
                                         <td>
                                             <div class="btn-group" role="group">
+                                                <a href="https://m.me/ryan.sereno.16" class="btn btn-primary">
+                                                    <i class="fas fa"></i> Send Messenger
+                                                </a>
+                                            </div>
+                                            <a href="{{ route('send-sms.index') }}" class="btn btn-secondary">
+                                                <i class="fas fa"></i> Send SMS
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <div class="btn-group" role="group">
                                                 <a href="{{ route('customers.edit', $customer) }}" class="btn btn-primary">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
-                                                <form id="delete-form" action="{{ route('customers.destroy', $customer) }}"
-                                                    method="POST">
+                                                <form action="{{ route('customers.destroy', $customer) }}"
+                                                    method="POST" id="delete-form-{{ $customer->id }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger"
-                                                        onclick="return confirm('Are you sure you want to delete this Customers?')"><i
-                                                            class="fas fa-trash-alt"></i> Delete</button>
+                                                    <button type="submit"
+                                                        onclick="confirmDelete(event, 'delete-form-{{ $customer->id }}')"
+                                                        class="btn btn-danger"
+                                                        onclick="return confirm('Are you sure you want to delete this Employee?')">
+                                                        <i class="fas fa-trash-alt"></i> Delete
+                                                    </button>
                                                 </form>
                                             </div>
                                         </td>
@@ -63,49 +78,6 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function deleteCustomer(id) {
-            axios.get(`/customers/${id}/delete`)
-                .then((response) => {
-                    Swal.fire({
-                        title: response.data.message,
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            axios.delete(`/customers/${id}`)
-                                .then((response) => {
-                                    Swal.fire({
-                                        title: 'Deleted!',
-                                        text: 'Customer has been deleted successfully.',
-                                        icon: 'success'
-                                    }).then(() => {
-                                        // Reload the page to see the updated list of customers
-                                        location.reload();
-                                    });
-                                })
-                                .catch((error) => {
-                                    console.log(error);
-                                    Swal.fire({
-                                        title: 'Error',
-                                        text: 'Failed to delete customer.',
-                                        icon: 'error'
-                                    });
-                                });
-                        }
-                    });
-                })
-                .catch((error) => {
-                    console.log(error);
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'Failed to get customer data.',
-                        icon: 'error'
-                    });
-                });
-        }
         $(document).ready(function() {
             $('#searchInput').keyup(function() {
                 var searchText = $(this).val().toLowerCase();
@@ -119,5 +91,28 @@
                 });
             });
         });
+
+        function confirmDelete(event, formId, confirmMessage) {
+            event.preventDefault(); // Prevents the form from submitting immediately
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: confirmMessage || "This action cannot be undone!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel',
+                reverseButtons: true,
+                customClass: {
+                    confirmButton: 'btn btn-danger',
+                    cancelButton: 'btn btn-secondary'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, submit the form
+                    document.getElementById(formId).submit();
+                }
+            });
+        }
     </script>
 @endsection

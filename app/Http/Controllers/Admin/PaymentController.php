@@ -19,8 +19,8 @@ class PaymentController extends Controller
 
         $payments = Payment::join('bookings', 'payments.booking_id', '=', 'bookings.id')
             ->join('customers', 'bookings.customer_id', '=', 'customers.id')
-            ->select('payments.*', 'bookings.id', 'bookings.customer_id', 'customers.firstname')
-            // ->paginate(10);
+            ->join('services', 'payments.amount', '=', 'services.id')
+            ->select('payments.*', 'bookings.id', 'bookings.customer_id', 'customers.firstname', 'services.price')
             ->get();
 
 
@@ -46,7 +46,6 @@ class PaymentController extends Controller
         $payment = Payment::find($id);
 
         $payment->booking_id = $request->booking_id;
-        $payment->amount = $request->amount;
         $payment->status = $request->status;
         $payment->save();
 

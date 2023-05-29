@@ -23,7 +23,6 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 Route::get('/addbooking', [App\Http\Controllers\Admin\BookingController::class, 'addbooking'])->name('bookings.createbooking');
 Route::post('/storebooking', [App\Http\Controllers\Admin\BookingController::class, 'storebooking'])->name('bookings.storebooking');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 // route for pages
 
 
@@ -57,7 +56,8 @@ Route::prefix('bookings')->middleware(['auth'])->group(function () {
 Route::get('admin/services', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('services.index');
 Route::get('services/edit/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'edit'])->name('services.edit');
 Route::get('services/add', [App\Http\Controllers\Admin\ServiceController::class, 'create'])->name('services.create');
-Route::delete('service/{service}', [App\Http\Controllers\Admin\ServiceController::class, 'destroy'])->name('services.destroy');
+// Route::delete('service/{service}', [App\Http\Controllers\Admin\ServiceController::class, 'destroy'])->name('services.destroy');
+Route::delete('services/{service}', [App\Http\Controllers\Admin\ServiceController::class, 'destroy'])->name('services.destroy');
 Route::put('services/update/{id}', [App\Http\Controllers\Admin\ServiceController::class, 'update'])->name('services.update');
 Route::post('services/store', [App\Http\Controllers\Admin\ServiceController::class, 'store'])->name('services.store');
 

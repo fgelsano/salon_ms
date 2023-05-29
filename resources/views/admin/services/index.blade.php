@@ -38,24 +38,25 @@
                                         <td>{{ $service->price ?? 'Default Category' }}</td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <a href="{{ route('services.edit', $service) }}" style="margin-right: 10px;"
-                                                    class="btn btn-primary">
+                                                <a href="{{ route('services.edit', $service) }}" class="btn btn-primary">
                                                     <i class="fas fa-edit"></i> Edit
                                                 </a>
-                                                <form action="{{ route('services.destroy', $service) }}" method="POST" id="delete-form">
+                                                <form action="{{ route('services.destroy', $service) }}" method="POST"
+                                                    id="delete-form-{{ $service->id }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" onclick="confirmDelete(event)"
+                                                    <button type="submit"
+                                                        onclick="confirmDelete(event, 'delete-form-{{ $service->id }}')"
                                                         class="btn btn-danger"
                                                         onclick="return confirm('Are you sure you want to delete this Employee?')">
                                                         <i class="fas fa-trash-alt"></i> Delete
                                                     </button>
-
                                                 </form>
                                             </div>
                                         </td>
+
                                     </tr>
-                                    @empty
+                                @empty
                                     <tr>
                                         <td colspan="6" style="text-align: center;">No records found.</td>
                                     </tr>
@@ -84,7 +85,7 @@
             });
         });
 
-        function confirmDelete(event) {
+        function confirmDelete(event, formId) {
             event.preventDefault(); // Prevents the form from submitting immediately
 
             Swal.fire({
@@ -103,7 +104,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // If confirmed, submit the form
-                    document.getElementById('delete-form').submit();
+                    document.getElementById(formId).submit();
                 }
             });
         }
