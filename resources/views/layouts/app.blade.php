@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset('user/vendor/animate/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/theme.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('user/css/util.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('user/css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('user/css/main.css') }}">
 
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('user/lib/animate/animate.min.css') }}" rel="stylesheet">
@@ -35,6 +35,8 @@
     <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('user/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -43,17 +45,8 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top bg-white">
             <div class="container">
-                <a class="navbar-brand"
-                    href="{{ url('/') }}">{{ config('app.name', 'Salon Management System') }}</a>
-
-                <!-- <form action="#">
-                    <div class="input-group input-navbar">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="icon-addon1"><span class="mai-search"></span></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Enter keyword.." aria-label="Username" aria-describedby="icon-addon1">
-                    </div>
-                </form> -->
+                <img src="user/img/logo2.png" alt="" style="max-height: 100%; max-width: 70px;">
+                <a class="navbar-brand"href="{{ url('/') }}" style="color:#00D9A5;">JCJ SALON</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport"
                     aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +56,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupport">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{  route('frontend.home')  }}">Home</a>
+                            <a class="nav-link" href="{{ route('frontend.home') }}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#about">About</a>
@@ -80,11 +73,11 @@
                         </li>
 
                         @guest
-                            @if (Route::has('login'))
+                            {{-- @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="btn btn-light ml-lg-3" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                             {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="btn btn-light ml-lg-4"
@@ -127,6 +120,7 @@
     <script src="{{ asset('user/vendor/owl-carousel/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('user/vendor/wow/wow.min.js') }}"></script>
     <script src="{{ asset('user/js/theme.js') }}"></script>
+
 </body>
 
 </html>

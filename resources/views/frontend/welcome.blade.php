@@ -39,6 +39,7 @@
             </button>
         </div>
     </div>
+    {{-- About --}}
     <div class="container-xxl py-5" id="about">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -46,34 +47,40 @@
                 <h1 class="mb-5">Personnel In Charge</h1>
             </div>
             <div class="row g-4 d-flex justify-content-center">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="rounded shadow overflow-hidden">
-                        <div class="position-relative">
-                            <img class="img-fluid mx-auto" src="user/img/annemarie.jpg" alt="">
+                        <div class="position-relative" style=" height: 300px;">
+                            <img class="img-fluid mx-auto" src="user/img/annemarie.jpg" alt="" style="object-fit: contain;
+                            width: 100%;
+                            height: 100%;">
                             <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
                                 <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/"><i
                                         class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href="https://www.twitter.com"><i
                                         class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href="https://www.youtube.com/"><i
+                                <a class="btn btn-square btn-primary mx-1" href="https://www.instagram.com/"><i
                                         class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                         <div class="text-center p-4 mt-3">
                             <h5 class="fw-bold mb-0">Jessa Pabon</h5>
-                            <small>HAIR</small>
+                            <small>MASSAGE</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="rounded shadow overflow-hidden">
-                        <div class="position-relative">
-                            <img class="img-fluid mx-auto" src="user/img/burot.jpg" alt="">
+                        <div class="position-relative" style=" height: 300px;">
+                            <img class="img-fluid mx-auto" src="user/img/burot.jpg" alt=""
+                                style="object-fit: contain;
+                            width: 100%;
+                            height: 100%;">
                             <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
+                                <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/"><i
                                         class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
+                                <a class="btn btn-square btn-primary mx-1" href="https://www.twitter.com"><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href="https://www.instagram.com/"><i
                                         class="fab fa-instagram"></i></a>
                             </div>
                         </div>
@@ -83,16 +90,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="rounded shadow overflow-hidden">
-                        <div class="position-relative">
-                            <img class="img-fluid mx-auto" src="user/img/arcilla.jpg" alt="">
+                        <div class="position-relative" style=" height: 300px;">
+                            <img class="img-fluid mx-auto" src="user/img/arcilla.jpg" alt=""
+                                style="object-fit: contain;
+                            width: 100%;
+                            height: 100%;">
                             <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
+                                <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/"><i
                                         class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
+                                <a class="btn btn-square btn-primary mx-1" href="https://www.twitter.com"><i
                                         class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
+                                <a class="btn btn-square btn-primary mx-1" href="https://www.instagram.com/"><i
                                         class="fab fa-instagram"></i></a>
                             </div>
                         </div>
@@ -105,8 +115,7 @@
             </div>
         </div>
     </div>
-
-    <!-- services -->
+    <!-- Services -->
     <div class="container-xxl py-5" id="services">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -116,47 +125,35 @@
             <div class="row g-4 justify-content-center">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="service-item rounded" href="">
-                        <div class="service-icon bg-transparent border rounded p-1">
-                            <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                <i class="fa fa-hotel fa-2x text-primary"></i>
-                            </div>
-                        </div>
-                        <h5 class="mb-3">HAIR</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam
-                            stet diam sed stet lorem.</p>
+                        <h5 class="mb-3"><b>MASSAGE</b></h5>
+                        <p class="text-body mb-0">"Relax, unwind, and rejuvenate your mind and body with a blissful massage
+                            experience at our tranquil oasis. Our skilled massage therapists combine the power of soothing
+                            touch and expert techniques to melt away stress, ease tension, and restore your natural balance.
+                        </p>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                     <a class="service-item rounded" href="">
-                        <div class="service-icon bg-transparent border rounded p-1">
-                            <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                <i class="fa fa-utensils fa-2x text-primary"></i>
-                            </div>
-                        </div>
-                        <h5 class="mb-3">HAIRCUT</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam
-                            stet diam sed stet lorem.</p>
+                        <h5 class="mb-3"><b>HAIRCUT</b></h5>
+                        <p class="text-body mb-0">Revitalize your look with a haircut tailored to perfection at our
+                            cutting-edge hair salon. Our skilled stylists will listen to your unique vision and deliver a
+                            personalized haircut that accentuates your features, leaving you with a fresh, contemporary
+                            style that turns heads wherever you go.</p>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <a class="service-item rounded" href="">
-                        <div class="service-icon bg-transparent border rounded p-1">
-                            <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                <i class="fa fa-spa fa-2x text-primary"></i>
-                            </div>
-                        </div>
-                        <h5 class="mb-3">NAILS</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam
-                            stet diam sed stet lorem.</p>
+                        <h5 class="mb-3"><b>NAILS</b></h5>
+                        <p class="text-body mb-0">Pamper your hands and feet with a nail care experience like no other at
+                            our exquisite nail salon. Indulge in luxurious treatments, meticulous attention to detail, and a
+                            vast selection of trendy colors and designs. From classic elegance to bold statements, our
+                            talented nail technicians will ensure your nails become your ultimate fashion accessory.</p>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Add these links in the head section of your HTML -->
-
-
+    {{-- Testimonials --}}
     <section class="gradient-custom" id="testimonials">
         <div class="container my-5 py-5">
             <div class="row d-flex justify-content-center">
@@ -215,8 +212,7 @@
                                                             class="rounded-circle shadow-1 mb-4 mb-lg-0"
                                                             alt="woman avatar" width="150" height="150" />
                                                     </div>
-                                                    <div
-                                                        class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
+                                                    <div class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
                                                         <h4 class="mb-4">Lisa Cudrow</h4>
                                                         <p class="mb-0 pb-3">
                                                             I recently treated myself to a spa day at this salon, and it was
@@ -286,7 +282,66 @@
             </div>
         </div>
     </section>
-    <div class="fixed-container"
+    {{-- Contact --}}
+    <div class="container-xxl py-5" id="contact">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title text-center text-primary text-uppercase">Contact Us</h6>
+                <h1 class="mb-5"><span class="text-primary text-uppercase">Contact</span> For Any Query</h1>
+            </div>
+            <div class="row g-4">
+
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
+                    <iframe class="position-relative rounded w-100 h-100"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.5620872963004!2d124.74086147495177!3d10.376855889748656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33076eefca300fe3%3A0x10a595bcf7693abe!2sMLG%20College%20of%20Learning!5e0!3m2!1sen!2sph!4v1685349506289!5m2!1sen!2sph"
+                        frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
+                        tabindex="0"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <div class="wow fadeInUp" data-wow-delay="0.2s">
+                        <form action="https://smtp.mailtrap.io" method="POST">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name"
+                                            placeholder="Your Name">
+                                        <label for="name">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email"
+                                            placeholder="Your Email">
+                                        <label for="email">Your Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                        <label for="subject">Subject</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
+                                        <label for="message">Message</label>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="to" value="sandbox.smtp.mailtrap.io">
+                                <input type="hidden" name="from" value="mabiachristian75@gmail.com">
+                                <input type="hidden" name="subject" value="New form submission">
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    {{-- <div class="fixed-container"
         style="position: fixed;
         bottom: 20px;
         right: 20px;
@@ -311,34 +366,37 @@
                 </div>
                 <div class="modal-body">
                     <form id="reviewForm">
-                      <div class="form-group">
-                        <label for="customerName">Customer's Name:</label>
-                        <input type="text" class="form-control" id="customerName" placeholder="Enter customer's name" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="reviewContent">Content:</label>
-                        <textarea class="form-control" id="reviewContent" rows="5" placeholder="Enter review content" required></textarea>
-                      </div>
-                      <div class="form-group">
-                        <label for="starRating">Star Rating:</label>
-                        <div class="rate">
-                          <input type="radio" id="star5" name="rate" value="5" required>
-                          <label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
-                          <input type="radio" id="star4" name="rate" value="4" required>
-                          <label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
-                          <input type="radio" id="star3" name="rate" value="3" required>
-                          <label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
-                          <input type="radio" id="star2" name="rate" value="2" required>
-                          <label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
-                          <input type="radio" id="star1" name="rate" value="1" required>
-                          <label for="star1" title="1 star"><i class="fas fa-star"></i></label>
+                        <div class="form-group">
+                            <label for="customerName">Customer's Name:</label>
+                            <input type="text" class="form-control" id="customerName"
+                                placeholder="Enter customer's name" required>
                         </div>
-                      </div><br><br>
-                      <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Review</button>
+                        <div class="form-group">
+                            <label for="reviewContent">Content:</label>
+                            <textarea class="form-control" id="reviewContent" rows="5" placeholder="Enter review content" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="starRating">Star Rating:</label>
+                            <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5" required>
+                                <label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star4" name="rate" value="4" required>
+                                <label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star3" name="rate" value="3" required>
+                                <label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star2" name="rate" value="2" required>
+                                <label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
+                                <input type="radio" id="star1" name="rate" value="1" required>
+                                <label for="star1" title="1 star"><i class="fas fa-star"></i></label>
+                            </div>
+                        </div><br><br>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit
+                            Review</button>
                     </form>
-                  </div>
+                </div>
 
             </div>
         </div>
-    </div>
+    </div> --}}
+    @include('frontend.partials._footer');
 @endsection
