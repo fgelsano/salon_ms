@@ -48,7 +48,7 @@
                                                     <button type="submit"
                                                         onclick="confirmDelete(event, 'delete-form-{{ $service->id }}')"
                                                         class="btn btn-danger"
-                                                        onclick="return confirm('Are you sure you want to delete this Employee?')">
+                                                        onclick="return confirm('Are you sure you want to delete this Services?')">
                                                         <i class="fas fa-trash-alt"></i> Delete
                                                     </button>
                                                 </form>

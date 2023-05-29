@@ -13,8 +13,8 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::select('employees.*', 'services.name')
-        ->join('services', 'employees.services_id', '=', 'services.id')
-        ->get();
+            ->join('services', 'employees.services_id', '=', 'services.id')
+            ->get();
 
         return view('admin.employees.index', compact('employees'));
     }
@@ -49,7 +49,6 @@ class EmployeeController extends Controller
         } else {
             return back()->withInput()->with('error', 'Error creating employee.');
         }
-
     }
     public function show(Employee $employee)
     {
@@ -135,9 +134,11 @@ class EmployeeController extends Controller
 
 
 
-    public function destroy(Employee $employee)
+    public function destroy($id)
     {
+        $employee = Employee::findOrFail($id);
         $employee->delete();
+
 
         return redirect()->route('employees.index')->with('success', 'Employee deleted successfully.');
     }
