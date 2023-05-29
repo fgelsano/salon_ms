@@ -36,11 +36,11 @@ class BookingController extends Controller
     public function edit(Request $request)
     {
         $booking = Booking::find($request->id);
-        $customers = Customer::all();
+        $customer = Customer::all();
         $employees = Employee::all();
         $services = Service::all();
 
-        return view('admin.bookings.edit', compact(['booking', 'customers', 'employees', 'services']));
+        return view('admin.bookings.edit', compact(['booking', 'customer', 'employees', 'services']));
     }
 
     /**
@@ -114,22 +114,12 @@ class BookingController extends Controller
 
     public function booking_details(Request $request, $id)
     {
-        // $request->validate([
-        //     'customer_id' => 'required|exists:customers,id',
-        //     'reservation_date' => 'required|date',
-        //     'reservation_time' => 'required',
-        //     'status' => 'required|in:pending,confirmed,canceled',
-        // ]);
         $bookings = Booking::select('bookings.*', 'employees.employee_name', 'customers.firstname', 'services.name', 'services.category')
             ->join('employees', 'bookings.employee_id', '=', 'employees.id')
             ->join('customers', 'bookings.customer_id', '=', 'customers.id')
-            // ->join('users', 'bookings.user_id', '=', 'users.id')
             ->join('services', 'bookings.service_id', '=', 'services.id')
-            ->get();
-
-        $bookings = Booking::find($id);
-
-
+            ->where('bookings.id', $id)
+            ->first();
 
         return view('admin.bookings.booking_details', compact('bookings'));
     }
@@ -184,8 +174,12 @@ class BookingController extends Controller
             'status' => $validatedData['status'],
         ]);
 
+        $employeePicture = $request->input('employee_id_picture');
+        $employeeAvailability = $request->input('employee_id_availability');
 
-            return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully!');
+
+
+        return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully!');
         // Redirect or perform other actions after successful booking creation
     }
 }
