@@ -43,8 +43,9 @@
                                             <td>{{ $booking->category }}</td>
                                             <td>{{ $booking->reservation_date }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
-                                            <td>{{ $booking->status }}</td>
-
+                                            <td
+                                                class="{{ $booking->status === 'Pending' ? 'text-warning' : 'text-success' }}">
+                                                {{ $booking->status }}</td>
                                             <td>
 
                                                 <div class="btn-group" role="group">

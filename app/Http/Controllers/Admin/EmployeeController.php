@@ -12,16 +12,18 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::select('employees.*', 'services.name')
+        ->join('services', 'employees.services_id', '=', 'services.id')
+        ->get();
 
         return view('admin.employees.index', compact('employees'));
     }
     public function create(Request $request)
     {
         $employees = Employee::find($request->id);
+        $services = Service::all();
 
-
-        return view('admin.employees.add', compact('employees'));
+        return view('admin.employees.add', compact(['employees', 'services',]));
     }
     public function store(Request $request)
     {
@@ -34,8 +36,8 @@ class EmployeeController extends Controller
 
         $employees = new Employee;
         $employees->employee_name = $request->input('employee_name');
-        $employees->address = $request->input('address');
-        $employees->contact = $request->input('contact');
+        $employees->services_id = $request->input('service_id');
+        $employees->rule = $request->input('rule');
         $employees->availability = $request->input('availability');
 
         if ($request->hasFile('picture')) {
@@ -59,13 +61,43 @@ class EmployeeController extends Controller
         return view('admin.employees.edit', compact('employee'));
     }
 
+    // public function update(Request $request, $id)
+    // {
+    //     $validatedData = $request->validate([
+    //         'employee_name' => 'required',
+    //         'rule' => 'required',
+    //         'picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
+    //     ]);
 
+    //     $employee = Employee::find($id);
+
+    //     $employee->employee_name = $request->input('employee_name');
+    //     $employee->rule = $request->input('rule');
+
+    //     if ($request->hasFile('picture')) {
+    //         $picture = $request->file('picture');
+    //         $filename = $picture->getClientOriginalName();
+    //         $picture->move(public_path('uploads'), $filename);
+    //         $validatedData['picture'] = $filename;
+    //         // delete old picture file
+    //         if ($employee->picture) {
+    //             $oldPicturePath = public_path('uploads/' . $employee->picture);
+    //             if (file_exists($oldPicturePath)) {
+    //                 unlink($oldPicturePath);
+    //             }
+    //         }
+    //     }
+
+    //     $employee->update($validatedData);
+
+    //     return redirect()->route('employees.index')
+    //         ->with('success', 'Employee updated successfully');
+    // }
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'employee_name' => 'required',
-            'address' => 'required',
-            'contact' => 'required',
+            'rule' => 'required',
             'availability' => 'required',
             'picture' => 'image|mimes:jpeg,png,jpg,gif,svg',
 
@@ -74,8 +106,7 @@ class EmployeeController extends Controller
         $employee = Employee::find($id);
 
         $employee->employee_name = $request->input('employee_name');
-        $employee->address = $request->input('address');
-        $employee->contact = $request->input('contact');
+        $employee->rule = $request->input('rule');
         $employee->availability = $request->input('availability');
 
         if ($request->hasFile('picture')) {

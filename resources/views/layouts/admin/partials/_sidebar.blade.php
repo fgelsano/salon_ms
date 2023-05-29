@@ -20,49 +20,49 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{ url('/dashboard') }}" class="nav-link">
+                    <a href="{{ url('/dashboard') }}" class="nav-link {{ Route::currentRouteName() === 'dashboard.index' ? 'active' : '' }}"">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/services/') }}" class="nav-link">
+                    <a href="{{ url('admin/services/') }}" class="nav-link {{ Route::currentRouteName() === 'services.index' ? 'active' : '' }}"">
                         <i class="fa fa-book"></i>
                         <p>Services</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/employees') }}" class="nav-link">
+                    <a href="{{ url('/employees') }}" class="nav-link {{ Route::currentRouteName() === 'employees.index' ? 'active' : '' }}"">
                         <i class="fa fa-users"></i>
                         <p>Employees</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/customers') }}" class="nav-link">
+                    <a href="{{ url('/customers') }}" class="nav-link {{ Route::currentRouteName() === 'customers.index' ? 'active' : '' }}"">
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <p>Customers</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/bookings') }}" class="nav-link">
+                    <a href="{{ url('/bookings') }}" class="nav-link {{ Route::currentRouteName() === 'bookings.index' ? 'active' : '' }}"">
                         <i class="fa fa-book" aria-hidden="true"></i>
                         <p>Bookings</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/payments') }}" class="nav-link">
+                    <a href="{{ url('/payments') }}" class="nav-link {{ Route::currentRouteName() === 'payments.index' ? 'active' : '' }}"">
                         <i class="nav-icon fas fa-dollar-sign"></i>
                         <p>Payments</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/reports') }}" class="nav-link">
+                    <a href="{{ url('/reports') }}" class="nav-link {{ Route::currentRouteName() === 'reports.index' ? 'active' : '' }}"">
                         <i class="nav-icon fas fa-chart-bar"></i>
                         <p>Reports</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Settings
@@ -74,7 +74,7 @@
                             <a href="{{ route('send-sms.index') }}"
                                 class="nav-link {{ Route::currentRouteName() === 'send-sms.index' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Send Messenger</p>
+                                <p>Send Message</p>
                             </a>
                         </li>
                     </ul>

@@ -32,7 +32,7 @@
                                         <tr>
                                             <td>{{ $payment->booking_id }}</td>
                                             <td>{{ $payment->firstname }}</td>
-                                            <td>{{ $payment->amount }}</td>
+                                            <td>{{ $payment->price   }}</td>
                                             <td
                                                 class="{{ $payment->status === 'unpaid' ? 'text-warning' : 'text-success' }}">
                                                 {{ $payment->status }}</td>
