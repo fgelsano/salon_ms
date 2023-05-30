@@ -23,8 +23,7 @@
                             <a href="#services"
                                 class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Services</a>
                             <a href="{{ route('bookings.createbooking') }}"
-                                class="btn btn-light py-md-3 px-md-5 animated slideInRight" data-toggle="modal"
-                                data-target="#bookmodal">Book now</a>
+                            class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book now</a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +49,8 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="rounded shadow overflow-hidden">
                         <div class="position-relative" style=" height: 300px;">
-                            <img class="img-fluid mx-auto" src="user/img/annemarie.jpg" alt="" style="object-fit: contain;
+                            <img class="img-fluid mx-auto" src="user/img/annemarie.jpg" alt=""
+                                style="object-fit: contain;
                             width: 100%;
                             height: 100%;">
                             <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
@@ -212,7 +212,8 @@
                                                             class="rounded-circle shadow-1 mb-4 mb-lg-0"
                                                             alt="woman avatar" width="150" height="150" />
                                                     </div>
-                                                    <div class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
+                                                    <div
+                                                        class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
                                                         <h4 class="mb-4">Lisa Cudrow</h4>
                                                         <p class="mb-0 pb-3">
                                                             I recently treated myself to a spa day at this salon, and it was
@@ -299,7 +300,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="wow fadeInUp" data-wow-delay="0.2s">
-                        <form action="https://smtp.mailtrap.io" method="POST">
+                        <form action="{{ route('submit-form') }}" method="POST">
+                            @csrf
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">

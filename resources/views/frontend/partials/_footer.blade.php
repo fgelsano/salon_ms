@@ -5,7 +5,10 @@
         <div class="row g-5">
             <div class="col-md-6 col-lg-4">
                 <div class="bg-primary rounded p-4">
-                    <a href="index.html"><h1 class="text-white text-uppercase mb-3">JCJ Salon</h1></a>
+                    <a href="{{ url('/') }}">
+                        <img src="user/img/logo2bg.png" alt="JCJ Salon Logo" style="max-height: 100%; max-width: 100px;"><h1 class="text-white text-uppercase mb-3">JCJ Salon</h1>
+                    </a>
+
                     <p class="text-white mb-0">
                         We are a premier salon dedicated to providing exceptional hair, nails, and spa services. With a team of skilled professionals and a commitment to customer satisfaction, we strive to create a rejuvenating and luxurious experience for all our clients.
                     </p>

@@ -107,18 +107,20 @@
 
         // Function to validate the time input
         function validateTimeInput() {
-            var currentTime = new Date();
-            var selectedTime = new Date(currentTime.toDateString() + ' ' + timeInput.value);
+            var selectedTime = timeInput.value;
 
-            // Set the minimum time to 5 PM of the current day
-            var minTime = new Date(currentTime.toDateString() + ' 17:00');
+            // Get the hours and minutes from the selected time
+            var [selectedHours, selectedMinutes] = selectedTime.split(':');
 
-            // Set the maximum time to 7 AM of the next day
-            var maxTime = new Date(currentTime.setDate(currentTime.getDate() + 1));
-            maxTime.setHours(7, 0, 0, 0);
+            // Convert hours to a 24-hour format
+            var selectedHours24 = parseInt(selectedHours);
+            if (selectedHours.toLowerCase().indexOf('pm') > -1 && selectedHours24 < 12) {
+                selectedHours24 += 12;
+            }
 
-            if (selectedTime < minTime || selectedTime >= maxTime) {
-                timeInput.setCustomValidity('Please select a time between 5 PM and 7 AM');
+            // Check if the selected time is within the allowed range (8 AM to 5 PM)
+            if (selectedHours24 < 8 || selectedHours24 >= 17 || (selectedHours24 === 17 && parseInt(selectedMinutes) > 0)) {
+                timeInput.setCustomValidity('Booking is only available between 8 AM and 5 PM');
             } else {
                 timeInput.setCustomValidity('');
             }
@@ -126,6 +128,7 @@
 
         // Add the validateTimeInput function as an event listener for the input event
         timeInput.addEventListener('input', validateTimeInput);
+
         $(document).ready(function() {
             $('#employee_id').change(function() {
                 var selectedOption = $(this).find(':selected');
@@ -136,6 +139,5 @@
                 $('#employee_availability').text(availabilityText);
             });
         });
-
     </script>
 @endsection

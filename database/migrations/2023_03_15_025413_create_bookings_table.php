@@ -22,7 +22,7 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->date('reservation_date');
             $table->time('reservation_time');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
 
             // $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
