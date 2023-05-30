@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('frontend.welcome');
-});
+})->name('frontend.welcome');
 
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 Route::get('/addbooking', [App\Http\Controllers\Admin\BookingController::class, 'addbooking'])->name('bookings.createbooking');
 Route::post('/storebooking', [App\Http\Controllers\Admin\BookingController::class, 'storebooking'])->name('bookings.storebooking');
+Route::post('/submit-form', [App\Http\Controllers\FormController::class, 'submit'])->name('submit-form');
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // route for pages
 

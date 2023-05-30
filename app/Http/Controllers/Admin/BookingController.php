@@ -148,7 +148,7 @@ class BookingController extends Controller
             'service_id' => 'required|exists:services,id',
             'reservation_date' => 'required|date',
             'reservation_time' => 'required',
-            'status' => 'required|string',
+
         ]);
 
         // Create a new customer record
@@ -171,15 +171,15 @@ class BookingController extends Controller
             'service_id' => $validatedData['service_id'],
             'reservation_date' => $validatedData['reservation_date'],
             'reservation_time' => $validatedData['reservation_time'],
-            'status' => $validatedData['status'],
+
         ]);
 
-        $employeePicture = $request->input('employee_id_picture');
-        $employeeAvailability = $request->input('employee_id_availability');
-
-
-
         return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully!');
+
+
+
+
+
         // Redirect or perform other actions after successful booking creation
     }
 }

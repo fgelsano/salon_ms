@@ -41,7 +41,17 @@
                         <div class="form-group row">
                             <label for="availability" class="col-md-4 col-form-label text-md-right">{{ __('Availability') }}</label>
                             <div class="col-md-6">
-                                <input id="availability" type="text" class="form-control @error('availability') is-invalid @enderror" name="availability" value="{{ old('availability', $employee->available) }}" required autocomplete="availability">
+                                {{-- <input id="availability" type="text" class="form-control @error('availability') is-invalid @enderror" name="availability" value="{{ old('availability', $employee->available) }}" required autocomplete="availability">
+                                @error('availability')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror --}}
+
+                                <select name="availability" id="availability" class="form-control"@error('availability') is-invalid @enderror name="availability" value="{{ old('availability', $employee->available) }}" required autocomplete="availability">
+                                    <option value="Not Available">Not Available</option>
+                                    <option value="Available">Available</option>
+                                </select>
                                 @error('availability')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
