@@ -10,6 +10,8 @@ use App\Models\Employee;
 use App\Models\Usersbooking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
+
 
 class BookingController extends Controller
 {
@@ -135,6 +137,8 @@ class BookingController extends Controller
     /**
      * Save new record to database
      */
+
+
     public function storebooking(Request $request)
     {
         // Validate the form data
@@ -148,7 +152,6 @@ class BookingController extends Controller
             'service_id' => 'required|exists:services,id',
             'reservation_date' => 'required|date',
             'reservation_time' => 'required',
-
         ]);
 
         // Create a new customer record
@@ -162,7 +165,6 @@ class BookingController extends Controller
         // Generate a customer ID
         $customerID = $customer->id;
 
-
         // Create a new booking record with the customer ID
         $booking = Booking::create([
             'customer_id' => $customerID,
@@ -171,15 +173,54 @@ class BookingController extends Controller
             'service_id' => $validatedData['service_id'],
             'reservation_date' => $validatedData['reservation_date'],
             'reservation_time' => $validatedData['reservation_time'],
-
         ]);
 
-        return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully!');
+        // Get the phone number associated with the booking
+        $phoneNumber = $validatedData['contact'];
 
+        // Prepare the message to be sent
+        $message = 'Your booking with ID ' . $booking->id . ' has been successfully created.';
 
+        // Send the SMS using the SMS API
+        $client = new Client();
+        $response = $client->request('POST', 'https://semaphore.co/api/v4/messages', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ' . env('SEM_API_KEY'),
+            ],
+            'json' => [
+                'number' => $phoneNumber,
+                'apikey' => env('SEM_API_KEY'),
+                'from' => config('app.semaphore_from'),
+                'message' => $message,
+            ],
+        ]);
 
+        // Check the response and handle any errors
+        $statusCode = $response->getStatusCode();
+        $responseData = json_decode($response->getBody(), true);
 
+        if ($statusCode === 200 && isset($responseData['result']) && $responseData['result'] === 'success') {
+            return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully! SMS sent.');
+        } elseif (isset($responseData['error'])) {
+            return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully! Error sending SMS: ' . $responseData['error']);
+        } else {
+            return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully! SMS sent.');
+        }
+    }
 
-        // Redirect or perform other actions after successful booking creation
+    public function getBookingData(Request $request)
+    {
+        $bookingId = $request->input('booking_id');
+
+        // Retrieve the booking data from the database based on the booking ID
+        $booking = Booking::find($bookingId);
+
+        if ($booking) {
+            // Pass the booking data to a view or return it as JSON response
+            return view('frontend.status', compact('booking'));
+        } else {
+            return redirect()->route('frontend.status')->with('error', 'Booking ID not found!');
+        }
     }
 }

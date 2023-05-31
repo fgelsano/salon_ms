@@ -30,29 +30,32 @@
                                         <option value="{{ $employee->id }}"
                                             data-picture="{{ asset('uploads/' . $employee->picture) }}"
                                             data-availability="{{ $employee->availability }}"
-                                            @if ($employee->services) data-category="{{ $employee->category }}"
-                                            data-service="{{ $employee->name }}" @endif>
-                                            {{ $employee->employee_name }}
+                                            data-service="{{ $employee->service }}">{{ $employee->employee_name }}
                                         </option>
                                     @endforeach
                                 </select>
                                 <br><br>
-                                <img id="employee_picture" src="" alt=""
-                                    class="img-fluid d-flex justify-content-center" style="max-height: 200px;"><br>
+                                <img id="employee_picture" src="" alt="" class="img-fluid"
+                                    style="max-height: 200px;"><br>
                                 <h6 id="employee_availability"></h6>
-                            </div>
 
+                            </div>
                             <div class="form-group">
                                 <label for="category_id">Services Category</label>
-                                <select name="category_id" id="category_id" class="form-control" disabled>
+                                <select name="category_id" id="category_id" class="form-control">
                                     <option value="">--Select a Services Category--</option>
+                                    @foreach ($services as $service)
+                                        <option value="{{ $service->id }}">{{ $service->category }}</option>
+                                    @endforeach
                                 </select>
                             </div>
-
                             <div class="form-group">
                                 <label for="service_id">Services Name</label>
-                                <select name="service_id" id="service_id" class="form-control" disabled>
-                                    <option value="">--Select a Services--</option>
+                                <select name="service_id" id="service_id" class="form-control">
+                                    <option value="">--Select a Service--</option>
+                                    @foreach ($services as $service)
+                                        <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -86,51 +89,7 @@
     </div>
     <script src="{{ asset('user/js/jquery-3.5.1.min.js') }}"></script>
     <script>
-        // const employeeDropdown = document.getElementById('employee_id');
-        // const categoryDropdown = document.getElementById('category_id');
-        // const serviceDropdown = document.getElementById('service_id');
 
-        // employeeDropdown.addEventListener('change', function() {
-        //     const selectedEmployee = employeeDropdown.options[employeeDropdown.selectedIndex];
-
-        //     categoryDropdown.value = selectedEmployee.dataset.category;
-        //     categoryDropdown.disabled = false;
-
-        //     serviceDropdown.value = selectedEmployee.dataset.service;
-        //     serviceDropdown.disabled = false;
-        // });
-        $(document).ready(function() {
-            $("#employee_id").change(function() {
-                var selectedEmployee = $(this).find(":selected");
-                var pictureUrl = selectedEmployee.data("picture");
-                var availability = selectedEmployee.data("availability");
-                var category = selectedEmployee.data("category");
-                var service = selectedEmployee.data("service");
-
-                $("#employee_picture").attr("src", pictureUrl);
-                $("#employee_availability").text("Availability: " + availability);
-
-                if (category && service) {
-                    // Enable the category and service selects
-                    $("#category_id").prop("disabled", false);
-                    $("#service_id").prop("disabled", false);
-
-                    // Filter the category options based on the selected employee's category
-                    $("#category_id option").hide();
-                    $("#category_id option[value='" + category + "']").show();
-
-                    // Show all services initially
-                    $("#service_id option").show();
-
-                    // Filter the service options based on the selected employee's service
-                    $("#service_id option[data-category!='" + category + "']").hide();
-                } else {
-                    // If no category and service data available, disable the category and service selects
-                    $("#category_id").prop("disabled", true);
-                    $("#service_id").prop("disabled", true);
-                }
-            });
-        });
         $(document).ready(function() {
             // Calculate today's date in the format 'yyyy-mm-dd'
             var today = new Date().toISOString().split('T')[0];
@@ -154,9 +113,6 @@
                 todayHighlight: true,
                 startDate: today,
             });
-
-
-
         });
         // $(document).ready(function() {
         //     $('#employee_id').change(function() {
@@ -168,6 +124,19 @@
         //         $('#employee_availability').text(availabilityText);
         //     });
         // });
+        $(document).ready(function() {
+            $("#employee_id").change(function() {
+                var selectedEmployee = $(this).find(":selected");
+                var pictureUrl = selectedEmployee.data("picture");
+                var availability = selectedEmployee.data("availability");
+                var category = selectedEmployee.data("category");
+                var service = selectedEmployee.data("service");
+
+                $("#employee_picture").attr("src", pictureUrl);
+                $("#employee_availability").text("Availability: " + availability);
+
+            });
+        });
         var timeInput = document.getElementById('reservation_time');
 
         // Function to validate the time input
