@@ -93,7 +93,6 @@
                                     <i class="fas fa-clock bg-gray"></i>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
