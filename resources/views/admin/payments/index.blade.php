@@ -19,7 +19,7 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-
+                                        <th>Payment ID</th>
                                         <th>Booking id</th>
                                         <th>Customer's Name</th>
                                         <th>Amount</th>
@@ -30,11 +30,12 @@
                                 <tbody>
                                     @forelse ($payments as $payment)
                                         <tr>
+                                            <td>{{ $payment->id }}
                                             <td>{{ $payment->booking_id }}</td>
                                             <td>{{ $payment->firstname }}</td>
                                             <td>{{ $payment->price   }}</td>
                                             <td
-                                                class="{{ $payment->status === 'unpaid' ? 'text-warning' : 'text-success' }}">
+                                                class="{{ $payment->status === 'Unpaid' ? 'text-warning' : 'text-success' }}">
                                                 {{ $payment->status }}</td>
                                             <td>
                                                 <div class="btn-group" role="group">

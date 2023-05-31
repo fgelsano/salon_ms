@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\Booking;
+use App\Models\Service;
+use App\Models\Customer;
+
 
 class PaymentController extends Controller
 {
@@ -20,7 +23,7 @@ class PaymentController extends Controller
         $payments = Payment::join('bookings', 'payments.booking_id', '=', 'bookings.id')
             ->join('customers', 'bookings.customer_id', '=', 'customers.id')
             ->join('services', 'payments.amount', '=', 'services.id')
-            ->select('payments.*', 'bookings.id', 'bookings.customer_id', 'customers.firstname', 'services.price')
+            ->select('payments.*', 'bookings.id as booking_id', 'bookings.customer_id', 'customers.firstname', 'services.price')
             ->get();
 
 
@@ -36,16 +39,13 @@ class PaymentController extends Controller
     public function edit(Request $request, $id)
     {
         $payment = Payment::find($request->id);
-        $bookings = Booking::all();
-        return view('admin.payments.edit', compact(['payment', 'bookings']));
+        return view('admin.payments.edit', compact(['payment']));
     }
 
     public function update(Request $request, $id)
     {
 
         $payment = Payment::find($id);
-
-        $payment->booking_id = $request->booking_id;
         $payment->status = $request->status;
         $payment->save();
 
@@ -56,6 +56,9 @@ class PaymentController extends Controller
     {
         $bookings = Booking::all();
         $payments = Payment::all();
+        $services = Service::all();
+        $customers = Customer::all();
+
         return view('admin.payments.add', compact(['payments', 'bookings']));
     }
     public function store(Request $request)

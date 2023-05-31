@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 Route::get('/addbooking', [App\Http\Controllers\Admin\BookingController::class, 'addbooking'])->name('bookings.createbooking');
 Route::post('/storebooking', [App\Http\Controllers\Admin\BookingController::class, 'storebooking'])->name('bookings.storebooking');
+Route::post('/getBookingData', [App\Http\Controllers\Admin\BookingController::class, 'getBookingData'])->name('bookings.getBookingData');
 Route::post('/submit-form', [App\Http\Controllers\FormController::class, 'submit'])->name('submit-form');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -111,5 +112,6 @@ Route::delete('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeContr
 
 // routes for Frontend pages
 Route::get('/home', [App\Http\Controllers\Frontend\FrontendController::class, 'home'])->name('frontend.home');
+Route::get('/status', [App\Http\Controllers\Frontend\FrontendController::class, 'status'])->name('frontend.status');
 
 // Route::get('/services', 'ServicesController@index')->name('frontend.services');
