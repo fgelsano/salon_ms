@@ -11,10 +11,8 @@
                     <div class="card-body">
 
                         <form class="form-horizontal" method="POST" action="{{ route('payments.update', $payment->id) }}">
-
                             @csrf
                             @method('PUT')
-
                             <div class="mb-3">
                                 <label for="paymentstatus" class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control" value="{{ $payment->status }}">
@@ -26,7 +24,7 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Update Customer</button>
+                                <button type="submit" class="btn btn-primary">Update Payments</button>
                             </div>
                         </form>
                     </div>

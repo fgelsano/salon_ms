@@ -31,9 +31,6 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        {{-- <th>Booking ID</th>
-                                            <th>Service </th>
-                                            <th>Status </th> --}}
                                         <th>Booking ID</th>
                                         <th>Employee Name</th>
                                         <th>Service Name</th>
@@ -56,9 +53,6 @@
                                                 class="{{ $booking->status === 'Pending' ? 'text-warning' : 'text-success' }}">
                                                 {{ $booking->status }}
                                             </td>
-
-
-
                                         </tr>
                                     @empty
                                         <tr>
@@ -68,7 +62,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{-- </form> --}}
                     </div>
                 </div>
             </div>
@@ -78,9 +71,9 @@
             $(document).ready(function() {
                 $('#searchInput').keyup(function() {
                     var searchText = $(this).val().toLowerCase();
-                    $('table tr').each(function() {
-                        var rowText = $(this).text().toLowerCase();
-                        if (rowText.indexOf(searchText) === -1) {
+                    $('table tbody tr').each(function() {
+                        var bookingId = $(this).find('td:first').text().toLowerCase();
+                        if (bookingId.indexOf(searchText) === -1) {
                             $(this).hide();
                         } else {
                             $(this).show();

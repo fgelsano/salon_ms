@@ -24,7 +24,8 @@ Route::get('/addbooking', [App\Http\Controllers\Admin\BookingController::class, 
 Route::post('/storebooking', [App\Http\Controllers\Admin\BookingController::class, 'storebooking'])->name('bookings.storebooking');
 Route::post('/getBookingData', [App\Http\Controllers\Admin\BookingController::class, 'getBookingData'])->name('bookings.getBookingData');
 Route::post('/submit-form', [App\Http\Controllers\FormController::class, 'submit'])->name('submit-form');
-
+Route::get('/addreviews', [App\Http\Controllers\Admin\ReviewController::class, 'addreviews'])->name('reviews.addreviews');
+Route::post('/store', [App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('reviews.store');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // route for pages
 
@@ -37,9 +38,6 @@ Route::prefix('reviews')->middleware(['auth'])->group(function () {
     Route::get('/add', [App\Http\Controllers\Admin\ReviewController::class, 'create'])->name('reviews.create');
     Route::delete('/{review}', [App\Http\Controllers\Admin\ReviewController::class, 'destroy'])->name('reviews.destroy');
     Route::put('/update/{id}', [App\Http\Controllers\Admin\ReviewController::class, 'update'])->name('reviews.update');
-    Route::post('/store', [App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('reviews.store');
-    Route::get('/addreviews', [App\Http\Controllers\Admin\ReviewController::class, 'addreviews'])->name('reviews.addreviews');
-
 });
 
 // route for bookings table

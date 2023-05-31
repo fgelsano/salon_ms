@@ -13,7 +13,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="name">Customer Name ID</label>
+                                <label for="name">Customer Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
                             </div>
 
