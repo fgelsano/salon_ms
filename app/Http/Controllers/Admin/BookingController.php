@@ -100,7 +100,36 @@ class BookingController extends Controller
         ]);
 
         if ($booking) {
-            return redirect()->route('bookings.index')->with('success', 'Booked successfully!');
+            // Send SMS notification
+            $to = $request->input('phone');
+            $from = config('app.semaphore_from');
+            $message = 'Your booking has been created successfully.';
+
+            $client = new Client();
+
+            $response = $client->request('POST', 'https://semaphore.co/api/v4/messages', [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer ' . env('SEM_API_KEY'),
+                ],
+                'json' => [
+                    'number' => $to,
+                    'apikey' => env('SEM_API_KEY'),
+                    'from' => $from,
+                    'message' => $message,
+                ],
+            ]);
+
+            $statusCode = $response->getStatusCode();
+            $responseData = json_decode($response->getBody(), true);
+
+            if ($statusCode === 200 && isset($responseData['result']) && $responseData['result'] === 'success') {
+                return redirect()->route('bookings.index')->with('success', 'Booked successfully! Message sent to the customer.');
+            } elseif (isset($responseData['error'])) {
+                return redirect()->route('bookings.index')->with('error', 'Error sending message: ' . $responseData['error']);
+            } else {
+                return redirect()->route('bookings.index')->with('success', 'Booked successfully! Message sent to the customer.');
+            }
         } else {
             return back()->withInput()->with('error', 'Error creating booking.');
         }
@@ -179,7 +208,7 @@ class BookingController extends Controller
         $phoneNumber = $validatedData['contact'];
 
         // Prepare the message to be sent
-        $message = 'Your booking with JCJ Salon ID has been successfully created. This is your booking reference: '. $booking->id .' Keep it for your uses! THANK YOU!!!!<3' ;
+        $message = 'Your booking with JCJ Salon ID has been successfully created. This is your booking reference: ' . $booking->id . ' Keep it for your uses! THANK YOU!!!!<3';
 
         // Send the SMS using the SMS API
         $client = new Client();

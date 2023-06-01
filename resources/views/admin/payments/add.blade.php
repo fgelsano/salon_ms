@@ -17,7 +17,9 @@
                                     @foreach ($bookings as $booking)
                                         <option value="{{ $booking->id }}"
                                             data-customer-firstname="{{ $booking->customer_id }}"
-                                            data-service-price="{{ $booking->service_id }}">
+                                            data-service-price="{{ $booking->service_id }}"
+                                            service-price="{{ $booking->services->price }}"
+                                            customer-firstname="{{ $booking->customers->firstname }}">
                                             {{ $booking->id }}
                                         </option>
                                     @endforeach
@@ -25,18 +27,20 @@
                                 <br>
                                 <div class="mb-3">
                                     <label for="customer_firstname" class="form-label">Customer Name</label>
+                                    <span id="booking_id_label" class="ml-2"></span>
                                     <input type="text" class="form-control" id="customer_firstname"
                                         name="customer_firstname">
                                 </div>
                                 <div class="mb-3">
                                     <label for="amount" class="form-label">Service Price</label>
+                                    <span id="service_price_label" class="ml-2"name="amount"></span>
                                     <input type="number" class="form-control" id="amount" name="amount">
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="paymentstatus" class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="upaid">Unpaid</option>
+                                    <option value="unpaid">Unpaid</option>
                                     <option value="paid">Paid</option>
                                 </select>
                                 @error('name')
@@ -62,6 +66,16 @@
                 $('#customer_firstname').val(customerFirstname);
                 $('#amount').val(servicePrice);
             });
+        });
+        document.getElementById('booking_id').addEventListener('change', function() {
+            var selectedOption = this.options[this.selectedIndex];
+            var bookingId = selectedOption.value;
+            var customerFirstName = selectedOption.getAttribute('customer-firstname');
+            var servicePrice = selectedOption.getAttribute('service-price');
+
+
+            document.getElementById('booking_id_label').textContent = ": " + customerFirstName;
+            document.getElementById('service_price_label').textContent = ": ₱" + servicePrice;
         });
     </script>
 @endsection

@@ -35,7 +35,7 @@
                                             <td>{{ $payment->firstname }}</td>
                                             <td>{{ $payment->price }}</td>
                                             <td
-                                                class="{{ $payment->status === 'Unpaid' ? 'text-warning' : 'text-success' }}">
+                                                class="{{ $payment->status === 'unpaid' ? 'text-warning' : 'text-success' }}">
                                                 {{ $payment->status }}</td>
                                             <td>
                                                 <div class="btn-group" role="group">
