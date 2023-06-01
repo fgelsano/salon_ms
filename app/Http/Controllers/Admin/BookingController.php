@@ -223,11 +223,11 @@ class BookingController extends Controller
         $responseData = json_decode($response->getBody(), true);
 
         if ($statusCode === 200 && isset($responseData['result']) && $responseData['result'] === 'success') {
-            return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully! SMS sent.');
+            return redirect()->route('frontend.home')->with('success', 'Booking created successfully! SMS sent.');
         } elseif (isset($responseData['error'])) {
-            return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully! Error sending SMS: ' . $responseData['error']);
+            return redirect()->route('frontend.home')->with('success', 'Booking created successfully! Error sending SMS: ' . $responseData['error']);
         } else {
-            return redirect()->route('reviews.addreviews')->with('success', 'Customer created successfully! SMS sent.');
+            return redirect()->route('frontend.home')->with('success', 'Booking created successfully! SMS sent.');
         }
     }
 

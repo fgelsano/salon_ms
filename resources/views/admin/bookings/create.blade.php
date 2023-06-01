@@ -14,7 +14,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="customer_id">Customer Name</label>
-                                <select name="customer_id" id="customer_id" class="form-control">
+                                <select name="customer_id" id="customer_id" class="form-control" required>
                                     <option value="">--Select a Customer--</option>
                                     @foreach ($customers as $customer)
                                         <option value="{{ $customer->id }}">{{ $customer->firstname }}</option>
@@ -24,7 +24,7 @@
 
                             <div class="form-group">
                                 <label for="employee_id">Employee Name</label>
-                                <select name="employee_id" id="employee_id" class="form-control">
+                                <select name="employee_id" id="employee_id" class="form-control" required>
                                     <option value="">--Select an Employee--</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}"
@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="category_id">Services Category</label>
-                                <select name="category_id" id="category_id" class="form-control">
+                                <select name="category_id" id="category_id" class="form-control" required>
                                     <option value="">--Select a Services Category--</option>
                                     @foreach ($services as $service)
                                         <option value="{{ $service->id }}">{{ $service->category }}</option>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="service_id">Services Name</label>
-                                <select name="service_id" id="service_id" class="form-control">
+                                <select name="service_id" id="service_id" class="form-control" required>
                                     <option value="">--Select a Service--</option>
                                     @foreach ($services as $service)
                                         <option value="{{ $service->id }}">{{ $service->name }}</option>
