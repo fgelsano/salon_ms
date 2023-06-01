@@ -7,7 +7,7 @@
             <div class="col-md-12">
 
                 <div class="card">
-                    <h5 class="card-header">Edit Payments</h5>
+                    <h5 class="card-header bg-primary text-white">Edit Payments</h5>
                     <div class="card-body">
 
                         {{-- <form class="form-horizontal" method="POST" action="{{ route('payments.update', $payment->id) }}"> --}}

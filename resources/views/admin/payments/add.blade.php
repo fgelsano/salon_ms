@@ -6,7 +6,7 @@
             <!-- Navigation menu ni -->
             <div class="col-md-12">
                 <div class="card">
-                    <h5 class="card-header">Add Payments</h5>
+                    <h5 class="card-header bg-primary text-white">Add Payments</h5>
                     <div class="card-body">
                         <form action="{{ route('payments.store') }}" method="POST">
                             @csrf
