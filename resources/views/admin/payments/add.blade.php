@@ -40,8 +40,8 @@
                             <div class="mb-3">
                                 <label for="paymentstatus" class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="unpaid">Unpaid</option>
-                                    <option value="paid">Paid</option>
+                                    <option value="Unpaid">Unpaid</option>
+                                    <option value="Paid">Paid</option>
                                 </select>
                                 @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>

@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card" style="width: 1230px;">
                     <div class="card-header">
-                        <h5 class="mb-0">Payments</h5>
+                        <h5 class="mb-0"><b>Payments</b></h5>
                         <div class="float-right">
                             <a href="{{ route('payments.create') }}" type="button" class="btn btn-primary">New payments</a>
                         </div>
@@ -16,10 +16,9 @@
                             <div class="form-group" style="width:fit-content;">
                                 <input type="text" id="searchInput" class="form-control" placeholder="Search" />
                             </div>
-                            <table class="table table-hover">
+                            <table class="table table-hover" style="text-align:center">
                                 <thead>
                                     <tr>
-                                        <th>Payment ID</th>
                                         <th>Booking id</th>
                                         <th>Customer's Name</th>
                                         <th>Amount</th>
@@ -30,7 +29,6 @@
                                 <tbody>
                                     @forelse ($payments as $payment)
                                         <tr>
-                                            <td>{{ $payment->id }}
                                             <td>{{ $payment->booking_id }}</td>
                                             <td>{{ $payment->firstname }}</td>
                                             <td>{{ $payment->price }}</td>

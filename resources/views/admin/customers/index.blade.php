@@ -8,7 +8,7 @@
             <div class="col-md-20">
                 <div class="card" style="width: 1230px;">
                     <div class="card-header">
-                        <h5 class="mb-0">Customers</h5>
+                        <h5 class="mb-0"> <b>Customers</b></h5>
                         <div class="float-right">
                             <a href="{{ route('customers.create') }}" type="button" class="btn btn-primary">New
                                 Customers</a>
@@ -19,7 +19,7 @@
                             <div class="form-group" style="width:fit-content;">
                                 <input type="text" id="searchInput" class="form-control" placeholder="Search" />
                             </div>
-                            <table class="table table-hover">
+                            <table class="table table-hover" style="text-align:center">
                                 <tr>
                                     <th>First Name</th>
                                     <th>Lastname</th>

@@ -84,16 +84,12 @@ Route::get('/payments/{payment}', [App\Http\Controllers\Admin\PaymentController:
 
 // Routes for reports
 Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
-// Routes for reports
-Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
+
 Route::get('/view/{id}', [App\Http\Controllers\Admin\ReportController::class, 'view'])->name('reports.view');
 
 // route for settings table
 Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
 Route::any('/settings/send-sms', [App\Http\Controllers\Admin\SMSController::class, 'index'])->name('send-sms.index');
-
-// route for reports tableb
-Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
 
 // Route for Employees Table
 Route::get('/employees', [App\Http\Controllers\Admin\EmployeeController::class, 'index'])->name('employees.index');
