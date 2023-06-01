@@ -40,15 +40,11 @@ class ReportController extends Controller
             return Carbon::parse($payment->created_at)->toDateString() === $currentDate;
         })->sum('price');
 
-        $currentMonth = Carbon::now()->format('m');
-        $monthlyIncome = $completedBookings->filter(function ($payment) use ($currentMonth) {
-            return Carbon::parse($payment->created_at)->format('m') === $currentMonth;
-        })->sum('price');
+        $numberOfDaysInMonth = Carbon::now()->daysInMonth;
+        $monthlyIncome = $dailyIncome * $numberOfDaysInMonth;
 
-        $currentYear = Carbon::now()->format('Y');
-        $annualIncome = $completedBookings->filter(function ($payment) use ($currentYear) {
-            return Carbon::parse($payment->created_at)->format('Y') === $currentYear;
-        })->sum('price');
+        $numberOfDaysInYear = Carbon::now()->isLeapYear() ? 366 : 365;
+        $annualIncome = $dailyIncome * $numberOfDaysInYear;
 
         return view('admin.reports.index', compact(['completedBookings', 'dailyIncome', 'monthlyIncome', 'annualIncome']));
     }

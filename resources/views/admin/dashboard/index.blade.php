@@ -12,7 +12,7 @@
                             <h2>{{ \App\Models\Employee::count() }}</h2> <!-- Replace with actual total of employees -->
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person"></i> <!-- Replace with your desired icon class -->
+                            <i class="ion ion-person-stalker"></i> <!-- Replace with your desired icon class -->
                         </div>
                         <a href="{{ url('/employees') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -39,7 +39,7 @@
                             <h2>{{ \App\Models\Customer::count() }}</h2> <!-- Replace with actual total customers -->
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-stalker"></i> <!-- Replace with your desired icon class -->
+                            <i class="fas fa-user-plus"></i> <!-- Replace with your desired icon class -->
                         </div>
                         <a href="{{ url('/customers') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>

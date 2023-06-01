@@ -52,13 +52,6 @@ class BookingController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'customer_id' => 'required|exists:customers,id',
-        //     'reservation_date' => 'required|date',
-        //     'reservation_time' => 'required',
-        //     'status' => 'required|in:pending,confirmed,canceled',
-        // ]);
-
         $booking = Booking::find($id);
 
         $booking->customer_id = $request->customer_id;

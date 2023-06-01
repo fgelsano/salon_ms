@@ -7,7 +7,7 @@
             <div class="col-md-20">
                 <div class="card" style="width: 1230px;">
                     <div class="card-header">
-                        <h5 class="mb-0">Services</h5>
+                        <h5 class="mb-0"><b>Services</b></h5>
 
                         <div class="float-right">
                             <a href="{{ route('services.create') }}" type="button" class="btn btn-primary"> New Services</a>
@@ -17,7 +17,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <div class="form-group" style="width:fit-content;">
+                        <div class="form-group" style="width:fit-content;">
                                 <input type="text" id="searchInput" class="form-control" placeholder="Search" />
                             </div>
 
