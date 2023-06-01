@@ -77,6 +77,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('frontend.status') }}">Booking Status</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('reviews.addreviews') }}">Customers Reviews</a>
+                        </li>
                         @guest
                             {{-- @if (Route::has('login'))
                                 <li class="nav-item">

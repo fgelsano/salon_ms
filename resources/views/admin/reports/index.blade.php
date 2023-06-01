@@ -92,6 +92,9 @@
                                         </tfoot>
                                     </table>
                                 </div>
+                                <button class="btn btn-primary" onclick="window.print()">
+                                    <i class="fas fa-print"></i> Print
+                                </button>
                             </div>
                         </div>
                     </div>

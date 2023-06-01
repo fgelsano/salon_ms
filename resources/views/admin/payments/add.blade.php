@@ -12,7 +12,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="booking_id">Booking ID</label>
-                                <select name="booking_id" id="booking_id" class="form-control">
+                                <select name="booking_id" id="booking_id" class="form-control" required>
                                     <option value="">--Select a Booking ID--</option>
                                     @foreach ($bookings as $booking)
                                         <option value="{{ $booking->id }}"
@@ -29,19 +29,19 @@
                                     <label for="customer_firstname" class="form-label">Customer Name</label>
                                     <span id="booking_id_label" class="ml-2"></span>
                                     <input type="text" class="form-control" id="customer_firstname"
-                                        name="customer_firstname">
+                                        name="customer_firstname" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="amount" class="form-label">Service Price</label>
                                     <span id="service_price_label" class="ml-2"name="amount"></span>
-                                    <input type="number" class="form-control" id="amount" name="amount">
+                                    <input type="number" class="form-control" id="amount" name="amount" required>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="paymentstatus" class="form-label">Status</label>
-                                <select name="status" id="status" class="form-control">
-                                    <option value="Unpaid">Unpaid</option>
-                                    <option value="Paid">Paid</option>
+                                <select name="status" id="status" class="form-control" required>
+                                    <option value="unpaid">Unpaid</option>
+                                    <option value="paid">Paid</option>
                                 </select>
                                 @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>

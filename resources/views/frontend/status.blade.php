@@ -49,9 +49,10 @@
                                             <td>{{ $booking->category }}</td>
                                             <td>{{ $booking->reservation_date }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
-                                            <td
-                                                class="{{ $booking->status === 'Pending' ? 'text-warning' : 'text-success' }}">
+                                            <td>
+                                            <span class="{{ $booking->status === 'Pending' ? 'text-warning' : ($booking->status === 'Completed' ? 'text-primary' : 'text-success') }}">
                                                 {{ $booking->status }}
+                                              </span>
                                             </td>
                                         </tr>
                                     @empty
