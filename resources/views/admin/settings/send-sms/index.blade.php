@@ -6,7 +6,7 @@
             <div class="col-md-20">
                 <div class="card" style="width: 1230px;">
                     <div class="card-header">
-                        <h5 class="mb-0"> Send SMS</h5>
+                        <h5 class="mb-0"><b>Send SMS</b></h5>
                     </div>
 
                     <div class="card-body">

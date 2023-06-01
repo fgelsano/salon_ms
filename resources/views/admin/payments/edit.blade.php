@@ -17,9 +17,9 @@
                             <div class="mb-3">
                                 <label for="paymentstatus" class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="unpaid" {{ $payment->status == 'unpaid' ? 'selected' : '' }}>Unpaid
+                                    <option value="Unpaid" {{ $payment->status == 'Unpaid' ? 'selected' : '' }}>Unpaid
                                     </option>
-                                    <option value="paid" {{ $payment->status == 'paid' ? 'selected' : '' }}>Paid</option>
+                                    <option value="Paid" {{ $payment->status == 'Paid' ? 'selected' : '' }}>Paid</option>
                                 </select>
                                 @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>

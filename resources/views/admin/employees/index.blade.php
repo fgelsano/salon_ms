@@ -6,7 +6,7 @@
             <div class="col-md-20">
                 <div class="card" style="width: 1230px;">
                     <div class="card-header">
-                        <h5 class="mb-0">Employees</h5>
+                        <h5 class="mb-0"><b>Employees</b></h5>
 
                         <div class="float-right">
                             <a href="{{ route('employees.create') }}" type="button" class="btn btn-primary">New Employees</a>
@@ -21,7 +21,7 @@
                                 <input type="text" id="searchInput" class="form-control" placeholder="Search" />
                             </div>
 
-                            <table class="table table-hover">
+                            <table class="table table-hover" style="text-align:center">
                                 <thead>
                                     <tr>
                                         <th>Employees Name</th>
