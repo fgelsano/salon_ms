@@ -25,7 +25,7 @@ class Booking extends Model
     // models ni sa bookings na nga ma belong ang customer
     public function customers()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class, 'customer_id');
     }
     public function user()
     {
@@ -37,7 +37,6 @@ class Booking extends Model
     }
     public function services()
     {
-        return $this->hasMany(Service::class);
+        return $this->belongsTo(Service::class, 'service_id');
     }
-
 }

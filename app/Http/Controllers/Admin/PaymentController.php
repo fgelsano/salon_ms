@@ -36,7 +36,7 @@ class PaymentController extends Controller
         $payments->delete();
         return redirect()->route('payments.index')->with('success', 'payment has been deleted successfully');
     }
-    public function edit(Request $request, $id)
+    public function edit(Request $request)
     {
         $payment = Payment::find($request->id);
         return view('admin.payments.edit', compact(['payment']));
@@ -44,7 +44,6 @@ class PaymentController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $payment = Payment::find($id);
         $payment->status = $request->status;
         $payment->save();
@@ -62,8 +61,9 @@ class PaymentController extends Controller
         return redirect()->route('payments.index')->with('success', 'Payment updated successfully!');
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $payment = Payment::find($request->id);
         $bookings = Booking::all();
         $payments = Payment::all();
         $services = Service::all();
@@ -73,7 +73,6 @@ class PaymentController extends Controller
     }
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'booking_id' => 'required',
             'amount' => 'required',
