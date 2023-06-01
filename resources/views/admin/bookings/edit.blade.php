@@ -13,11 +13,11 @@
                         <form class="form-horizontal" method="POST" action="{{ route('bookings.update', $booking->id) }}">
                             @csrf
                             @method('PUT')
-                            <div class="mb-3">
+                            <div class="form-group">
                                 <label for="customer_id">Customer Name</label>
                                 <select name="customer_id" id="customer_id" class="form-control">
-                                    @foreach ($customer as $majane)
-                                        <option value="{{ $majane->id }}">{{ $majane->firstname }}</option>
+                                    @foreach ($customer as $customers)
+                                        <option value="{{ $customers->id }}" @if ($customers->id == $booking->customer_id) selected @endif>{{ $customers->firstname }}</option>
                                     @endforeach
                                 </select>
                             </div>

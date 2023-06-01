@@ -40,7 +40,7 @@ class Booking extends Model
         return $this->belongsTo(Service::class, 'service_id');
     }
     public function payment()
-{
-    return $this->hasOne(Payment::class, 'booking_id');
-}
+    {
+        return $this->hasOne(Payment::class, 'booking_id');
+    }
 }

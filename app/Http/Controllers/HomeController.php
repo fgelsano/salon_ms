@@ -31,10 +31,12 @@ class HomeController extends Controller
             ->select('payments.*', 'bookings.id as booking_id', 'bookings.customer_id', 'customers.firstname', 'services.price')
             ->where('payments.status', 'Paid')
             ->get();
-        $currentYear = Carbon::now()->format('Y');
-        $annualIncome = $completedBookings->filter(function ($payment) use ($currentYear) {
-            return Carbon::parse($payment->created_at)->format('Y') === $currentYear;
+        $currentDate = Carbon::now()->toDateString();
+        $dailyIncome = $completedBookings->filter(function ($payment) use ($currentDate) {
+            return Carbon::parse($payment->created_at)->toDateString() === $currentDate;
         })->sum('price');
+        $numberOfDaysInYear = Carbon::now()->isLeapYear() ? 366 : 365;
+        $annualIncome = $dailyIncome * $numberOfDaysInYear;
         return view('admin.dashboard.index', compact('annualIncome'));
     }
 }
