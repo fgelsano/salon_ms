@@ -83,7 +83,17 @@ class PaymentController extends Controller
             'booking_id' => $request->input('booking_id'),
             'amount' => $request->input('amount'),
             'status' => $request->input('status')
+
         ]);
+        if ($payments->status === 'paid') {
+            // Find the booking associated with the payment
+            $booking = Booking::find($payments->booking_id);
+            if ($booking) {
+                // Update the booking status to "completed"
+                $booking->status = 'Completed';
+                $booking->save();
+            }
+        }
 
         if ($payments) {
             return redirect()->route('payments.index')->with('success', 'Payments created successfully!');

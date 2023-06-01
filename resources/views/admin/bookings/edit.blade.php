@@ -6,16 +6,14 @@
 
             <div class="col-md-14">
 
-                <div class="card">
-                    <h5 class="card-header">Edit Booking </h5>
+                <div class="card ">
+                    <h5 class="card-header bg-primary text-white">Edit Booking </h5>
                     <div class="card-body">
 
                         <form class="form-horizontal" method="POST" action="{{ route('bookings.update', $booking->id) }}">
                             @csrf
                             @method('PUT')
-
-
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="customer_id">Customer Name</label>
                                 <select name="customer_id" id="customer_id" class="form-control">
                                     @foreach ($customer as $majane)

@@ -5,8 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0"><b>{{ __('Booking Details') }}</b></h5>
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">{{ __('Booking Details') }} #{{ $bookings->id }}</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -41,6 +41,11 @@
                                     <label for="status">Status:</label>
                                     <p class="form-control-static">{{ $bookings->status }}</p>
                                 </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="created_at">Created At:</label>
                                     <p class="form-control-static">{{ $bookings->created_at }}</p>
