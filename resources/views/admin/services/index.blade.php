@@ -21,7 +21,7 @@
                                 <input type="text" id="searchInput" class="form-control" placeholder="Search" />
                             </div>
 
-                            <table class="table table-hover">
+                            <table class="table table-hover" style="text-align:center">
                                 <tr>
                                     <th>Service Name</th>
                                     <th>Image</th>

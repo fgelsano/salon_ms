@@ -6,13 +6,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mb-0">Customer's Review</h5>
+                        <h5 class="mb-0"><b>Customer's Review</b></h5>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <div class="form-group" style="width:fit-content;">
                                     <input type="text" id="searchInput" class="form-control" placeholder="Search" />
                                 </div>
-                                <table class="table table-hover">
+                                <table class="table table-hover" style="text-align:center">
                                     <thead>
                                         <tr>
                                             <th>Name</th>

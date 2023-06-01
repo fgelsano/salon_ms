@@ -33,10 +33,14 @@ class Booking extends Model
     }
     public function employees()
     {
-        return $this->hasMany(Employee::class);
+        return $this->hasMany(Employee::class, 'employee_id');
     }
     public function services()
     {
         return $this->belongsTo(Service::class, 'service_id');
     }
+    public function payment()
+{
+    return $this->hasOne(Payment::class, 'booking_id');
+}
 }

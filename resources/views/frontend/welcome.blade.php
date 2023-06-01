@@ -108,7 +108,7 @@
                         </div>
                         <div class="text-center p-4 mt-3">
                             <h5 class="fw-bold mb-0">Mary Jane Arcilla</h5>
-                            <small>NAILS</small>
+                            <small>NAIL CARE</small>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <a class="service-item rounded" href="">
-                        <h5 class="mb-3"><b>NAILS</b></h5>
+                        <h5 class="mb-3"><b>NAILCARE</b></h5>
                         <p class="text-body mb-0">Pamper your hands and feet with a nail care experience like no other at
                             our exquisite nail salon. Indulge in luxurious treatments, meticulous attention to detail, and a
                             vast selection of trendy colors and designs. From classic elegance to bold statements, our
