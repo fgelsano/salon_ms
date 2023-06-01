@@ -18,7 +18,6 @@ class CreatePaymentsTable extends Migration
             $table->float('amount');
             $table->string('status');
             $table->unsignedBigInteger('booking_id');
-            // $table->foreign('booking_id')->references('id')->on('bookings')->onDelete('cascade');
             $table->timestamps();
         });
     }

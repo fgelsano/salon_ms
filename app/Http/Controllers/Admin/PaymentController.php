@@ -49,6 +49,16 @@ class PaymentController extends Controller
         $payment->status = $request->status;
         $payment->save();
 
+        if ($payment->status === 'paid') {
+            // Find the booking associated with the payment
+            $booking = Booking::find($payment->booking_id);
+            if ($booking) {
+                // Update the booking status to "completed"
+                $booking->status = 'Completed';
+                $booking->save();
+            }
+        }
+
         return redirect()->route('payments.index')->with('success', 'Payment updated successfully!');
     }
 
@@ -81,5 +91,16 @@ class PaymentController extends Controller
         } else {
             return back()->withInput()->with('error', 'Error creating payments.');
         }
+    }
+    public function show($paymentId)
+    {
+        $payment = Payment::find($paymentId);
+        $booking = $payment->booking;
+
+        // Perform any necessary operations with the $booking object
+        // Return a response or pass the $booking object to a view
+
+        // Example: Pass the $booking object to a view
+        return view('payment.show', compact('booking'));
     }
 }
