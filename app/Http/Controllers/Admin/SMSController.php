@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+
+use App\Models\Customer;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SMSController extends Controller
 {
@@ -21,7 +22,7 @@ class SMSController extends Controller
             $response = $client->request('POST', 'https://semaphore.co/api/v4/messages', [
                 'headers' => [
                     'Content-Type' => 'application/json',
-                    'Authorization' => 'Bearer ' .env('SEM_API_KEY'),
+                    'Authorization' => 'Bearer ' . env('SEM_API_KEY'),
                 ],
                 'json' => [
                     'number' => $to, // Include the 'number' field with the phone number
@@ -45,4 +46,5 @@ class SMSController extends Controller
 
         return view('admin.settings.send-sms.index');
     }
+
 }

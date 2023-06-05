@@ -75,6 +75,7 @@
                                 <select name="status" id="status" class="form-control">
                                     <option value="Pending">Pending</option>
                                     <option value="Confirmed">Confirmed</option>
+                                    <option value="Cancelled">Cancelled</option>
                                 </select>
                             </div>
 
@@ -89,7 +90,6 @@
     </div>
     <script src="{{ asset('user/js/jquery-3.5.1.min.js') }}"></script>
     <script>
-
         $(document).ready(function() {
             // Calculate today's date in the format 'yyyy-mm-dd'
             var today = new Date().toISOString().split('T')[0];
@@ -114,16 +114,7 @@
                 startDate: today,
             });
         });
-        // $(document).ready(function() {
-        //     $('#employee_id').change(function() {
-        //         var selectedOption = $(this).find(':selected');
-        //         var selectedPicture = selectedOption.data('picture');
-        //         var selectedAvailability = selectedOption.data('availability');
-        //         $('#employee_picture').attr('src', selectedPicture);
-        //         $('#employee_availability').text('Availability: ' + selectedAvailability);
-        //         $('#employee_availability').text(availabilityText);
-        //     });
-        // });
+
         $(document).ready(function() {
             $("#employee_id").change(function() {
                 var selectedEmployee = $(this).find(":selected");
@@ -137,6 +128,7 @@
 
             });
         });
+
         var timeInput = document.getElementById('reservation_time');
 
         // Function to validate the time input

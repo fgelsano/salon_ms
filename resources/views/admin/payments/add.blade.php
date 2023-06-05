@@ -72,8 +72,6 @@
             var bookingId = selectedOption.value;
             var customerFirstName = selectedOption.getAttribute('customer-firstname');
             var servicePrice = selectedOption.getAttribute('service-price');
-
-
             document.getElementById('booking_id_label').textContent = ": " + customerFirstName;
             document.getElementById('service_price_label').textContent = ": ₱" + servicePrice;
         });

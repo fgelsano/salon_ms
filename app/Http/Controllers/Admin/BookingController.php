@@ -128,14 +128,6 @@ class BookingController extends Controller
         }
     }
 
-
-    /**
-     * Delete existing records from database
-     */
-    public function destroy($id)
-    {
-    }
-
     public function booking_details(Request $request, $id)
     {
         $bookings = Booking::select('bookings.*', 'employees.employee_name', 'customers.firstname', 'services.name', 'services.category')

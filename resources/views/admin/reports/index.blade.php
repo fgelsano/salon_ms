@@ -56,7 +56,11 @@
                                     </div>
                                     <table class="table table-hover" style="text-align:center;">
                                         <thead>
-                                            <tr>
+                                            <tr
+                                                style="position: sticky;
+                                                        top: 0;
+                                                        background-color: #f8f9fa;
+                                                        z-index: 1;">
                                                 <th>Booking id</th>
                                                 <th>Customer's Name</th>
                                                 <th>Amount</th>
@@ -103,17 +107,17 @@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script>
                 $(document).ready(function() {
-                    $('#searchInput').keyup(function() {
-                        var searchText = $(this).val().toLowerCase();
-                        $('table tr').each(function() {
-                            var rowText = $(this).text().toLowerCase();
-                            if (rowText.indexOf(searchText) === -1) {
-                                $(this).hide();
-                            } else {
-                                $(this).show();
-                            }
-                        });
+                $('#searchInput').keyup(function() {
+                    var searchText = $(this).val().toLowerCase();
+                    $('table tbody tr').each(function() {
+                        var bookingId = $(this).find('td:first').text().toLowerCase();
+                        if (bookingId.indexOf(searchText) === -1) {
+                            $(this).hide();
+                        } else {
+                            $(this).show();
+                        }
                     });
                 });
+            });
             </script>
         @endsection
