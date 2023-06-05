@@ -17,11 +17,10 @@
                             <div class="mb-3">
                                 <label for="paymentstatus" class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="unpaid" {{ $payment->status == 'Unpaid' ? 'selected' : '' }}>Unpaid
-                                    </option>
-                                    <option value="paid" {{ $payment->status == 'Paid' ? 'selected' : '' }}>Paid</option>
+                                    <option value="unpaid" @if(old('status', $payment->status) === 'unpaid') selected @endif>unpaid</option>
+                                    <option value="paid" @if(old('status', $payment->status) === 'paid') selected @endif>paid</option>
                                 </select>
-                                @error('name')
+                                @error('status')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>

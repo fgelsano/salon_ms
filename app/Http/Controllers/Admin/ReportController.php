@@ -12,18 +12,7 @@ class ReportController extends Controller
 {
     public function index()
     {
-        // Calculate the daily revenue
-        // $dailyRevenue = Payment::where('status', 'Paid')
-        //     ->whereDate('created_at', Carbon::today())
-        //     ->sum('amount');
 
-        // $weeklyRevenue = Payment::where('status', 'Paid')
-        //     ->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-        //     ->sum('amount');
-
-        // $annualRevenue = Payment::where('status', 'Paid')
-        //     ->whereYear('created_at', Carbon::now()->year)
-        //     ->sum('amount');
 
         $completedBookings = Payment::join('bookings', 'payments.booking_id', '=', 'bookings.id')
             ->join('customers', 'bookings.customer_id', '=', 'customers.id')
@@ -32,9 +21,7 @@ class ReportController extends Controller
             ->where('payments.status', 'Paid')
             ->get();
 
-        // $dailyIncome = $completedBookings->whereDate('created_at', Carbon::today())->sum('price');
-        // $monthlyIncome = $completedBookings->where('created_at', '>=', Carbon::now()->startOfMonth())->sum('price');
-        // $annualIncome = $completedBookings->where('created_at', '>=', Carbon::now()->startOfYear())->sum('price');
+
         $currentDate = Carbon::now()->toDateString();
         $dailyIncome = $completedBookings->filter(function ($payment) use ($currentDate) {
             return Carbon::parse($payment->created_at)->toDateString() === $currentDate;
@@ -49,3 +36,4 @@ class ReportController extends Controller
         return view('admin.reports.index', compact(['completedBookings', 'dailyIncome', 'monthlyIncome', 'annualIncome']));
     }
 }
+

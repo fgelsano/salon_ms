@@ -15,7 +15,12 @@ class Employee extends Model
         'picture',
         'availability'
 
+
     ];
+    protected $attributes = [
+        'availability' => 'Not Available',
+    ];
+
     public function booking()
     {
         return $this->belongsTo(Booking::class);

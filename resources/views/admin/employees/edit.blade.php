@@ -48,15 +48,16 @@
                                 </span>
                                 @enderror --}}
 
-                                <select name="availability" id="availability" class="form-control"@error('availability') is-invalid @enderror name="availability" value="{{ old('availability', $employee->available) }}" required autocomplete="availability">
-                                    <option value="Not Available">Not Available</option>
-                                    <option value="Available">Available</option>
+                                <select name="availability" id="availability" class="form-control @error('availability') is-invalid @enderror" required autocomplete="availability">
+                                    <option value="Not Available" {{ old('availability', $employee->availability) == 'Not Available' ? 'selected' : '' }}>Not Available</option>
+                                    <option value="Available" {{ old('availability', $employee->availability) == 'Available' ? 'selected' : '' }}>Available</option>
                                 </select>
                                 @error('availability')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
+
                             </div>
                         </div>
                         <div class="form-group row">

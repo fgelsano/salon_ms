@@ -8,27 +8,13 @@
                         <h5 class="m-0">Queuing Status</h5>
                     </div>
                     <div class="card-body">
-                        {{-- <form action="{{ route('bookings.getBookingData') }}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label for="booking_id">Booking ID</label>
-                                <input type="text" class="form-control" placeholder="Enter your Booking reference"
-                                    name="booking_id" id="booking_id">
-                                @error('booking_id')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div> --}}
-                        {{-- <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">Search Booking</button>
-                            </div> --}}
-                        {{-- <br><br> --}}
 
                         <div class="table-responsive">
                             <div class="form-group" style="width:fit-content;">
                                 <input type="text" id="searchInput" class="form-control"
                                     placeholder="Search Booking Reference" />
                             </div>
-                            <table class="table table-hover">
+                            <table class="table table-hover" style="text-align:center">
                                 <thead>
                                     <tr>
                                         <th>Booking ID</th>
@@ -50,9 +36,10 @@
                                             <td>{{ $booking->reservation_date }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
                                             <td>
-                                            <span class="{{ $booking->status === 'Pending' ? 'text-warning' : ($booking->status === 'Completed' ? 'text-primary' : 'text-success') }}">
-                                                {{ $booking->status }}
-                                              </span>
+                                                <span
+                                                    class="{{ $booking->status === 'Pending' ? 'text-black' : ($booking->status === 'Completed' ? 'text-primary' : ($booking->status === 'Confirmed' ? 'text-success' : 'text-danger')) }}">
+                                                    {{ $booking->status }}
+                                                </span>
                                             </td>
                                         </tr>
                                     @empty

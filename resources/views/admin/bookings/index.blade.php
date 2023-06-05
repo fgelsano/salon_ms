@@ -20,7 +20,11 @@
 
                             <table class="table table-hover" style="text-align:center">
                                 <thead>
-                                    <tr>
+                                    <tr
+                                        style="position: sticky;
+                                            top: 0;
+                                            background-color: #f8f9fa;
+                                            z-index: 1;">
                                         <th>Booking ID</th>
                                         <th>Employee Name</th>
                                         <th>Customer Name</th>
@@ -44,9 +48,11 @@
                                             <td>{{ $booking->reservation_date }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
                                             <td>
-                                            <span class="{{ $booking->status === 'Pending' ? 'text-warning' : ($booking->status === 'Completed' ? 'text-primary' : 'text-success') }}">
-                                                {{ $booking->status }}
-                                              </span></td>
+                                                <span
+                                                    class="{{ $booking->status === 'Pending' ? 'text-black' : ($booking->status === 'Completed' ? 'text-primary' : ($booking->status === 'Confirmed' ? 'text-success' : 'text-danger')) }}">
+                                                    {{ $booking->status }}
+                                                </span>
+
                                             <td>
 
                                                 <div class="btn-group" role="group">
@@ -82,9 +88,9 @@
         $(document).ready(function() {
             $('#searchInput').keyup(function() {
                 var searchText = $(this).val().toLowerCase();
-                $('table tr').each(function() {
-                    var rowText = $(this).text().toLowerCase();
-                    if (rowText.indexOf(searchText) === -1) {
+                $('table tbody tr').each(function() {
+                    var bookingId = $(this).find('td:first').text().toLowerCase();
+                    if (bookingId.indexOf(searchText) === -1) {
                         $(this).hide();
                     } else {
                         $(this).show();

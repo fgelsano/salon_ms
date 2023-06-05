@@ -1,1 +1,0 @@
-@include('frontend.partials.navbar')

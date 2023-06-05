@@ -69,7 +69,7 @@ class PaymentController extends Controller
         $services = Service::all();
         $customers = Customer::all();
 
-        return view('admin.payments.add', compact(['payments', 'bookings']));
+        return view('admin.payments.add', compact(['payment', 'bookings']));
     }
     public function store(Request $request)
     {

@@ -23,7 +23,11 @@
 
                             <table class="table table-hover" style="text-align:center">
                                 <thead>
-                                    <tr>
+                                    <tr
+                                        style="position: sticky;
+                                            top: 0;
+                                            background-color: #f8f9fa;
+                                            z-index: 1;">
                                         <th>Employees Name</th>
                                         <th>Employees Services</th>
                                         <th>Rule</th>
@@ -35,12 +39,11 @@
                                 <tbody>
                                     @forelse($employees as $employee)
                                         <tr>
-
                                             <td>{{ $employee->employee_name }}</td>
                                             <td>{{ $employee->name }}</td>
                                             <td>{{ $employee->rule }}</td>
                                             <td
-                                                style="color: {{ $employee->availability === 'on duty' ? 'red' : 'green' }}">
+                                                style="color: {{ $employee->availability === 'Not Available' ? 'red' : 'green' }}">
                                                 {{ $employee->availability }}</< /td>
                                             <td><img src="{{ asset('uploads/' . $employee->picture) }}" width="100"></td>
                                             <td>
@@ -49,29 +52,17 @@
                                                         class="btn btn-primary">
                                                         <i class="fas fa-edit"></i> Edit
                                                     </a>
-
-
-                                                    {{-- <form action="{{ route('employees.destroy', $employee) }}"
-                                                        method="POST">
+                                                    <form action="{{ route('employees.destroy', $employee) }}"
+                                                        method="POST" id="delete-form-{{ $employee->id }}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="button"
-                                                            onclick="confirmDelete('delete-form-{{ $employee->id }}')"
-                                                            class="btn btn-danger">
+                                                        <button type="submit"
+                                                            onclick="confirmDelete(event, 'delete-form-{{ $employee->id }}')"
+                                                            class="btn btn-danger"
+                                                            onclick="return confirm('Are you sure you want to delete this Employee?')">
                                                             <i class="fas fa-trash-alt"></i> Delete
                                                         </button>
-                                                    </form> --}}
-                                                    <form action="{{ route('employees.destroy', $employee) }}" method="POST"
-                                                    id="delete-form-{{ $employee->id }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit"
-                                                        onclick="confirmDelete(event, 'delete-form-{{ $employee->id }}')"
-                                                        class="btn btn-danger"
-                                                        onclick="return confirm('Are you sure you want to delete this Employee?')">
-                                                        <i class="fas fa-trash-alt"></i> Delete
-                                                    </button>
-                                                </form>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -94,9 +85,9 @@
         $(document).ready(function() {
             $('#searchInput').keyup(function() {
                 var searchText = $(this).val().toLowerCase();
-                $('table tr').each(function() {
-                    var rowText = $(this).text().toLowerCase();
-                    if (rowText.indexOf(searchText) === -1) {
+                $('table tbody tr').each(function() {
+                    var bookingId = $(this).find('td:first').text().toLowerCase();
+                    if (bookingId.indexOf(searchText) === -1) {
                         $(this).hide();
                     } else {
                         $(this).show();

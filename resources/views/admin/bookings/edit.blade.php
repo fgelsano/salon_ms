@@ -54,16 +54,19 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="bookingstatus" class="form-label">Status</label>
-                                <select name="status" id="status" class="form-control" value="{{ $booking->status }}">
-                                    <option value="Pending">Pending</option>
-                                    <option value="Confirmed">Confirmed</option>
+                                <label for="status" class="form-label">Status</label>
+                                <select name="status" id="status" class="form-control">
+                                    <option value="Pending" {{ $booking->status === 'Pending' ? 'selected' : '' }}>Pending</option>
+                                    <option value="Confirmed" {{ $booking->status === 'Confirmed' ? 'selected' : '' }}>Confirmed</option>
+                                    <option value="Canceled" {{ $booking->status === 'Canceled' ? 'selected' : '' }}>Canceled</option>
                                 </select>
-                                <!-- <input type="text" class="form-control" id="status" name="status" value="{{ $booking->status }}"> -->
+
                                 @error('status')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+
+
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
