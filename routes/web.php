@@ -26,6 +26,7 @@ Route::post('/getBookingData', [App\Http\Controllers\Admin\BookingController::cl
 Route::post('/submit-form', [App\Http\Controllers\FormController::class, 'submit'])->name('submit-form');
 Route::get('/addreviews', [App\Http\Controllers\Admin\ReviewController::class, 'addreviews'])->name('reviews.addreviews');
 Route::post('/store', [App\Http\Controllers\Admin\ReviewController::class, 'store'])->name('reviews.store');
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // route for pages
 

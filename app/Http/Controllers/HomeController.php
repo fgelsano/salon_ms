@@ -39,4 +39,7 @@ class HomeController extends Controller
         $annualIncome = $dailyIncome * $numberOfDaysInYear;
         return view('admin.dashboard.index', compact('annualIncome'));
     }
+    public function profile(){
+        return view('admin.profile');
+    }
 }

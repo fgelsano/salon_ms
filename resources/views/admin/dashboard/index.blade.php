@@ -4,7 +4,7 @@
     <section class="content" style="margin-top: 50px;">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
@@ -18,11 +18,11 @@
                     </div>
                 </div>
                 <!-- Repeat the above code block for other statistics -->
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <!-- small box -->
                     <div class="small-box bg-primary">
                         <div class="inner">
-                            <h3>Total Revenue</h3>
+                            <h3>Expected Revenue</h3>
                             <h2>&#8369;{{ number_format($annualIncome, 2) }}</h2> <!-- Replace with actual total sales -->
                         </div>
                         <div class="icon">
@@ -31,7 +31,7 @@
                         <a href="{{ url('/reports') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
@@ -44,7 +44,7 @@
                         <a href="{{ url('/customers') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-3 col-md-6 col-sm-6">
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
@@ -58,6 +58,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 @endsection
