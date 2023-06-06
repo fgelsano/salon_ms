@@ -3,65 +3,71 @@
 @section('content')
     <div class="container-fluid pt-3">
         <div class="row justify-content-center">
-            <div class="col-md-20">
-                <div class="card" style="width: 1230px;">
+            <div class="col-md-12">
+                <div class="card">
                     <div class="card-header">
-                        <h5 class="mb-0"><b>Customer's Review</b></h5>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <div class="form-group" style="width:fit-content;">
-                                    <input type="text" id="searchInput" class="form-control" placeholder="Search" />
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0"><b>Customer's Review</b></h5>
+                            <br>
+                            <div class="input-group" style="max-width: 250px;">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
                                 </div>
-                                <table class="table table-hover" style="text-align:center">
-                                    <thead>
-                                        <tr
-                                            style="position: sticky;
-                                                top: 0;
-                                                background-color: #f8f9fa;
-                                                z-index: 1;">
-                                            <th>Name</th>
-                                            <th>Comment</th>
-                                            <th>Star Rating</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($reviews as $review)
-                                            <tr>
-                                                <td>{{ $review->name }}</td>
-                                                <td>{{ $review->comment }}</td>
-                                                <td>{{ $review->star_rating }}</td>
-                                                <td>
-                                                    <div class="btn-group" role="group">
-                                                        <form action="{{ route('reviews.destroy', $review) }}"
-                                                            method="POST" id="delete-form">
-                                                            {!! csrf_field() !!}
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger"
-                                                                onclick="confirmDelete(event)"><i
-                                                                    class="fas fa-trash-alt"></i>
-                                                                Delete</button>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="6" style="text-align: center;">No records found.</td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
-
-                        <!-- button ni sa review responses -->
-
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div style="overflow-x: auto;">
+                                    <table class="table table-hover" style="text-align:center">
+                                        <thead>
+                                            <tr
+                                                style="
+                                                background-color: #f8f9fa;"">
+                                                <th>Name</th>
+                                                <th>Comment</th>
+                                                <th>Star Rating</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($reviews as $review)
+                                                <tr>
+                                                    <td>{{ $review->name }}</td>
+                                                    <td>{{ $review->comment }}</td>
+                                                    <td>{{ $review->star_rating }}</td>
+                                                    <td>
+                                                        <div class="btn-group" role="group">
+                                                            <form action="{{ route('reviews.destroy', $review) }}"
+                                                                method="POST" id="delete-form">
+                                                                {!! csrf_field() !!}
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger"
+                                                                    onclick="confirmDelete(event)"><i
+                                                                        class="fas fa-trash-alt"></i>
+                                                                    Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="6" style="text-align: center;">No records found.</td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#searchInput').keyup(function() {
