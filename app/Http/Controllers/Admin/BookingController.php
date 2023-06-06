@@ -130,6 +130,7 @@ class BookingController extends Controller
 
     public function booking_details(Request $request, $id)
     {
+
         $bookings = Booking::select('bookings.*', 'employees.employee_name', 'customers.firstname', 'services.name', 'services.category')
             ->join('employees', 'bookings.employee_id', '=', 'employees.id')
             ->join('customers', 'bookings.customer_id', '=', 'customers.id')
@@ -225,6 +226,7 @@ class BookingController extends Controller
 
     public function getBookingData(Request $request)
     {
+
         $bookingId = $request->input('booking_id');
 
         // Retrieve the booking data from the database based on the booking ID

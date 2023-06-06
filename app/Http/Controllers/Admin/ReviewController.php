@@ -38,7 +38,7 @@ class ReviewController extends Controller
         $review->comment = $request->comment;
         $review->save();
 
-        return redirect()->route('bookings.createbooking')->with('success', 'Review submitted successfully!');
+        return redirect()->route('frontend.home')->with('success', 'Review submitted successfully!');
 
     }
     public function destroy(Review $review)

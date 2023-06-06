@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container-fluid pt-3">
-        <!-- Navigation menu -->
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
