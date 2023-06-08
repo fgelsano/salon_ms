@@ -84,6 +84,7 @@
                             </button>
                         </div>
                     </div>
+                    <br>
                     <div class="card-body p-0">
                         <ul class="users-list clearfix">
                             <?php
@@ -96,13 +97,20 @@
                                 }
                                 $employeeCounter++;
                             ?>
-                            <li>
-                                <img src="{{ asset('uploads/' . $employee->picture) }}" alt="User Image">
-                                <a class="users-list-name" href="#"><?php echo $employee->employee_name; ?></a>
+                            <span class="img-holder d-inline-block"
+                                style="white-space: nowrap; border: 1px solid #ccc; padding: 10px;">
+                                <a href="#">
+                                    <img src="{{ asset('uploads/' . $employee->picture) }}" alt="User Image"
+                                        style="width: 100px; height: 100px; display: block; margin-bottom: 10px;">
+                                </a>
+                                <br>
+                                <div>
+                                    <a class="users-list-name" href="#">{{ $employee->employee_name }}</a>
+                                </div>
                                 <span class="users-list-date"
                                     style="color: {{ $employee->availability === 'Not Available' ? 'red' : 'green' }}">
                                     {{ $employee->availability }}</span>
-                            </li>
+                            </span>
                             <?php
                             }
                             ?>
