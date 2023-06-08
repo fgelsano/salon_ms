@@ -103,15 +103,14 @@
                                                 </tr>
                                             </tfoot>
                                         </table>
-                                        <button class="btn btn-primary" onclick="window.print()">
+                                        <button class="btn btn-primary float-right" onclick="window.print()">
                                             <i class="fas fa-print"></i> Print
                                         </button>
                                     </div>
-
-
                                 </div>
-                            </div>
 
+                                {!! $completedBookings->links() !!}
+                            </div>
                         </div>
                     </div>
                 </div>

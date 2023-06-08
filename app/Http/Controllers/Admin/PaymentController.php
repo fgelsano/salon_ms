@@ -24,7 +24,7 @@ class PaymentController extends Controller
             ->join('customers', 'bookings.customer_id', '=', 'customers.id')
             ->join('services', 'payments.amount', '=', 'services.id')
             ->select('payments.*', 'bookings.id as booking_id', 'bookings.customer_id', 'customers.firstname', 'services.price')
-            ->get();
+            ->paginate(10);
 
 
         return view('admin.payments.index', compact('payments'));

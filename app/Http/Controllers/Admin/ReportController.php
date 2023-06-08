@@ -19,7 +19,7 @@ class ReportController extends Controller
             ->join('services', 'bookings.service_id', '=', 'services.id')
             ->select('payments.*', 'bookings.id as booking_id', 'bookings.customer_id', 'customers.firstname', 'services.price')
             ->where('payments.status', 'Paid')
-            ->get();
+            ->paginate(10);
 
 
         $currentDate = Carbon::now()->toDateString();
