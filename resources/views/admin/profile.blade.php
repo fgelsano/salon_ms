@@ -62,8 +62,8 @@
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="user/img/profile.png" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
-                                    <h4>Admin</h4>
-                                    <p class="text-secondary mb-1">CEO</p>
+                                    <h4>{{ Auth::user()->name }}</h4>
+                                    <p class="text-secondary mb-1">Administrator</p>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                                     <h6 class="mb-0">Full Name</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    Administrator
+                                    {{ Auth::user()->name }}
                                 </div>
                             </div>
                             <hr>
@@ -134,13 +134,13 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    admin@gmail.com
+                                    {{ Auth::user()->email }}
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Phone</h6>
+                                    <h6 class="mb-0">Company Phone</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     (+63) 9123456789
@@ -149,7 +149,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Mobile</h6>
+                                    <h6 class="mb-0">Company Mobile</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     (+63) 9123456789
@@ -158,10 +158,10 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Address</h6>
+                                    <h6 class="mb-0">Password</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    Hilongos Leyte
+                                    {{ Auth::user()->password }}
                                 </div>
                             </div>
                             <hr>

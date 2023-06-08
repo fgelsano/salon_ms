@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Payment;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -40,6 +41,7 @@ class HomeController extends Controller
         return view('admin.dashboard.index', compact('annualIncome'));
     }
     public function profile(){
-        return view('admin.profile');
+        $users = User::all();
+        return view('admin.profile', compact('users'));
     }
 }
