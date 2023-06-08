@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.welcome');
-})->name('frontend.welcome');
+
 
 Auth::routes();
 
@@ -108,7 +106,8 @@ Route::delete('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeContr
 
 
 // routes for Frontend pages
-Route::get('/home', [App\Http\Controllers\Frontend\FrontendController::class, 'home'])->name('frontend.home');
+
+Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'home'])->name('frontend.home');
 Route::get('/status', [App\Http\Controllers\Frontend\FrontendController::class, 'status'])->name('frontend.status');
 
 // Route::get('/services', 'ServicesController@index')->name('frontend.services');
