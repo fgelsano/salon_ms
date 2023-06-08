@@ -37,7 +37,7 @@
                                             <td>{{ $booking->reservation_time }}</td>
                                             <td>
                                                 <span
-                                                    class="{{ $booking->status === 'Pending' ? 'text-black' : ($booking->status === 'Completed' ? 'text-primary' : ($booking->status === 'Confirmed' ? 'text-success' : 'text-danger')) }}">
+                                                class="{{ $booking->status === 'Pending' ? 'text-black' : ($booking->status === 'Completed' ? 'text-secondary' : ($booking->status === 'Confirmed' ? 'text-success' : 'text-danger')) }}">
                                                     {{ $booking->status }}
                                                 </span>
                                             </td>
