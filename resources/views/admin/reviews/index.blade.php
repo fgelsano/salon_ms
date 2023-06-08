@@ -41,13 +41,15 @@
                                                     <td>
                                                         <div class="btn-group" role="group">
                                                             <form action="{{ route('reviews.destroy', $review) }}"
-                                                                method="POST" id="delete-form">
-                                                                {!! csrf_field() !!}
+                                                                method="POST" id="delete-form-{{ $review->id }}">
+                                                                @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger"
-                                                                    onclick="confirmDelete(event)"><i
-                                                                        class="fas fa-trash-alt"></i>
-                                                                    Delete</button>
+                                                                <button type="submit"
+                                                                    onclick="confirmDelete(event, 'delete-form-{{ $review->id }}')"
+                                                                    class="btn btn-danger"
+                                                                    onclick="return confirm('Are you sure you want to delete this Review?')">
+                                                                    <i class="fas fa-trash-alt"></i> Delete
+                                                                </button>
                                                             </form>
                                                         </div>
                                                     </td>
@@ -83,7 +85,7 @@
             });
         });
 
-        function confirmDelete(event) {
+        function confirmDelete(event, formId) {
             event.preventDefault(); // Prevents the form from submitting immediately
 
             Swal.fire({
@@ -102,7 +104,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // If confirmed, submit the form
-                    document.getElementById('delete-form').submit();
+                    document.getElementById(formId).submit();
                 }
             });
         }
