@@ -86,8 +86,9 @@
                                 </table>
                             </div>
                         </div>
+                        {!! $customers->links() !!}
                     </div>
-                    {!! $customers->links() !!}
+
                 </div>
             </div>
         </div>

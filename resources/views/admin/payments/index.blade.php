@@ -69,6 +69,7 @@
                                 </table>
                             </div>
                         </div>
+                        {!! $payments->links() !!}
                     </div>
                 </div>
             </div>

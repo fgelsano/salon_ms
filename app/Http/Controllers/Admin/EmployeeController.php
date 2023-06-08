@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Service;
+use Illuminate\Pagination\Paginator;
 
 
 class EmployeeController extends Controller
@@ -14,7 +15,7 @@ class EmployeeController extends Controller
     {
         $employees = Employee::select('employees.*', 'services.name')
             ->join('services', 'employees.services_id', '=', 'services.id')
-            ->get();
+            ->paginate(10);
         return view('admin.employees.index', compact(['employees']));
     }
     public function create(Request $request)
