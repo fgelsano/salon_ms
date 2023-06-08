@@ -63,7 +63,7 @@
                 </div>
             </div>
             <br><br>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title"> All Employees</h3>
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 text-center">
                         <ul class="users-list clearfix">
                             <?php
                             use App\Models\Employee;

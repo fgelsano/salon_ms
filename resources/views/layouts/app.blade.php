@@ -36,6 +36,8 @@
     <link href="{{ asset('user/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
+    {{-- favicon --}}
+    <link rel="icon" type="image/png" href="{{ asset('dist/img/logo2bg.png') }}">
 
 </head>
 
@@ -56,29 +58,31 @@
                 <div class="collapse navbar-collapse" id="navbarSupport">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('frontend.home') }}">Home</a>
+                            <a class="nav-link{{ Request::route()->getName() === 'frontend.home' ? ' active' : '' }}"
+                                href="{{ route('frontend.home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-
+                            <a class="nav-link{{ Request::is('about') ? ' active' : '' }}" href="#about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#services">Services</a>
+                            <a class="nav-link{{ Request::is('services') ? ' active' : '' }}"
+                                href="#services">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#testimonials">Testimonials</a>
+                            <a class="nav-link{{ Request::is('testimonials') ? ' active' : '' }}"
+                                href="#testimonials">Testimonials</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('frontend.status') }}">Q Status</a>
-                        </li> --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('frontend.status') }}">Booking Status</a>
+                            <a class="nav-link{{ Request::is('contact') ? ' active' : '' }}"
+                                href="#contact">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reviews.addreviews') }}">Customers Reviews</a>
+                            <a class="nav-link{{ Request::route()->getName() === 'frontend.status' ? ' active' : '' }}"
+                                href="{{ route('frontend.status') }}">Booking Status</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link{{ Request::route()->getName() === 'reviews.addreviews' ? ' active' : '' }}"
+                                href="{{ route('reviews.addreviews') }}">Customer Reviews</a>
                         </li>
                         @guest
                             {{-- @if (Route::has('login'))
@@ -101,7 +105,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -113,6 +117,7 @@
                         @endguest
                     </ul>
                 </div>
+
             </div>
         </nav>
     </header>
