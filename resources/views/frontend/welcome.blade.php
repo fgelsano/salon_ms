@@ -130,106 +130,36 @@
                             <div id="carouselDarkVariant" class="carousel slide carousel-dark" data-ride="carousel">
                                 <!-- Indicators -->
                                 <ul class="carousel-indicators">
-                                    <li data-target="#carouselDarkVariant" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselDarkVariant" data-slide-to="1"></li>
-                                    <li data-target="#carouselDarkVariant" data-slide-to="2"></li>
+                                    @foreach ($reviews as $key => $review)
+                                        <li data-target="#carouselDarkVariant" data-slide-to="{{ $key }}"
+                                            {{ $loop->first ? 'class=active' : '' }}></li>
+                                    @endforeach
                                 </ul>
 
                                 <!-- Inner -->
                                 <div class="carousel-inner pb-5">
-                                    <!-- Single item -->
-                                    <div class="carousel-item active">
-                                        <div class="row d-flex justify-content-center">
-                                            <div class="col-lg-10 col-xl-8">
-                                                <div class="row">
-                                                    <div class="col-lg-4 d-flex justify-content-center">
-                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
-                                                            class="rounded-circle shadow-1 mb-4 mb-lg-0"
-                                                            alt="woman avatar" width="150" height="150" />
-                                                    </div>
-                                                    <div
-                                                        class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
-                                                        <h4 class="mb-4">Maria Smantha</h4>
-                                                        <p class="mb-0 pb-3">
-                                                            I recently visited this salon for a haircut, and I must say
-                                                            it
-                                                            was an amazing experience. The stylist was incredibly
-                                                            skilled
-                                                            and understood exactly what I wanted. She took her time to
-                                                            listen to my preferences and made helpful suggestions. The
-                                                            haircut turned out even better than I had imagined! The
-                                                            salon
-                                                            itself was clean and had a relaxing atmosphere.
-                                                        </p>
+                                    @foreach ($reviews as $key => $review)
+                                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col-lg-10 col-xl-8">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 d-flex justify-content-center">
+                                                            <img src="user/img/profileuser.png"
+                                                                class="rounded-circle shadow-1 mb-4 mb-lg-0"
+                                                                alt="woman avatar" width="150" height="150" />
+                                                        </div>
+                                                        <div
+                                                            class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
+                                                            <h4 class="mb-4">{{ $review->name }}</h4>
+                                                            <p class="mb-0 pb-3">
+                                                                {{ $review->comment }}
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- Single item -->
-                                    <div class="carousel-item">
-                                        <div class="row d-flex justify-content-center">
-                                            <div class="col-lg-10 col-xl-8">
-                                                <div class="row">
-                                                    <div class="col-lg-4 d-flex justify-content-center">
-                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
-                                                            class="rounded-circle shadow-1 mb-4 mb-lg-0"
-                                                            alt="woman avatar" width="150" height="150" />
-                                                    </div>
-                                                    <div
-                                                        class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
-                                                        <h4 class="mb-4">Lisa Cudrow</h4>
-                                                        <p class="mb-0 pb-3">
-                                                            I recently treated myself to a spa day at this salon, and it
-                                                            was
-                                                            truly fantastic. From the moment I walked in, I was greeted
-                                                            with
-                                                            warm smiles and made to feel welcome. The spa area was
-                                                            beautifully decorated and had a calming ambiance. The
-                                                            massage
-                                                            therapist was skilled and knowledgeable, delivering a truly
-                                                            relaxing and rejuvenating massage. The facial treatment was
-                                                            also
-                                                            excellent, leaving my skin feeling refreshed and glowing.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single item -->
-                                    <div class="carousel-item">
-                                        <div class="row d-flex justify-content-center">
-                                            <div class="col-lg-10 col-xl-8">
-                                                <div class="row">
-                                                    <div class="col-lg-4 d-flex justify-content-center">
-                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
-                                                            class="rounded-circle shadow-1 mb-4 mb-lg-0"
-                                                            alt="woman avatar" width="150" height="150" />
-                                                    </div>
-                                                    <div
-                                                        class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
-                                                        <h4 class="mb-4">John Smith</h4>
-                                                        <p class="mb-0 pb-3">
-                                                            I visited this salon for a manicure and pedicure, and I must
-                                                            say
-                                                            the nail services were outstanding. The nail technicians
-                                                            were
-                                                            highly skilled and paid great attention to detail. They took
-                                                            their time to shape and file my nails precisely, and the end
-                                                            results were simply stunning. The salon had a wide range of
-                                                            nail
-                                                            polish colors to choose from, and the technician helped me
-                                                            find
-                                                            the perfect shade.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <!-- Inner -->
 
@@ -255,6 +185,7 @@
             </div>
         </div>
     </section>
+
     {{-- Contact --}}
     <div class="container-xxl py-5" id="contact">
         <div class="container">
