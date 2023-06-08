@@ -6,14 +6,17 @@ use App\Models\Booking;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Employee;
+
 
 class FrontendController extends Controller
 {
     public function home()
     {
-
-        return view('frontend.welcome');
+        $employees = Employee::select('employees.*', 'services.name')
+        ->join('services', 'employees.services_id', '=', 'services.id')
+        ->get();
+        return view('frontend.welcome', compact('employees'));
     }
     public function status()
     {
@@ -22,8 +25,7 @@ class FrontendController extends Controller
             ->join('customers', 'bookings.customer_id', '=', 'customers.id')
             ->join('services', 'bookings.service_id', '=', 'services.id')
             ->get();
-
-
         return view('frontend.status', compact('bookings'));
     }
+
 }

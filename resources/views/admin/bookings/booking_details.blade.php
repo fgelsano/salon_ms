@@ -25,10 +25,9 @@
                                                 }
                                                 $employeeCounter++;
                                             ?>
-
-                                                <?php $employeeData = Employee::where('employee_name', $bookings->employee_name)->first(); ?>
-                                                <img src="{{ asset('uploads/' . $employeeData->picture) }}" alt="User Image"
-                                                    class="text-center" style="width: 300px; height: auto;">
+                                            <?php $employeeData = Employee::where('employee_name', $bookings->employee_name)->first(); ?>
+                                            <img src="{{ asset('uploads/' . $employeeData->picture) }}" alt="User Image"
+                                                class="text-center" style="width: 300px; height: auto;">
 
                                             <?php
                                             }
@@ -53,58 +52,56 @@
                                 <br><br>
                                 <div class="col-lg-8 col-md-7">
                                     <div class="team-single-text padding-50px-left sm-no-padding-left">
-                                        <h4 class="font-size38 sm-font-size32 xs-font-size30">{{ $bookings->employee_name }}</h4>
+                                        <h4 class="font-size38 sm-font-size32 xs-font-size30">{{ $bookings->employee_name }}
+                                        </h4>
                                         <br>
                                         <div class="contact-info-section margin-40px-tb">
                                             <ul class="list-style9 no-margin">
                                                 <li>
-
                                                     <div class="row">
                                                         <div class="col-md-5 col-5">
                                                             <i class="fas fa-users text-orange"></i>
-                                                            <strong class="margin-10px-left text-orange">Customer name:</strong>
+                                                            <strong class="margin-10px-left text-orange">Customer
+                                                                name:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
                                                             {{ $bookings->firstname }}
                                                         </div>
                                                     </div>
-
                                                 </li>
                                                 <br>
                                                 <li>
-
                                                     <div class="row">
                                                         <div class="col-md-5 col-5">
                                                             <i class="far fa-gem text-yellow"></i>
-                                                            <strong class="margin-10px-left text-yellow">Service Name: </strong>
+                                                            <strong class="margin-10px-left text-yellow">Service Name:
+                                                            </strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
                                                             {{ $bookings->name }}
                                                         </div>
                                                     </div>
-
                                                 </li>
                                                 <br>
                                                 <li>
-
                                                     <div class="row">
                                                         <div class="col-md-5 col-5">
                                                             <i class="far fa-calendar text-danger"></i>
-                                                            <strong class="margin-10px-left text-lightred">Reservation Date:</strong>
+                                                            <strong class="margin-10px-left text-lightred">Reservation
+                                                                Date:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
                                                             {{ $bookings->reservation_date }}
                                                         </div>
                                                     </div>
-
                                                 </li>
                                                 <br>
                                                 <li>
-
                                                     <div class="row">
                                                         <div class="col-md-5 col-5">
                                                             <i class="fas fa-calendar-times text-green"></i>
-                                                            <strong class="margin-10px-left text-green">Reservation Time:</strong>
+                                                            <strong class="margin-10px-left text-green">Reservation
+                                                                Time:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
                                                             {{ $bookings->reservation_time }}
@@ -119,7 +116,8 @@
                                                         <div class="col-md-5 col-5">
                                                             <i class="fas fa-mobile-alt text-purple"></i>
                                                             <strong
-                                                                class="margin-10px-left xs-margin-four-left text-purple">Booking Status</strong>
+                                                                class="margin-10px-left xs-margin-four-left text-purple">Booking
+                                                                Status</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
                                                             {{ $bookings->status }}
@@ -133,7 +131,8 @@
                                                         <div class="col-md-5 col-5">
                                                             <i class="fas fa-envelope text-pink"></i>
                                                             <strong
-                                                                class="margin-10px-left xs-margin-four-left text-pink">Created at:</strong>
+                                                                class="margin-10px-left xs-margin-four-left text-pink">Created
+                                                                at:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
                                                             {{ $bookings->created_at }}
@@ -146,7 +145,8 @@
                                                         <div class="col-md-5 col-5">
                                                             <i class="fas fa-envelope text-pink"></i>
                                                             <strong
-                                                                class="margin-10px-left xs-margin-four-left text-pink">Updated at:</strong>
+                                                                class="margin-10px-left xs-margin-four-left text-pink">Updated
+                                                                at:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
                                                             {{ $bookings->updated_at }}

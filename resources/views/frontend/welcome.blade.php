@@ -23,7 +23,7 @@
                             <a href="#services"
                                 class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Services</a>
                             <a href="{{ route('bookings.createbooking') }}"
-                            class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book now</a>
+                                class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book now</a>
                         </div>
                     </div>
                 </div>
@@ -45,73 +45,29 @@
                 <h6 class="section-title text-center text-primary text-uppercase">ABOUT US</h6>
                 <h1 class="mb-5">Personnel In Charge</h1>
             </div>
-            <div class="row g-4 d-flex justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="rounded shadow overflow-hidden">
-                        <div class="position-relative" style=" height: 300px;">
-                            <img class="img-fluid mx-auto" src="user/img/annemarie.jpg" alt=""
-                                style="object-fit: contain;
-                            width: 100%;
-                            height: 100%;">
-                            <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href="https://www.twitter.com"><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href="https://www.instagram.com/"><i
-                                        class="fab fa-instagram"></i></a>
+            <div class="row g-4 d-flex justify-content-center" id="personnelContainer">
+                @foreach ($employees as $employee)
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded shadow overflow-hidden">
+                            <div class="position-relative" style="height: 300px;">
+                                <img class="img-fluid mx-auto" src="{{ asset('uploads/' . $employee->picture) }}" alt=""
+                                    style="object-fit: contain; width: 100%; height: 100%;">
+                                <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/"><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href="https://www.twitter.com"><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href="https://www.instagram.com/"><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4 mt-3">
+                                <h5 class="fw-bold mb-0">{{ $employee->employee_name }}</h5>
+                                <small>{{ $employee->name }}</small>
                             </div>
                         </div>
-                        <div class="text-center p-4 mt-3">
-                            <h5 class="fw-bold mb-0">Jessa Pabon</h5>
-                            <small>MASSAGE</small>
-                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="rounded shadow overflow-hidden">
-                        <div class="position-relative" style=" height: 300px;">
-                            <img class="img-fluid mx-auto" src="user/img/burot.jpg" alt=""
-                                style="object-fit: contain;
-                            width: 100%;
-                            height: 100%;">
-                            <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href="https://www.twitter.com"><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href="https://www.instagram.com/"><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 mt-3">
-                            <h5 class="fw-bold mb-0">Christian Mabia</h5>
-                            <small>HAIRCUT</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="rounded shadow overflow-hidden">
-                        <div class="position-relative" style=" height: 300px;">
-                            <img class="img-fluid mx-auto" src="user/img/arcilla.jpg" alt=""
-                                style="object-fit: contain;
-                            width: 100%;
-                            height: 100%;">
-                            <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href="https://www.twitter.com"><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href="https://www.instagram.com/"><i
-                                        class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 mt-3">
-                            <h5 class="fw-bold mb-0">Mary Jane Arcilla</h5>
-                            <small>NAIL CARE</small>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -126,9 +82,12 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <a class="service-item rounded" href="">
                         <h5 class="mb-3"><b>MASSAGE</b></h5>
-                        <p class="text-body mb-0">"Relax, unwind, and rejuvenate your mind and body with a blissful massage
-                            experience at our tranquil oasis. Our skilled massage therapists combine the power of soothing
-                            touch and expert techniques to melt away stress, ease tension, and restore your natural balance.
+                        <p class="text-body mb-0">"Relax, unwind, and rejuvenate your mind and body with a blissful
+                            massage
+                            experience at our tranquil oasis. Our skilled massage therapists combine the power of
+                            soothing
+                            touch and expert techniques to melt away stress, ease tension, and restore your natural
+                            balance.
                         </p>
                     </a>
                 </div>
@@ -136,7 +95,8 @@
                     <a class="service-item rounded" href="">
                         <h5 class="mb-3"><b>HAIRCUT</b></h5>
                         <p class="text-body mb-0">Revitalize your look with a haircut tailored to perfection at our
-                            cutting-edge hair salon. Our skilled stylists will listen to your unique vision and deliver a
+                            cutting-edge hair salon. Our skilled stylists will listen to your unique vision and deliver
+                            a
                             personalized haircut that accentuates your features, leaving you with a fresh, contemporary
                             style that turns heads wherever you go.</p>
                     </a>
@@ -144,8 +104,10 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <a class="service-item rounded" href="">
                         <h5 class="mb-3"><b>NAILCARE</b></h5>
-                        <p class="text-body mb-0">Pamper your hands and feet with a nail care experience like no other at
-                            our exquisite nail salon. Indulge in luxurious treatments, meticulous attention to detail, and a
+                        <p class="text-body mb-0">Pamper your hands and feet with a nail care experience like no other
+                            at
+                            our exquisite nail salon. Indulge in luxurious treatments, meticulous attention to detail,
+                            and a
                             vast selection of trendy colors and designs. From classic elegance to bold statements, our
                             talented nail technicians will ensure your nails become your ultimate fashion accessory.</p>
                     </a>
@@ -189,11 +151,14 @@
                                                         class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
                                                         <h4 class="mb-4">Maria Smantha</h4>
                                                         <p class="mb-0 pb-3">
-                                                            I recently visited this salon for a haircut, and I must say it
-                                                            was an amazing experience. The stylist was incredibly skilled
+                                                            I recently visited this salon for a haircut, and I must say
+                                                            it
+                                                            was an amazing experience. The stylist was incredibly
+                                                            skilled
                                                             and understood exactly what I wanted. She took her time to
                                                             listen to my preferences and made helpful suggestions. The
-                                                            haircut turned out even better than I had imagined! The salon
+                                                            haircut turned out even better than I had imagined! The
+                                                            salon
                                                             itself was clean and had a relaxing atmosphere.
                                                         </p>
                                                     </div>
@@ -216,12 +181,16 @@
                                                         class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
                                                         <h4 class="mb-4">Lisa Cudrow</h4>
                                                         <p class="mb-0 pb-3">
-                                                            I recently treated myself to a spa day at this salon, and it was
-                                                            truly fantastic. From the moment I walked in, I was greeted with
+                                                            I recently treated myself to a spa day at this salon, and it
+                                                            was
+                                                            truly fantastic. From the moment I walked in, I was greeted
+                                                            with
                                                             warm smiles and made to feel welcome. The spa area was
-                                                            beautifully decorated and had a calming ambiance. The massage
+                                                            beautifully decorated and had a calming ambiance. The
+                                                            massage
                                                             therapist was skilled and knowledgeable, delivering a truly
-                                                            relaxing and rejuvenating massage. The facial treatment was also
+                                                            relaxing and rejuvenating massage. The facial treatment was
+                                                            also
                                                             excellent, leaving my skin feeling refreshed and glowing.
                                                         </p>
                                                     </div>
@@ -244,12 +213,16 @@
                                                         class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
                                                         <h4 class="mb-4">John Smith</h4>
                                                         <p class="mb-0 pb-3">
-                                                            I visited this salon for a manicure and pedicure, and I must say
-                                                            the nail services were outstanding. The nail technicians were
+                                                            I visited this salon for a manicure and pedicure, and I must
+                                                            say
+                                                            the nail services were outstanding. The nail technicians
+                                                            were
                                                             highly skilled and paid great attention to detail. They took
                                                             their time to shape and file my nails precisely, and the end
-                                                            results were simply stunning. The salon had a wide range of nail
-                                                            polish colors to choose from, and the technician helped me find
+                                                            results were simply stunning. The salon had a wide range of
+                                                            nail
+                                                            polish colors to choose from, and the technician helped me
+                                                            find
                                                             the perfect shade.
                                                         </p>
                                                     </div>
@@ -303,25 +276,29 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="Your Name">
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="Your Email">
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                                        <input type="text" class="form-control" id="subject" name="subject"
+                                            placeholder="Subject">
                                         <label for="subject">Subject</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 150px"></textarea>
+                                        <textarea class="form-control" placeholder="Leave a message here" id="message" name="message"
+                                            style="height: 150px"></textarea>
                                         <label for="message">Message</label>
                                     </div>
                                 </div>
