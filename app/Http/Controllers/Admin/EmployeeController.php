@@ -15,8 +15,7 @@ class EmployeeController extends Controller
         $employees = Employee::select('employees.*', 'services.name')
             ->join('services', 'employees.services_id', '=', 'services.id')
             ->get();
-        dd($employees);
-        return view('admin.employees.index', compact(['employees' => $employees]));
+        return view('admin.employees.index', compact(['employees']));
     }
     public function create(Request $request)
     {
