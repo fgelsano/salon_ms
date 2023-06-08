@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Booking;
 use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Pagination\Paginator;
+
 
 
 
@@ -16,7 +18,7 @@ class CustomerController extends Controller
     public function index()
     {
 
-        $customers = Customer::all();
+        $customers = Customer::paginate(10);
         return view('admin.customers.index', compact('customers'));
     }
     /**

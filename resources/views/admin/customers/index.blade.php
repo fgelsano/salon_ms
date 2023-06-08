@@ -87,6 +87,7 @@
                             </div>
                         </div>
                     </div>
+                    {!! $customers->links() !!}
                 </div>
             </div>
         </div>
