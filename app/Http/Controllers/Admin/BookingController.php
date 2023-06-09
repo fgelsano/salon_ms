@@ -140,6 +140,8 @@ class BookingController extends Controller
 
         return view('admin.bookings.booking_details', compact('bookings'));
     }
+
+    // This is for Frontend Booking
     public function addbooking(Request $request)
     {
         $booking = Booking::find($request->id);
@@ -194,7 +196,7 @@ class BookingController extends Controller
         $phoneNumber = $validatedData['contact'];
 
         // Prepare the message to be sent
-        $message = 'Your booking with JCJ Salon ID has been successfully created. This is your booking reference: ' . $booking->id . ' Keep it for your uses! THANK YOU!!!!<3';
+        $message = 'Your booking with Lucy Rose Salon ID has been successfully created. This is your booking reference: ' . $booking->id . ' Keep it for your uses! THANK YOU!!!!<3';
 
         // Send the SMS using the SMS API
         $client = new Client();
@@ -218,7 +220,7 @@ class BookingController extends Controller
         if ($statusCode === 200 && isset($responseData['result']) && $responseData['result'] === 'success') {
             return redirect()->route('frontend.home')->with('success', 'Booking created successfully! SMS sent.');
         } elseif (isset($responseData['error'])) {
-            return redirect()->route('frontend.home')->with('success', 'Booking created successfully! Error sending SMS: ' . $responseData['error']);
+            return redirect()->route('frontend.home')->with('error', 'Booking error ! Error sending SMS: ' . $responseData['error']);
         } else {
             return redirect()->route('frontend.home')->with('success', 'Booking created successfully! SMS sent.');
         }

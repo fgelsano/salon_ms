@@ -6,7 +6,7 @@
             <div class="col-md-6 col-lg-4">
                 <div class="bg-primary rounded p-4">
                     <a href="{{ url('/') }}">
-                        <img src="user/img/logo2bg.png" alt="JCJ Salon Logo" style="max-height: 100%; max-width: 100px;"><h1 class="text-white text-uppercase mb-3">JCJ Salon</h1>
+                        <img src="user/img/logo2bg.png" alt="Lucy Rose Salon Logo" style="max-height: 100%; max-width: 100px;"><h1 class="text-white text-uppercase mb-3">Lucy Rose Salon</h1>
                     </a>
 
                     <p class="text-white mb-0">
@@ -18,7 +18,7 @@
                 <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
                 <p class="mb-2" style="color:white"><i class="fa fa-map-marker-alt me-3 "></i>Brgy. Atabay, Hilongos Leyte</p>
                 <p class="mb-2" style="color:white"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p class="mb-2" style="color:white"><i class="fa fa-envelope me-3"></i>jcjsalonms@gmail.com</p>
+                <p class="mb-2" style="color:white"><i class="fa fa-envelope me-3"></i>lucyrose@gmail.com</p>
                 <div class="d-flex pt-2">
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>

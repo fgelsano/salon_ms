@@ -48,7 +48,7 @@
         <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top bg-white">
             <div class="container">
                 <img src="user/img/logo2.png" alt="" style="max-height: 100%; max-width: 70px;">
-                <a class="navbar-brand"href="{{ url('/') }}" style="color:#00D9A5;">JCJ SALON</a>
+                <a class="navbar-brand"href="{{ url('/') }}" style="color:#00D9A5;">LUCY ROSE SALON</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport"
                     aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">

@@ -7,7 +7,7 @@
                     <img class="w-100" src="user/img/salon.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
-                            <h1 class="display-3 text-white mb-4 animated slideInDown">JCJ SALON</h1>
+                            <h1 class="display-3 text-white mb-4 animated slideInDown">LUCY ROSE SALON</h1>
                             <a href="#services"
                                 class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Services</a>
                             <a href="{{ route('bookings.createbooking') }}"
