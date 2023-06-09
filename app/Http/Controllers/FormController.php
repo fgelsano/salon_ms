@@ -25,6 +25,6 @@ class FormController extends Controller
         });
 
         // Redirect back or show a success message
-        return redirect()->route('frontend.welcome')->with('success', ' Thank you for reaching us!');
+        return redirect()->route('frontend.home')->with('success', ' Thank you for reaching us!');
     }
 }
