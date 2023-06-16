@@ -196,7 +196,7 @@ class BookingController extends Controller
         $phoneNumber = $validatedData['contact'];
 
         // Prepare the message to be sent
-        $message = 'Your booking with Lucy Rose Salon has been successfully created. This is your booking reference: ' . $booking->id . ' Keep it to check the status and queue! THANK YOU!!!!<3';
+        $message = 'Your booking with Lucy Rose Salon has been successfully created. This is your booking reference #: ' . $booking->id . ' Keep it to check the status and queue! THANK YOU!!!!<3';
 
         // Send the SMS using the SMS API
         $client = new Client();

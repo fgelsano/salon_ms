@@ -18,9 +18,9 @@
                                 <thead>
                                     <tr>
                                         <th>Booking ID</th>
-                                        <th>Employee Name</th>
+                                        {{-- <th>Employee Name</th> --}}
                                         <th>Service Name</th>
-                                        <th>Service Category </th>
+                                        {{-- <th>Service Category </th> --}}
                                         <th>Reservation Date</th>
                                         <th>Reservation Time</th>
                                         <th>Status</th>
@@ -30,9 +30,9 @@
                                     @forelse($bookings as $booking)
                                         <tr>
                                             <td>{{ $booking->id }}</td>
-                                            <td>{{ $booking->employee_name }}</td>
+                                            {{-- <td>{{ $booking->employee_name }}</td> --}}
                                             <td>{{ $booking->name }}</td>
-                                            <td>{{ $booking->category }}</td>
+                                            {{-- <td>{{ $booking->category }}</td> --}}
                                             <td>{{ $booking->reservation_date }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
                                             <td>
