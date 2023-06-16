@@ -31,10 +31,11 @@ class SMSController extends Controller
                     'message' => $message,
                 ],
             ]);
-            // dd($response->getBody()->getContents());
+            //dd($response);
             $statusCode = $response->getStatusCode();
             $responseData = json_decode($response->getBody(), true);
-
+		
+	    //dd($response, $statusCode, $responseData);
             if ($statusCode === 200 && isset($responseData['result']) && $responseData['result'] === 'success') {
                 return redirect()->route('send-sms.index')->with('success', 'Message sent successfully!');
             } elseif (isset($responseData['error'])) {
