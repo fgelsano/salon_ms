@@ -9,8 +9,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             {{-- <h5 class="mb-0"><b>Services</b></h5> --}}
                             <div class="float-right">
-                                <a href="{{ route('services.create') }}" type="button" class="btn btn-primary"> New
-                                    Services</a>
+                                <a href="{{ route('services.create') }}" type="button" class="btn btn-primary"> New Services</a>
                             </div>
                             <div class="input-group" style="max-width: 250px;">
                                 <input type="text" id="searchInput" class="form-control" placeholder="Search">
