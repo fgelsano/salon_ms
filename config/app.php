@@ -162,7 +162,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
-        
+        Dotenv\Dotenv::createImmutable(__DIR__ . '/../')->load(),
+
 
         /*
          * Package Service Providers...
