@@ -27,7 +27,7 @@ class BookingController extends Controller
             // ->join('users', 'bookings.user_id', '=', 'users.id')
             ->join('services', 'bookings.service_id', '=', 'services.id')
             ->paginate(10);
-
+        // dd($bookings);
         return view('admin.bookings.index', compact('bookings'));
     }
 

@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="amount" class="form-label">Service Price</label>
-                                    <span id="service_price_label" class="ml-2"name="amount"></span>
+                                    <span id="service_price_label" class="ml-2" name="amount"></span>
                                     <input type="number" class="form-control" id="amount" name="amount" required>
                                 </div>
                             </div>

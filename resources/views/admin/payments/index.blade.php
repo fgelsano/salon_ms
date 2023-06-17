@@ -9,9 +9,9 @@
                         <div class="d-flex justify-content-between align-items-center">
                             {{-- <h5 class="mb-0"><b>Payments</b></h5> --}}
 
-                            <div class="float-left">
+                            {{-- <div class="float-left">
                                 <a href="{{ route('payments.create') }}" type="button" class="btn btn-primary">New  payments</a>
-                            </div>
+                            </div> --}}
 
                             <div class="input-group" style="max-width: 250px;">
                                 <input type="text" id="searchInput" class="form-control" placeholder="Search">
@@ -42,19 +42,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($payments as $payment)
+                                        @forelse ($bookings as $booking)
                                             <tr>
-                                                <td>{{ $payment->booking_id }}</td>
-                                                <td>{{ $payment->firstname }}</td>
-                                                <td>{{ $payment->price }}</td>
+                                                <td>{{ $booking->id }}</td>
+                                                <td>{{ $booking->firstname . ' ' . $booking->lastname}}</td>
+                                                <td>{{ $booking->price }}</td>
                                                 <td
-                                                    class="{{ $payment->status === 'unpaid' ? 'text-warning' : 'text-success' }}">
-                                                    {{ $payment->status }}</td>
+                                                    class="{{ $booking->payment_status === null ? 'text-danger' : 'text-success' }}">
+                                                    {{ $booking->payment_status == null ? 'Unpaid' : 'Paid' }}</td>
                                                 <td>
                                                     <div class="btn-group" role="group">
-                                                        <a href="{{ route('payments.edit', $payment) }}"
+                                                        <a href="{{ route('payments.edit', $booking->id) }}"
                                                             class="btn btn-primary">
-                                                            <i class="fas fa-edit"></i>Edit
+                                                            <i class="fas fa-money"></i>Pay
                                                         </a>
                                                     </div>
                                                 </td>
@@ -68,7 +68,7 @@
                                 </table>
                             </div>
                         </div>
-                        {!! $payments->links() !!}
+                        {!! $bookings->links() !!}
                     </div>
                 </div>
             </div>

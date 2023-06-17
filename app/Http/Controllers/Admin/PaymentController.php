@@ -8,6 +8,7 @@ use App\Models\Payment;
 use App\Models\Booking;
 use App\Models\Service;
 use App\Models\Customer;
+use Illuminate\Support\Facades\DB;
 
 
 class PaymentController extends Controller
@@ -26,8 +27,19 @@ class PaymentController extends Controller
             ->select('payments.*', 'bookings.id as booking_id', 'bookings.customer_id', 'customers.firstname', 'services.price')
             ->paginate(10);
 
+            $bookings = DB::table('bookings')
+            ->join('customers', 'bookings.customer_id', '=', 'customers.id')
+            ->join('employees', 'bookings.employee_id', '=', 'employees.id')
+            ->join('services', 'bookings.service_id', '=', 'services.id')
+            ->leftJoin('payments', 'bookings.id', '=', 'payments.booking_id')
+            ->select('bookings.id','customers.firstname', 'customers.lastname', 'services.price', 'services.name','payments.status as payment_status')
+            ->where('bookings.status', 'Confirmed')
+            ->orWhere('bookings.status','Completed')
+            ->paginate(10);
 
-        return view('admin.payments.index', compact('payments'));
+        // dd($bookings);
+
+        return view('admin.payments.index', compact('bookings'));
     }
 
     public function destroy(Request $request, $id)
@@ -36,15 +48,21 @@ class PaymentController extends Controller
         $payments->delete();
         return redirect()->route('payments.index')->with('success', 'payment has been deleted successfully');
     }
-    public function edit(Request $request)
+    public function edit($id)
     {
-        $payment = Payment::find($request->id);
-        return view('admin.payments.edit', compact(['payment']));
+        return view('admin.payments.edit', compact(['id']));
     }
 
     public function update(Request $request, $id)
     {
-        $payment = Payment::find($id);
+        // dd($request->status, $id);
+        $payment = Payment::where('booking_id',$id)->first();
+        // dd($payment);
+        if($payment == null){
+            $payment = new Payment();
+        }
+        $payment->booking_id = $id;
+        $payment->amount = $request->amount;
         $payment->status = $request->status;
         $payment->save();
 
@@ -69,7 +87,7 @@ class PaymentController extends Controller
         $services = Service::all();
         $customers = Customer::all();
 
-        return view('admin.payments.add', compact(['payment', 'bookings']));
+        return view('admin.payments.add', compact(['payment', 'bookings', 'customers']));
     }
     public function store(Request $request)
     {

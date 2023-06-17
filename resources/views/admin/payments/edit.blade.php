@@ -7,22 +7,25 @@
             <div class="col-md-12">
 
                 <div class="card">
-                    <h5 class="card-header bg-primary text-white">Edit Payments</h5>
+                    <h5 class="card-header bg-primary text-white">Payment</h5>
                     <div class="card-body">
 
                         {{-- <form class="form-horizontal" method="POST" action="{{ route('payments.update', $payment->id) }}"> --}}
-                        <form class="form-horizontal" method="POST" action="{{ route('payments.update', $payment->id) }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('payments.update', $id) }}">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="paymentstatus" class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="unpaid" @if(old('status', $payment->status) === 'unpaid') selected @endif>unpaid</option>
-                                    <option value="paid" @if(old('status', $payment->status) === 'paid') selected @endif>paid</option>
+                                    <option value="unpaid" >unpaid</option>
+                                    <option value="paid" >paid</option>
                                 </select>
                                 @error('status')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" name="amount" id="amount" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Update Payments</button>
