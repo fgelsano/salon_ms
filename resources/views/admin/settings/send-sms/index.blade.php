@@ -12,17 +12,17 @@
                     <div class="card-body">
                         <form action="{{ route('send-sms.index') }}" method="POST">
                             @csrf
-                            <div class="form-group">
-                                <label for="phone">Phone Number:</label>
-                                <input type="text" class="form-control" placeholder="Phone Number" id="phone"
-                                    name="phone" required>
+                            <div class="card-body">
+                                <form action="{{ route('send-sms.index') }}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="sendSwitch" name="sendSwitch">
+                                            <label class="custom-control-label" for="sendSwitch">On</label>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <label for="message">Message:</label>
-                                <textarea name="message" class="form-control" id="message" placeholder="Enter Your Message" name="message"
-                                    rows="10" maxlength="165" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>

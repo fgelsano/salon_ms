@@ -10,8 +10,7 @@
                             {{-- <h5 class="mb-0"><b>Payments</b></h5> --}}
 
                             <div class="float-left">
-                                <a href="{{ route('payments.create') }}" type="button" class="btn btn-primary">New
-                                    payments</a>
+                                <a href="{{ route('payments.create') }}" type="button" class="btn btn-primary">New  payments</a>
                             </div>
 
                             <div class="input-group" style="max-width: 250px;">

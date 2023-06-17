@@ -66,7 +66,7 @@
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('images/logo2.png') }}" alt="JCJ Salon MS" height="60" width="60">
+            <img class="animation__shake" src="{{ asset('images/logo2.png') }}" alt="Lucy rose" height="60" width="60">
         </div>
 
         <!-- Navbar -->
