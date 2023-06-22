@@ -12,7 +12,7 @@ class ReviewController extends Controller
     public function index()
     {
 
-        $reviews = Review::paginate(10);
+        $reviews = Review::orderBy('created_at', 'desc')->paginate(10); // Sort reviews by ID in ascending order
         return view('admin.reviews.index', compact('reviews'));
     }
 

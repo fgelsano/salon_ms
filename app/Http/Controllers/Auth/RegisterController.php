@@ -8,17 +8,19 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
     | Register Controller
-    |--------------------------------------------------------------------------
-    |
+    |------------
     | This controller handles the registration of new users as well as their
     | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
+    | provide this functiona--------------------------------------------------------------
+    |lity without requiring any additional code.
     |
     */
 
@@ -29,8 +31,11 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo(Request $request, $user)
+    {
+        return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
+    }
     /**
      * Create a new controller instance.
      *
@@ -70,4 +75,5 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
 }

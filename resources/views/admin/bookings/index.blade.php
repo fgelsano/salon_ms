@@ -61,9 +61,7 @@
                                                         class="{{ $booking->status === 'Pending' ? 'text-black' : ($booking->status === 'Completed' ? 'text-primary' : ($booking->status === 'Confirmed' ? 'text-success' : 'text-danger')) }}">
                                                         {{ $booking->status }}
                                                     </span>
-
                                                 <td>
-
                                                     <div class="btn-group" role="group">
                                                         <a href="{{ route('bookings.edit', $booking) }}"
                                                             class="btn btn-primary">

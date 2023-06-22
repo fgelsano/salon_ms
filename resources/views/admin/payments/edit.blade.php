@@ -24,9 +24,7 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
-                                <input type="text" name="amount" id="amount" class="form-control">
-                            </div>
+
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Update Payments</button>
                             </div>

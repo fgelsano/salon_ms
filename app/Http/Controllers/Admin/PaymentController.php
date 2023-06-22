@@ -16,30 +16,27 @@ class PaymentController extends Controller
     //
     public function index()
     {
-
-        // $payments = Payment::select('payments.*', 'bookings.id')
-        //     ->join('bookings', 'payments.booking_id', '=', 'bookings.id')
-        //     ->get();
-
-        $payments = Payment::join('bookings', 'payments.booking_id', '=', 'bookings.id')
-            ->join('customers', 'bookings.customer_id', '=', 'customers.id')
-            ->join('services', 'payments.amount', '=', 'services.id')
-            ->select('payments.*', 'bookings.id as booking_id', 'bookings.customer_id', 'customers.firstname', 'services.price')
-            ->paginate(10);
-
-            $bookings = DB::table('bookings')
-            ->join('customers', 'bookings.customer_id', '=', 'customers.id')
+        $bookings = Booking::select('bookings.*', 'employees.employee_name', 'customers.firstname', 'services.price','services.name', 'services.category')
             ->join('employees', 'bookings.employee_id', '=', 'employees.id')
+            ->join('customers', 'bookings.customer_id', '=', 'customers.id')
             ->join('services', 'bookings.service_id', '=', 'services.id')
             ->leftJoin('payments', 'bookings.id', '=', 'payments.booking_id')
-            ->select('bookings.id','customers.firstname', 'customers.lastname', 'services.price', 'services.name','payments.status as payment_status')
             ->where('bookings.status', 'Confirmed')
-            ->orWhere('bookings.status','Completed')
+            ->orWhere('bookings.status', 'Completed')
             ->paginate(10);
 
-        // dd($bookings);
-
         return view('admin.payments.index', compact('bookings'));
+    }
+    public function indexhistory()
+    {
+        $completedBookings = Payment::join('bookings', 'payments.booking_id', '=', 'bookings.id')
+            ->join('customers', 'bookings.customer_id', '=', 'customers.id')
+            ->join('services', 'bookings.service_id', '=', 'services.id')
+            ->select('payments.*', 'bookings.id as booking_id', 'bookings.customer_id', 'customers.firstname', 'services.price', 'services.name')
+            ->where('payments.status', 'Paid')
+            ->paginate(10);
+
+        return view('admin.payments.indexhistory', compact('completedBookings'));
     }
 
     public function destroy(Request $request, $id)
@@ -50,19 +47,21 @@ class PaymentController extends Controller
     }
     public function edit($id)
     {
+        $booking = Booking::findOrFail($id);
         return view('admin.payments.edit', compact(['id']));
     }
 
     public function update(Request $request, $id)
     {
         // dd($request->status, $id);
-        $payment = Payment::where('booking_id',$id)->first();
+
+        $payment = Payment::where('booking_id', $id)->first();
         // dd($payment);
-        if($payment == null){
+        if ($payment == null) {
             $payment = new Payment();
         }
         $payment->booking_id = $id;
-        $payment->amount = $request->amount;
+
         $payment->status = $request->status;
         $payment->save();
 
@@ -79,46 +78,7 @@ class PaymentController extends Controller
         return redirect()->route('payments.index')->with('success', 'Payment updated successfully!');
     }
 
-    public function create(Request $request)
-    {
-        $payment = Payment::find($request->id);
-        $bookings = Booking::all();
-        $payments = Payment::all();
-        $services = Service::all();
-        $customers = Customer::all();
 
-        return view('admin.payments.add', compact(['payment', 'bookings', 'customers']));
-    }
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'booking_id' => 'required',
-            'amount' => 'required',
-            'status' => 'required',
-        ]);
-
-        $payments = Payment::create([
-            'booking_id' => $request->input('booking_id'),
-            'amount' => $request->input('amount'),
-            'status' => $request->input('status')
-
-        ]);
-        if ($payments->status === 'paid') {
-            // Find the booking associated with the payment
-            $booking = Booking::find($payments->booking_id);
-            if ($booking) {
-                // Update the booking status to "completed"
-                $booking->status = 'Completed';
-                $booking->save();
-            }
-        }
-
-        if ($payments) {
-            return redirect()->route('payments.index')->with('success', 'Payments created successfully!');
-        } else {
-            return back()->withInput()->with('error', 'Error creating payments.');
-        }
-    }
     public function show($paymentId)
     {
         $payment = Payment::find($paymentId);

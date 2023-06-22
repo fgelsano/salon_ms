@@ -37,6 +37,9 @@
                                             <th>Booking id</th>
                                             <th>Customer's Name</th>
                                             <th>Amount</th>
+                                            <th>Reservation Date</th>
+                                            <th>Reservation Time</th>
+                                            <th>Payment Time</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -45,18 +48,22 @@
                                         @forelse ($bookings as $booking)
                                             <tr>
                                                 <td>{{ $booking->id }}</td>
-                                                <td>{{ $booking->firstname . ' ' . $booking->lastname}}</td>
+                                                <td>{{ $booking->firstname . ' ' . $booking->lastname }}</td>
                                                 <td>{{ $booking->price }}</td>
+                                                <td>{{ $booking->reservation_date }}</td>
+                                                <td>{{ $booking->reservation_time }}</td>
+                                                <td>{{ $booking->updated_at }}</td>
                                                 <td
-                                                    class="{{ $booking->payment_status === null ? 'text-danger' : 'text-success' }}">
-                                                    {{ $booking->payment_status == null ? 'Unpaid' : 'Paid' }}</td>
+                                                    class="{{ $booking->status === null ? 'text-danger' : 'text-success' }}">
+                                                    {{ $booking->status == null ? 'unpaid' : 'paid' }}</td>
                                                 <td>
-                                                    <div class="btn-group" role="group">
-                                                        <a href="{{ route('payments.edit', $booking->id) }}"
-                                                            class="btn btn-primary">
-                                                            <i class="fas fa-money"></i>Pay
-                                                        </a>
-                                                    </div>
+
+                                                <div class="btn-group" role="group">
+                                                    <a href="{{ route('payments.edit', $booking->id) }}"
+                                                        class="btn btn-primary">
+                                                        <i class="fas fa-money"></i>Pay
+                                                    </a>
+                                                </div>
                                                 </td>
                                             </tr>
                                         @empty
