@@ -64,7 +64,6 @@ Route::put('services/update/{id}', [App\Http\Controllers\Admin\ServiceController
 Route::post('services/store', [App\Http\Controllers\Admin\ServiceController::class, 'store'])->name('services.store');
 
 
-
 // route for customers table
 Route::get('/customers', [App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('customers.index');
 Route::get('/customers/edit/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('customers.edit');
@@ -105,7 +104,6 @@ Route::delete('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeContr
 
 
 // Route::post('/send-sms', [App\Http\Controllers\Admin\SMSController::class, 'index'])->name('send-sms.index');
-
 
 
 // routes for Frontend pages
