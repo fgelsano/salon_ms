@@ -6,14 +6,14 @@
             <div class="col-md-20">
                 <div class="card" style="width: 1230px;">
                     <div class="card-header">
-                        <h5 class="mb-0"><b>Send SMS</b></h5>
+                        <h5 class="mb-0"><b>SMS Settings</b></h5>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('send-sms.index') }}" method="POST">
+                        <form action="{{ route('sms-settings.index') }}" method="POST">
                             @csrf
                             <div class="card-body">
-                                <form action="{{ route('send-sms.index') }}" method="POST">
+                                <form action="{{ route('sms-settings.index') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <div class="custom-control custom-switch">

@@ -103,9 +103,10 @@
                                                 </tr>
                                             </tfoot>
                                         </table>
-                                        <button class="btn btn-primary float-right" onclick="window.print()">
+                                        <button class="btn btn-primary float-right" onclick="printTable()">
                                             <i class="fas fa-print"></i> Print
                                         </button>
+
                                     </div>
                                 </div>
 
@@ -131,5 +132,13 @@
                         });
                     });
                 });
+
+                function printTable() {
+                    var printContents = document.querySelector('.table-responsive').innerHTML;
+                    var originalContents = document.body.innerHTML;
+                    document.body.innerHTML = printContents;
+                    window.print();
+                    document.body.innerHTML = originalContents;
+                }
             </script>
         @endsection

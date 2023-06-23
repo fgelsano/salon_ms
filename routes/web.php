@@ -85,12 +85,15 @@ Route::get('/payments/{payment}', [App\Http\Controllers\Admin\PaymentController:
 
 // Routes for reports
 Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
-
 Route::get('/view/{id}', [App\Http\Controllers\Admin\ReportController::class, 'view'])->name('reports.view');
 
-// route for settings table
-Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
-Route::any('/settings/send-sms', [App\Http\Controllers\Admin\SMSController::class, 'index'])->name('send-sms.index');
+// Routes for settings
+Route::put('/sms-settings', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('sms-settings.update');
+Route::get('/sms-settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('sms-settings.index');
+
+
+
+
 
 // Route for Employees Table
 Route::get('/employees', [App\Http\Controllers\Admin\EmployeeController::class, 'index'])->name('employees.index');
@@ -111,7 +114,7 @@ Route::delete('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeContr
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'home'])->name('frontend.home');
 Route::get('/status', [App\Http\Controllers\Frontend\FrontendController::class, 'status'])->name('frontend.status');
 
-// Route::get('/services', 'ServicesController@index')->name('frontend.services');
+Route::post('/updatePaymentStatus', [App\Http\Controllers\Admin\PaymentController::class, 'updatePaymentStatus']);// Route::get('/services', 'ServicesController@index')->name('frontend.services');
 
 Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');

@@ -58,22 +58,11 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link ">
-                <i class="nav-icon fas fa-cog"></i>
-                <p>
-                    Settings
-                    <i class="fas fa-angle-left right"></i>
-                </p>
+            <a href="{{ route('sms-settings.index') }}"
+                class="nav-link {{ Route::currentRouteName() === 'sms-settings.index' ? 'active' : '' }}">
+                <i class="fa fa-comment"></i>
+                <p>SMS Settings</p>
             </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item {{ Route::currentRouteName() === 'send-sms.index' ? 'active' : '' }}">
-                    <a href="{{ route('send-sms.index') }}"
-                        class="nav-link {{ Route::currentRouteName() === 'send-sms.index' ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Send Message</p>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li class="nav-item">
             <a href="{{ url('/reviews') }}" class="nav-link">

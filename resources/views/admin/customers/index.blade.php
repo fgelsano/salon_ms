@@ -35,8 +35,8 @@
                                             background-color: #f8f9fa;
                                             z-index: 1;">
                                             <th>First Name</th>
-                                            <th>Lastname</th>
-                                            <th>Address</th>
+                                            <th>Email</th>
+
                                             <th>Contact</th>
                                             <th>Send APi</th>
                                             <th>Action</th>
@@ -47,11 +47,11 @@
                                             <tr>
                                                 <td>{{ $customer->firstname }}</td>
                                                 <td>{{ $customer->lastname }}</td>
-                                                <td>{{ $customer->address }}</td>
+
                                                 <td>{{ $customer->contact }}</td>
                                                 <td>
 
-                                                    <a href="{{ route('send-sms.index', ['contact' => $customer->contact]) }}"
+                                                    <a href="{{ route('sms-settings.index', ['contact' => $customer->contact]) }}"
                                                         class="btn btn-success">
                                                         <i class="fas fa"></i> Send SMS
                                                     </a>

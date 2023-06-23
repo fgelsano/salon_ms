@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid p-0 mb-5">
-        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <div id="header-carousel">
             <!-- Preload the images -->
             <div style="display: none;">
                 <img src="user/img/salon.jpg" alt="Preload Image">
@@ -35,14 +35,8 @@
                 </div>
             </div>
             <!-- Carousel controls -->
-            <a class="carousel-control-prev" href="#header-carousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#header-carousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+
+
         </div>
     </div>
 
@@ -159,11 +153,11 @@
                                                         </div>
                                                         <div
                                                             class="col-9 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
-                                                            <h4 class="mb-4">{{ $review->name }}</h4>
-                                                            <p class="mb-0 pb-3">
+                                                            <h2 class="mb-4">{{ $review->name }}</h2>
+                                                            <h3 class="mb-0 pb-3">
                                                                 {{ $review->comment }}
 
-                                                            </p>
+                                                            </h3>
                                                             {{ $review->star_rating }} stars rating
                                                         </div>
                                                     </div>
@@ -259,5 +253,4 @@
     </div>
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     @include('frontend.partials._footer');
-
 @endsection

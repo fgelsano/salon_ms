@@ -42,19 +42,22 @@
                             </div>
                             <div class="form-group">
                                 <label for="category_id">Services Category</label>
-                                <select name="category_id" id="category_id" class="form-control" required>
+                                <select name="category_id" id="category_id" class="form-control">
                                     <option value="">--Select a Services Category--</option>
                                     @foreach ($services as $service)
-                                        <option value="{{ $service->id }}">{{ $service->category }}</option>
+                                        <option value="{{ $service->id }}" data-category="{{ $service->category }}">
+                                            {{ $service->category }}</option>
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="form-group">
                                 <label for="service_id">Services Name</label>
-                                <select name="service_id" id="service_id" class="form-control" required>
+                                <select name="service_id" id="service_id" class="form-control">
                                     <option value="">--Select a Service--</option>
                                     @foreach ($services as $service)
-                                        <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                        <option value="{{ $service->id }}" data-category="{{ $service->category }}">
+                                            {{ $service->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -154,5 +157,23 @@
 
         // Add the validateTimeInput function as an event listener for the input event
         timeInput.addEventListener('input', validateTimeInput);
+
+        document.getElementById('category_id').addEventListener('change', function() {
+            var selectedCategory = this.options[this.selectedIndex];
+            var selectedServiceCategory = selectedCategory.getAttribute('data-category');
+            var serviceDropdown = document.getElementById('service_id');
+
+            for (var i = 0; i < serviceDropdown.options.length; i++) {
+                var option = serviceDropdown.options[i];
+                if (option.getAttribute('data-category') === selectedServiceCategory) {
+                    option.style.display = '';
+                } else {
+                    option.style.display = 'none';
+                }
+            }
+
+            // Reset the selected service
+            serviceDropdown.selectedIndex = 0;
+        });
     </script>
 @endsection

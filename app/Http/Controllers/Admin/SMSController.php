@@ -34,7 +34,7 @@ class SMSController extends Controller
             //dd($response);
             $statusCode = $response->getStatusCode();
             $responseData = json_decode($response->getBody(), true);
-		
+
 	    //dd($response, $statusCode, $responseData);
             if ($statusCode === 200 && isset($responseData['result']) && $responseData['result'] === 'success') {
                 return redirect()->route('send-sms.index')->with('success', 'Message sent successfully!');
@@ -45,7 +45,8 @@ class SMSController extends Controller
             }
         }
 
-        return view('admin.settings.send-sms.index');
+        // return view('admin.settings.send-sms.index');
+        return view('admin.sms-settings.index');
     }
 
 }
