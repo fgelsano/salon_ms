@@ -12,21 +12,25 @@
                             @csrf
                             <div class="form-group">
                                 <label for="firstname">Customer First Name</label>
-                                <input type="text" class="form-control" name="firstname">
+                                <input type="text" class="form-control" name="firstname"
+                                    value="{{ auth()->user()->name ?? '' }}" readonly>
                                 @error('firstname')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <div class="form-group">
-                                <label for="lastname">Customer Last Name</label>
-                                <input type="text" class="form-control" name="lastname">
+                                <label for="lastname">Customer Email</label>
+                                <input type="text" class="form-control" name="lastname"
+                                    value="{{ auth()->user()->email ?? '' }}" readonly>
                                 @error('lastname')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <div class="form-group">
-                                <label for="address">Customer Address</label>
-                                <input type="text" class="form-control" name="address">
+                                <input type="hidden" class="form-control" name="address"
+                                    value="{{ auth()->user()->password ?? '' }}">
                                 @error('address')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -61,16 +65,19 @@
                                 <select name="category_id" id="category_id" class="form-control">
                                     <option value="">--Select a Services Category--</option>
                                     @foreach ($services as $service)
-                                        <option value="{{ $service->id }}">{{ $service->category }}</option>
+                                        <option value="{{ $service->id }}" data-category="{{ $service->category }}">
+                                            {{ $service->category }}</option>
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="form-group">
                                 <label for="service_id">Services Name</label>
                                 <select name="service_id" id="service_id" class="form-control">
                                     <option value="">--Select a Service--</option>
                                     @foreach ($services as $service)
-                                        <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                        <option value="{{ $service->id }}" data-category="{{ $service->category }}">
+                                            {{ $service->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -138,6 +145,23 @@
                 $('#employee_availability').text('Availability: ' + selectedAvailability);
                 $('#employee_availability').text(availabilityText);
             });
+        });
+        document.getElementById('category_id').addEventListener('change', function() {
+            var selectedCategory = this.options[this.selectedIndex];
+            var selectedServiceCategory = selectedCategory.getAttribute('data-category');
+            var serviceDropdown = document.getElementById('service_id');
+
+            for (var i = 0; i < serviceDropdown.options.length; i++) {
+                var option = serviceDropdown.options[i];
+                if (option.getAttribute('data-category') === selectedServiceCategory) {
+                    option.style.display = '';
+                } else {
+                    option.style.display = 'none';
+                }
+            }
+
+            // Reset the selected service
+            serviceDropdown.selectedIndex = 0;
         });
     </script>
 @endsection

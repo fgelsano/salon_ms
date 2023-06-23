@@ -106,4 +106,13 @@ class CustomerController extends Controller
 
         return redirect()->route('customers.index')->with('success', 'Customer deleted successfully!');;
     }
+    public function customerlogin(Request $request)
+    {
+        // Perform the customer login logic here
+
+        // Example: Redirect to a specific route after successful login
+        return redirect()->route('dashboard');
+    }
+
+
 }

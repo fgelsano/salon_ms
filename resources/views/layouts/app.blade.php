@@ -84,7 +84,13 @@
                             <a class="nav-link{{ Request::route()->getName() === 'reviews.addreviews' ? ' active' : '' }}"
                                 href="{{ route('reviews.addreviews') }}">Customer Reviews</a>
                         </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link{{ Request::route()->getName() === 'customerlogin' ? ' active' : '' }}"
+                                href="{{ route('customerlogin') }}">Customer Login</a>
+                        </li> --}}
+
                         @guest
+
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="btn btn-light ml-lg-3" href="{{ route('login') }}">{{ __('Login') }}</a>

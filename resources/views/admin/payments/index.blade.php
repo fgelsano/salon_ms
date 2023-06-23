@@ -1,5 +1,4 @@
 @extends('layouts.admin.app')
-
 @section('content')
     <div class="container-fluid pt-3">
         <div class="row justify-content-center">
@@ -8,11 +7,9 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             {{-- <h5 class="mb-0"><b>Payments</b></h5> --}}
-
                             {{-- <div class="float-left">
                                 <a href="{{ route('payments.create') }}" type="button" class="btn btn-primary">New  payments</a>
                             </div> --}}
-
                             <div class="input-group" style="max-width: 250px;">
                                 <input type="text" id="searchInput" class="form-control" placeholder="Search">
                                 <div class="input-group-append">
@@ -21,7 +18,6 @@
                                     </button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="card-body">
@@ -32,7 +28,7 @@
                                         <tr
                                             style="position: sticky;
                                             top: 0;
-                                            background-color: #f8f9fa;
+                                            background-color: #F8F9FA;
                                             z-index: 1;">
                                             <th>Booking id</th>
                                             <th>Customer's Name</th>
@@ -40,7 +36,7 @@
                                             <th>Reservation Date</th>
                                             <th>Reservation Time</th>
                                             <th>Payment Time</th>
-                                            <th>Status</th>
+
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -53,17 +49,13 @@
                                                 <td>{{ $booking->reservation_date }}</td>
                                                 <td>{{ $booking->reservation_time }}</td>
                                                 <td>{{ $booking->updated_at }}</td>
-                                                <td
-                                                    class="{{ $booking->status === null ? 'text-danger' : 'text-success' }}">
-                                                    {{ $booking->status == null ? 'unpaid' : 'paid' }}</td>
-                                                <td>
 
-                                                <div class="btn-group" role="group">
-                                                    <a href="{{ route('payments.edit', $booking->id) }}"
-                                                        class="btn btn-primary">
-                                                        <i class="fas fa-money"></i>Pay
-                                                    </a>
-                                                </div>
+                                                <td>
+                                                    <div class="btn-group" role="group">
+                                                        <a href="{{ route('payments.edit', $booking->id) }}" class="btn btn-primary">
+                                                            <i class="fas fa-money"></i> Pay
+                                                        </a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @empty
@@ -72,6 +64,7 @@
                                             </tr>
                                         @endforelse
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -81,7 +74,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -98,4 +90,4 @@
             });
         });
     </script>
-@endsection
+    @endsection
