@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->tinyInteger('role_as')->default('0')->comment('0=user, 1=admin');
         });
     }
 

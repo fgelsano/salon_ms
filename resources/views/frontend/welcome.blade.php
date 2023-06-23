@@ -1,10 +1,16 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid p-0 mb-5">
-        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+            <!-- Preload the images -->
+            <div style="display: none;">
+                <img src="user/img/salon.jpg" alt="Preload Image">
+                <img src="user/img/hair.jpg" alt="Preload Image">
+            </div>
+            <!-- Carousel inner -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="user/img/salon.jpg" alt="Image">
+                    <img class="d-block w-100" src="user/img/salon.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
                             <h1 class="display-3 text-white mb-4 animated slideInDown">LUCY ROSE SALON</h1>
@@ -16,7 +22,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="user/img/hair.jpg" alt="Image">
+                    <img class="d-block w-100" src="user/img/hair.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
                             <h1 class="display-3 text-white mb-4 animated slideInDown">BEAUTY SALON | SPA</h1>
@@ -28,16 +34,19 @@
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            <!-- Carousel controls -->
+            <a class="carousel-control-prev" href="#header-carousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#header-carousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
+
+
     {{-- About --}}
     <div class="container-xxl py-5" id="about">
         <div class="container">
@@ -50,8 +59,8 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="rounded shadow overflow-hidden">
                             <div class="position-relative" style="height: 300px;">
-                                <img class="img-fluid mx-auto" src="{{ asset('uploads/' . $employee->picture) }}" alt=""
-                                    style="object-fit: contain; width: 100%; height: 100%;">
+                                <img class="img-fluid mx-auto" src="{{ asset('uploads/' . $employee->picture) }}"
+                                    alt="" style="object-fit: contain; width: 100%; height: 100%;">
                                 <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
                                     <a class="btn btn-square btn-primary mx-1" href="https://www.facebook.com/"><i
                                             class="fab fa-facebook-f"></i></a>
@@ -130,7 +139,7 @@
                             <div id="carouselDarkVariant" class="carousel slide carousel-dark" data-ride="carousel">
                                 <!-- Indicators -->
                                 <ul class="carousel-indicators">
-                                    @foreach ($reviews as $key => $review)
+                                    @foreach ($reviews->reverse() as $key => $review)
                                         <li data-target="#carouselDarkVariant" data-slide-to="{{ $key }}"
                                             {{ $loop->first ? 'class=active' : '' }}></li>
                                     @endforeach
@@ -138,7 +147,7 @@
 
                                 <!-- Inner -->
                                 <div class="carousel-inner pb-5">
-                                    @foreach ($reviews as $key => $review)
+                                    @foreach ($reviews->reverse() as $key => $review)
                                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                                             <div class="row d-flex justify-content-center">
                                                 <div class="col-lg-10 col-xl-8">
@@ -153,7 +162,9 @@
                                                             <h4 class="mb-4">{{ $review->name }}</h4>
                                                             <p class="mb-0 pb-3">
                                                                 {{ $review->comment }}
+
                                                             </p>
+                                                            {{ $review->star_rating }} stars rating
                                                         </div>
                                                     </div>
                                                 </div>
@@ -247,62 +258,6 @@
         </div>
     </div>
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    {{-- <div class="fixed-container"
-        style="position: fixed;
-        bottom: 20px;
-        right: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        z-index: 1000;">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewModal"
-            style="margin-bottom: 10px;">
-            <i class="fas fa-pencil-alt" style="margin-right: 5px;"></i> Leave a Feedback
-        </button>
-    </div>
-    <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="reviewModalLabel">Customer Review Form</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="reviewForm">
-                        <div class="form-group">
-                            <label for="customerName">Customer's Name:</label>
-                            <input type="text" class="form-control" id="customerName"
-                                placeholder="Enter customer's name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="reviewContent">Content:</label>
-                            <textarea class="form-control" id="reviewContent" rows="5" placeholder="Enter review content" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="starRating">Star Rating:</label>
-                            <div class="rate">
-                                <input type="radio" id="star5" name="rate" value="5" required>
-                                <label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star4" name="rate" value="4" required>
-                                <label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star3" name="rate" value="3" required>
-                                <label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star2" name="rate" value="2" required>
-                                <label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star1" name="rate" value="1" required>
-                                <label for="star1" title="1 star"><i class="fas fa-star"></i></label>
-                            </div>
-                        </div><br><br>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit
-                            Review</button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div> --}}
     @include('frontend.partials._footer');
+
 @endsection

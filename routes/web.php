@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\AdminMiddleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
 Route::get('/addbooking', [App\Http\Controllers\Admin\BookingController::class, 'addbooking'])->name('bookings.createbooking');
 Route::post('/storebooking', [App\Http\Controllers\Admin\BookingController::class, 'storebooking'])->name('bookings.storebooking');
 Route::post('/getBookingData', [App\Http\Controllers\Admin\BookingController::class, 'getBookingData'])->name('bookings.getBookingData');
@@ -62,7 +64,6 @@ Route::put('services/update/{id}', [App\Http\Controllers\Admin\ServiceController
 Route::post('services/store', [App\Http\Controllers\Admin\ServiceController::class, 'store'])->name('services.store');
 
 
-
 // route for customers table
 Route::get('/customers', [App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('customers.index');
 Route::get('/customers/edit/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'edit'])->name('customers.edit');
@@ -73,6 +74,7 @@ Route::post('/customers/store', [App\Http\Controllers\Admin\CustomerController::
 
 // Routes for payments
 Route::get('/payments', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('payments.index');
+Route::get('/paymentshistory', [App\Http\Controllers\Admin\PaymentController::class, 'indexhistory'])->name('payments.indexhistory');
 Route::get('/payments/edit/{id}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('payments.edit');
 Route::get('/payments/add', [App\Http\Controllers\Admin\PaymentController::class, 'create'])->name('payments.create');
 Route::delete('/payment/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'destroy'])->name('payments.destroy');
@@ -104,10 +106,15 @@ Route::delete('/employees/{employee}', [App\Http\Controllers\Admin\EmployeeContr
 // Route::post('/send-sms', [App\Http\Controllers\Admin\SMSController::class, 'index'])->name('send-sms.index');
 
 
-
 // routes for Frontend pages
 
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'home'])->name('frontend.home');
 Route::get('/status', [App\Http\Controllers\Frontend\FrontendController::class, 'status'])->name('frontend.status');
 
 // Route::get('/services', 'ServicesController@index')->name('frontend.services');
+
+Route::middleware(['auth','isAdmin'])->group(function(){
+    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+});
+
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');

@@ -78,7 +78,7 @@
                                 <label for="reservation_date">Reservation Date</label>
                                 <input type="date" class="form-control" id="reservation_date" name="reservation_date"
                                     required>
-                            </div>
+                        </div>
                             <div class="form-group">
                                 <label for="reservation_time">Reservation Time</label>
                                 <input type="time" class="form-control" id="reservation_time" name="reservation_time"

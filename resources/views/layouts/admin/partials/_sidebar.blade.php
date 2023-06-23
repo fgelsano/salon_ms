@@ -44,6 +44,13 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="{{ url('/paymentshistory') }}"
+                class="nav-link {{ Route::currentRouteName() === 'payments.indexhistory' ? 'active' : '' }}"">
+                <i class="nav-icon fas fa-dollar-sign"></i>
+                <p>Payments History</p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{ url('/reports') }}"
                 class="nav-link {{ Route::currentRouteName() === 'reports.index' ? 'active' : '' }}"">
                 <i class="nav-icon fas fa-chart-bar"></i>
